@@ -15,63 +15,82 @@
 
     <!-- Styles -->
     <link href="{{ asset('resources/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/assets/css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/assets/css/overrideade.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/assets/css/custom.css') }}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:300,400,400i,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" media="screen" type="text/css" />
+
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<body class="non-loggedin">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="nav-top-bar row top-nav">
+            <div class="wrapper">
+              <div class="float-left"><span>Build 90% or above Trust Score & Get FLAT 50% off*</span></div>
+              <div class="float-right"><span class="pipe">Call +91-124-265 0000 (India)</span>
+                <span class="pipe"><a href="mailto:support@demo.com"> support@demo.com</a></span>
+             <span> <a href="javascript:;">Live Support </a></span></div>
+            </div>
+        </div>
+        <div class="container-fluid">
+          <div class="wrapper">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                    <span class = "sr-only">Toggle navigation</span>
+                    <span class = "icon-bar"></span>
+                    <span class = "icon-bar"></span>
+                    <span class = "icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="resources/assets/images/lv.png" alt="lovevivah logo">
+                </a>
+            </div>
+            <div  class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="non-log-dropdown">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#searchModal">SEARCH</a>
+                </li>
+                <li><a href="javascript:;">FREE REGISTER</a></li>
+                <li><a href="javascript:;">MEMBERSHIP</a></li>
+                <li><a href="javascript:;">FREE HOROSCOPE</a></li>
+                <li><a href="javascript:;">HELP</a></li>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                @guest
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
+                        </ul>
+                    </li>
+                @endguest
+
+                <li class="mobile-link-text"><a href="mailto:support@demo.com">support@lovevivah.com</a></li>
+                <li class="mobile-link-text"><a href="javascript:void(0)" >support +91-124-265 0000 (India)</a></li>
+              </ul>
             </div>
-        </nav>
-
-
+          </div>
+        </div>
+    </nav><!--Header End-->
