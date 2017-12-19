@@ -10,6 +10,12 @@
 
                 <div class="text-center"><img src="resources/assets/images/lv.png" height="75"></div>
 
+                @if(session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Str;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
+use Mail;
+use App\Mail\verifyEmail;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -62,10 +66,86 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        Session::flash('status', 'Registered Successfully. But verify your email to activate your account.');
+
+        // Create user in users table
+        $user = User::create([
             'name' => $data['name'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'verify_token' => Str::random(40)
         ]);
+
+        // Get user id
+        $user_id = $user->id;
+
+        $date = date("Y-m-d H:i:s");
+
+        # Create user role
+        $user_role = DB::table('user_roles')->insert(
+             array(
+                'role_id' => '2',
+                'user_id' => $user_id,
+                'created_at' => $date,
+                'updated_at' => $date
+             )
+        );
+
+        #user insert in user details table
+        $user_insert = DB::table('user_details')->insert(
+             array(
+                    'user_id' => $user_id,
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'created_at' => $date,
+                    'updated_at' => $date
+             )
+        );
+
+        $thisUser = User::findOrFail($user->id);
+        $this->sendEmail($thisUser);
+
+        return $user;
+        exit;
     }
+
+    # Verify Email First
+    public function verifyEmailFirst()
+    {
+        return view('email.verifyEmailFirst');
+    }
+
+    # Send Email
+    public function sendEmail($thisUser)
+    {
+        Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
+    }
+
+    # Send Email Done
+    public function sendEmailDone($email, $verifyToken)
+    {
+        $user = User::where(['email'=>$email, 'verify_token'=>$verifyToken])->first();
+
+        if($user)
+        {
+            User::where(['email'=>$email, 'verify_token'=>$verifyToken])->update(['status'=>'1', 'verify_token'=>NULL]);
+
+            user_details::where(['email'=>$email])->update(['status'=>'1']);
+
+            $status = 'Verified email. You can login now.';
+        }
+        else
+        {
+            $status = 'Something Went Wrong Or Already Verified !';
+        }
+
+        if($status)
+        {
+            Session::flash('status', $status);
+            return view('auth.login');
+        }
+    }
+
 }
