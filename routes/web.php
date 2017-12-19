@@ -32,3 +32,5 @@ Route::get('membership', 'WebsitePages@membership')->name('membership');
 Route::get('horoscope', 'WebsitePages@horoscope')->name('horoscope');
 
 Route::get('help', 'WebsitePages@help')->name('help');
+
+Route::get('change_password', 'Users@change_password_view')->name('change_password');
