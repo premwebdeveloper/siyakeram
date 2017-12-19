@@ -1,6 +1,34 @@
 @extends('layouts.public_app')
 
 @section('content')
+<script>
+    $(document).ready(function(){
+        $('.profile_for').on('click', function(){
+            var profile_value = $(this).val();
+            if(profile_value == 2)
+            {    
+                $('#male').prop('checked', true);
+            }            
+            else if(profile_value == 3)
+            {    
+                $('#female').prop('checked', true);
+            }           
+            else if(profile_value == 4)
+            {    
+                $('#male').prop('checked', true);
+            }            
+            else if(profile_value == 5)
+            {    
+                $('#female').prop('checked', true);
+            }
+            else
+            {
+                $('.gender').prop('checked', false);
+            }
+
+        });
+    });
+</script>
 <div class="container" style="padding-top: 170px;">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -16,13 +44,13 @@
                                 Let's know for whom you are creating the profile?
                             </label>
                             <div class="col-md-6">
-                                <input type="radio" style="display: block;" name="profile_for" value="1" required> Self
-                                <input type="radio" style="display: block;" name="profile_for" value="2" required> Son
-                                <input type="radio" style="display: block;" name="profile_for" value="3" required> Daughter
-                                <input type="radio" style="display: block;" name="profile_for" value="4" required> Brother
-                                <input type="radio" style="display: block;" name="profile_for" value="5" required> Sister
-                                <input type="radio" style="display: block;" name="profile_for" value="6" required> Relative
-                                <input type="radio" style="display: block;" name="profile_for" value="7" required> Friend
+                                <input type="radio" name="profile_for" class="profile_for" value="1" required> Self
+                                <input type="radio" name="profile_for" class="profile_for" id="Son_1" value="2" required> Son
+                                <input type="radio" name="profile_for" class="profile_for" id="Daughter_1" value="3" required> Daughter
+                                <input type="radio" name="profile_for" class="profile_for" id="Brother_1" value="4" required> Brother
+                                <input type="radio" name="profile_for" class="profile_for" id="Sister_1" value="5" required> Sister
+                                <input type="radio" name="profile_for" class="profile_for" value="6" required> Relative
+                                <input type="radio" name="profile_for" class="profile_for" value="7" required> Friend
                             </div>
                         </div>
 
@@ -93,8 +121,8 @@
                         <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">Gender</label>
                             <div class="col-md-6">
-                                <input type="radio" style="display: block;" name="gender" value="1" required> Male
-                                <input type="radio" style="display: block;" name="gender" value="2" required> Feamale
+                                <input type="radio" name="gender" id="male" class="gender" value="1" required> Male
+                                <input type="radio" name="gender" id="female" class="gender" value="2" required> Female
                             </div>
                         </div>
 

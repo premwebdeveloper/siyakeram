@@ -419,7 +419,7 @@ textarea.form-control:focus {
 
 input[type=checkbox],
 input[type=radio] {
-    display: none
+   /* display: none*/
 }
 
 .checkbox label:before,
