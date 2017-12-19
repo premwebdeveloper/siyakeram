@@ -79,7 +79,7 @@
                                 <a href="javascript:;" title="Profile">
                                     Profile
                                 </a>
-                                <a href="{{ route('change_password') }}" title="Chnage Password">
+                                <a href="{{ route('change_password') }}" title="Change Password">
                                     Change Password
                                 </a>
                                 <a href="{{ route('logout') }}"
