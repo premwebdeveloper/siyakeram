@@ -11,8 +11,10 @@
                 <div class="text-center"><img src="resources/assets/images/lv.png" height="75"></div>
 
                 @if(session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
                     </div>
                 @endif
 
@@ -48,7 +50,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
@@ -56,7 +58,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
