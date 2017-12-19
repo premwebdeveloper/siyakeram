@@ -24,7 +24,15 @@
     <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" media="screen" type="text/css" />
-
+    <script>
+        $(document).ready(function(){
+            $('#siyadrop').on('click',function(){
+                $('.dropdown-menu').css({
+                    'display':'block'
+                });
+            });
+        });
+    </script>
 </head>
 
 <body class="non-loggedin">
@@ -67,11 +75,11 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                        <a href="#" id="siyadrop" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="#ramdrop">
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
