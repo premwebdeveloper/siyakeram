@@ -81,9 +81,15 @@
 
                         <ul class="dropdown-menu" id="#ramdrop">
                             <li>
+                                <a href="javascript:;" title="Profile">
+                                    Profile
+                                </a>
+                                <a href="{{ route('change_password') }}" title="Chnage Password">
+                                    Change Password
+                                </a>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                             document.getElementById('logout-form').submit();" title="Logout">
                                     Logout
                                 </a>
 
