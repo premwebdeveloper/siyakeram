@@ -60,19 +60,14 @@
             </div>
             <div  class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
-                <li class="non-log-dropdown">
-                  <a href="javascript:void(0)" data-toggle="modal" data-target="#searchModal">SEARCH</a>
-                </li>
-                <li><a href="javascript:;">FREE REGISTER</a></li>
-                <li><a href="javascript:;">MEMBERSHIP</a></li>
-                <li><a href="javascript:;">FREE HOROSCOPE</a></li>
-                <li><a href="javascript:;">HELP</a></li>
-
-
+                <li><a href="{{ route('search') }}">Search</a></li>
+                <li><a href="{{ route('membership') }}">MEMBERSHIP</a></li>
+                <li><a href="{{ route('horoscope') }}">FREE HOROSCOPE</a></li>
+                <li><a href="{{ route('help') }}">HELP</a></li>
 
                 @guest
                     <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('register') }}">Free Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" id="siyadrop" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

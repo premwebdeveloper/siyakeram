@@ -24,3 +24,11 @@ Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailDon
 Route::get('verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 
 Route::get('sendEmail', 'EmailController@sendEmail');
+
+Route::get('search', 'WebsitePages@search')->name('search');
+
+Route::get('membership', 'WebsitePages@membership')->name('membership');
+
+Route::get('horoscope', 'WebsitePages@horoscope')->name('horoscope');
+
+Route::get('help', 'WebsitePages@help')->name('help');
