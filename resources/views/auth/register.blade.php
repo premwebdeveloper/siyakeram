@@ -130,19 +130,19 @@
                             <label for="gender" class="col-md-4 control-label">Date Of Birth</label>
 
                             <div class="col-md-2">
-                                <select class="form-control" id="date" name="date">
+                                <select class="form-control" id="date" name="date" required="required">
                                     <option value="">Select date</option><option label="01" value="01">01</option><option label="02" value="02">02</option><option label="03" value="03">03</option><option label="04" value="04">04</option><option label="05" value="05">05</option><option label="06" value="06">06</option><option label="07" value="07">07</option><option label="08" value="08">08</option><option label="09" value="09">09</option><option label="10" value="10">10</option><option label="11" value="11">11</option><option label="12" value="12">12</option><option label="13" value="13">13</option><option label="14" value="14">14</option><option label="15" value="15">15</option><option label="16" value="16">16</option><option label="17" value="17">17</option><option label="18" value="18">18</option><option label="19" value="19">19</option><option label="20" value="20">20</option><option label="21" value="21">21</option><option label="22" value="22">22</option><option label="23" value="23">23</option><option label="24" value="24">24</option><option label="25" value="25">25</option><option label="26" value="26">26</option><option label="27" value="27">27</option><option label="28" value="28">28</option><option label="29" value="29">29</option><option label="30" value="30">30</option><option label="31" value="31">31</option>
                                 </select>
                             </div>
 
                             <div class="col-md-2">
-                                <select class="form-control" id="month" name="month">
+                                <select class="form-control" id="month" name="month" required="required">
                                     <option value="">Select Month</option><option label="January" value="01">January</option>February<option label="February" value="02">February</option>March<option label="March" value="03">March</option>April<option label="April" value="04">April</option>May<option label="May" value="05">May</option>June<option label="June" value="06">June</option>July<option label="July" value="07">July</option>August<option label="August" value="08">August</option>September<option label="September" value="09">September</option>October<option label="October" value="10">October</option>November<option label="November" value="11">November</option>December<option label="December" value="12">December</option>
                                 </select>
                             </div>
 
                             <div class="col-md-2">
-                                <select class="form-control" id="year" name="year">
+                                <select class="form-control" id="year" name="year" required="required">
                                     <option value="">Select Year</option>
                                     <option label="1999" value="1999">1999</option><option label="1998" value="1998">1998</option><option label="1997" value="1997">1997</option><option label="1996" value="1996">1996</option><option label="1995" value="1995">1995</option><option label="1994" value="1994">1994</option><option label="1993" value="1993">1993</option><option label="1992" value="1992">1992</option><option label="1991" value="1991">1991</option><option label="1990" value="1990">1990</option><option label="1989" value="1989">1989</option><option label="1988" value="1988">1988</option><option label="1987" value="1987">1987</option><option label="1986" value="1986">1986</option><option label="1985" value="1985">1985</option><option label="1984" value="1984">1984</option><option label="1983" value="1983">1983</option><option label="1982" value="1982">1982</option><option label="1981" value="1981">1981</option><option label="1980" value="1980">1980</option><option label="1979" value="1979">1979</option><option label="1978" value="1978">1978</option><option label="1977" value="1977">1977</option><option label="1976" value="1976">1976</option><option label="1975" value="1975">1975</option><option label="1974" value="1974">1974</option><option label="1973" value="1973">1973</option><option label="1972" value="1972">1972</option><option label="1971" value="1971">1971</option><option label="1970" value="1970">1970</option><option label="1969" value="1969">1969</option><option label="1968" value="1968">1968</option><option label="1967" value="1967">1967</option><option label="1966" value="1966">1966</option><option label="1965" value="1965">1965</option><option label="1964" value="1964">1964</option><option label="1963" value="1963">1963</option><option label="1962" value="1962">1962</option><option label="1961" value="1961">1961</option><option label="1960" value="1960">1960</option><option label="1959" value="1959">1959</option><option label="1958" value="1958">1958</option><option label="1957" value="1957">1957</option><option label="1956" value="1956">1956</option><option label="1955" value="1955">1955</option><option label="1954" value="1954">1954</option><option label="1953" value="1953">1953</option><option label="1952" value="1952">1952</option><option label="1951" value="1951">1951</option><option label="1950" value="1950">1950</option>
                                 </select>
@@ -153,7 +153,7 @@
                         <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">State</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="state" name="state">
+                                <select class="form-control" id="state" name="state" required="required">
                                     <option value="">Select State</option>
                                     <option value="1" title="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="2" title="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -198,7 +198,7 @@
                         <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">Religion</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="religion" name="religion" >
+                                <select class="form-control" id="religion" name="religion" required="required">
                                     <option value="">Select Religion</option>
                                     <option value="1" title="Hindu">Hindu</option>
                                     <option value="2" title="Jain">Jain</option>
@@ -218,7 +218,7 @@
                         <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">Mother Tongue</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="mother_tongue" name="mother_tongue" >
+                                <select class="form-control" id="mother_tongue" name="mother_tongue" required="required">
                                     <option value="">Select Mother Tongue</option>
                                     <option value="1" title="Arabic">Arabic</option>
                                     <option value="2" title="Assamese">Assamese</option>

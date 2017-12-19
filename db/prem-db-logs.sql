@@ -1,1 +1,2 @@
--- ---------------------------Updated Table user_details ON 09-10-2017--------------------------
+-- ---------------------------Updated Table user_details ON 19-12-2017--------------------------
+ALTER TABLE `user_details` ADD `profile_for` VARCHAR(10) NULL AFTER `phone`, ADD `gender` VARCHAR(10) NULL AFTER `profile_for`, ADD `date` INT NULL AFTER `gender`, ADD `month` INT NULL AFTER `date`, ADD `year` INT NULL AFTER `month`, ADD `state` INT NULL AFTER `year`, ADD `religion` INT NULL AFTER `state`, ADD `mother_tongue` INT NULL AFTER `religion`;
