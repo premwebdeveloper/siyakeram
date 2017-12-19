@@ -34,3 +34,5 @@ Route::get('horoscope', 'WebsitePages@horoscope')->name('horoscope');
 Route::get('help', 'WebsitePages@help')->name('help');
 
 Route::get('change_password', 'Users@change_password_view')->name('change_password');
+
+Route::post('change_password', 'Users@change_password')->name('change_password');
