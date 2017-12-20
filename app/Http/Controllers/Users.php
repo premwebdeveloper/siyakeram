@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -13,13 +12,18 @@ use Session;
 
 class Users extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-
+    // Change Password View
     public function change_password_view()
     {
     	return view('users.change_password');
     }
 
+    // Change password
     public function change_password(Request $request)
     {
         $old_password     = $request->old_password;
