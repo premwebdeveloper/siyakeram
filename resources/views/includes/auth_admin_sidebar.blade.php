@@ -38,22 +38,6 @@
                 <a href="{{ route('dashboard') }}"><i class="fa fa-database"></i> <span class="nav-label">Dashboard</span></a>
             </li>
 
-            <li>
-                <a href="{{ route('users') }}"><i class="fa fa-database"></i> <span class="nav-label">Users</span></a>
-            </li>
-            <li>
-                <a href="{{ route('website_pages') }}"><i class="fa fa-database"></i> <span class="nav-label">Website Pages</span></a>
-            </li>
-            <li>
-                <a href="{{ route('suggestions') }}"><i class="fa fa-database"></i> <span class="nav-label">Suggestions</span></a>
-            </li>
-            <li>
-                <a href="{{ route('problems') }}"><i class="fa fa-database"></i> <span class="nav-label">Problems</span></a>
-            </li>
-            <li>
-                <a href="{{ route('search_users') }}"><i class="fa fa-database"></i> <span class="nav-label">Search Users</span></a>
-            </li>
-
         </ul>
     </div>
 </nav>
