@@ -17,13 +17,13 @@
               </ol>
               <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                  <img class="img-responsive" src="resources/assets/images/carousel_img_1.jpg" >
+                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_1.jpg" >
                 </div>
                 <div class="item">
-                  <img class="img-responsive" src="resources/assets/images/carousel_img_2.jpg" >
+                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_2.jpg" >
                 </div>
                 <div class="item">
-                  <img class="img-responsive" src="resources/assets/images/carousel_img_3.jpg" >
+                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_3.jpg" >
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@
           <div class="carousel-inner">
            <div class="item row active">
               <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                   <img class="img-responsive pad-20" src="resources/assets/images/February202017522pm.png">
+                   <img class="img-responsive pad-20" src="resources/frontend_assets/images/February202017522pm.png">
               </div>
               <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                 <h2 class="ng-binding">Megha and Anshul</h2>
@@ -165,7 +165,7 @@
             </div>
             <div class="item row">
               <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                   <img class="img-responsive pad-20" src="resources/assets/images/successstory/J
+                   <img class="img-responsive pad-20" src="resources/frontend_assets/images/successstory/J
               </div>
               <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                 <h2 class="ng-binding">Mandakini and Naveen</h2>

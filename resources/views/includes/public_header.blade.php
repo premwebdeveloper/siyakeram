@@ -10,20 +10,20 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-	<script src="{{ asset('resources/assets/js/jquery-3.1.1.min.js') }}"></script>
-	<script src="{{ asset('resources/assets/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('resources/frontend_assets/js/jquery-3.1.1.min.js') }}"></script>
+	<script src="{{ asset('resources/frontend_assets/js/bootstrap.min.js') }}"></script>
 
     <!-- Styles -->
-    <link href="{{ asset('resources/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/assets/css/prettyPhoto.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/assets/css/overrideade.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/assets/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/frontend_assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/frontend_assets/css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/frontend_assets/css/overrideade.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/frontend_assets/css/custom.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:300,400,400i,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="frontend_assets/css/font-awesome.min.css" media="screen" type="text/css" />
     <script>
         $(document).ready(function(){
             $('#siyadrop').on('click',function(){
@@ -55,7 +55,7 @@
                     <span class = "icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('resources/assets/images/lv.png')}}" alt="lovevivah logo">
+                    <img src="{{asset('resources/frontend_assets/images/lv.png')}}" alt="lovevivah logo">
                 </a>
             </div>
             <div  class="collapse navbar-collapse" id="myNavbar">
