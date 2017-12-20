@@ -76,7 +76,7 @@
 
                         <ul class="dropdown-menu" id="#ramdrop">
                             <li>
-                                <a href="javascript:;" title="Profile">
+                                <a href="{{ route('profile') }}" title="Profile">
                                     Profile
                                 </a>
                                 <a href="{{ route('change_password') }}" title="Change Password">
