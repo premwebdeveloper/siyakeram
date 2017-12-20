@@ -1,24 +1,25 @@
 @extends('layouts.public_app')
 
 @section('content')
+
 <script>
     $(document).ready(function(){
         $('.profile_for').on('click', function(){
             var profile_value = $(this).val();
             if(profile_value == 2)
-            {    
+            {
                 $('#male').prop('checked', true);
-            }            
+            }
             else if(profile_value == 3)
-            {    
+            {
                 $('#female').prop('checked', true);
-            }           
+            }
             else if(profile_value == 4)
-            {    
+            {
                 $('#male').prop('checked', true);
-            }            
+            }
             else if(profile_value == 5)
-            {    
+            {
                 $('#female').prop('checked', true);
             }
             else
@@ -29,6 +30,7 @@
         });
     });
 </script>
+
 <div class="container" style="padding-top: 170px;">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
