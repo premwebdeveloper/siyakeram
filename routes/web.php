@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Home page after login
+Route::get('/', 'HomeController@index')->name('/');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
@@ -38,3 +41,9 @@ Route::get('change_password', 'Users@change_password_view')->name('change_passwo
 Route::post('change_password', 'Users@change_password')->name('change_password');
 
 Route::get('profile', 'Profile@profile')->name('profile');
+
+// Admin Permissions Only Admin can access these urls
+Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
+{
+    Route::get('dashboard', 'dashboard@admin')->name('dashboard');
+});

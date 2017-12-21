@@ -8,7 +8,7 @@
 
                 <div class="panel-heading">Login</div>
 
-                <div class="text-center"><img src="resources/assets/images/lv.png" height="75"></div>
+                <div class="text-center"><img src="resources/frontend_assets/images/lv.png" height="75"></div>
 
                 @if(session('status'))
                     <div class="col-md-12">
