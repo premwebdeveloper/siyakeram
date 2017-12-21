@@ -47,5 +47,5 @@ Route::get('profile', 'Profile@profile')->name('profile');
 ////////////////////////////////////////////////////////
 Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
 {
-    Route::get('dashboard', 'dashboard@admin')->name('dashboard');
+    Route::get('dashboard', 'Dashboard@admin')->name('dashboard');
 });
