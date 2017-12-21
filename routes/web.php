@@ -42,7 +42,9 @@ Route::post('change_password', 'Users@change_password')->name('change_password')
 
 Route::get('profile', 'Profile@profile')->name('profile');
 
-// Admin Permissions Only Admin can access these urls
+////////////////////////////////////////////////////////
+// Admin Permissions Only Admin can access these urls //
+////////////////////////////////////////////////////////
 Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
 {
     Route::get('dashboard', 'dashboard@admin')->name('dashboard');
