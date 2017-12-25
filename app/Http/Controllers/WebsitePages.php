@@ -25,4 +25,35 @@ class WebsitePages extends Controller
     {
         return view('websitepages.help');
     }
+
+    public function aboutus()
+    {
+        return view('websitepages.aboutus');
+    }
+
+    public function privacy()
+    {
+        return view('websitepages.privacy');
+    }
+
+    public function terms()
+    {
+        return view('websitepages.terms');
+    }
+
+    public function disclaimer()
+    {
+        return view('websitepages.disclaimer');
+    }
+
+    public function payment()
+    {
+        return view('websitepages.payment');
+    }
+    
+    public function contactus()
+    {
+        return view('websitepages.contactus');
+    }
+
 }

@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:300,400,400i,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link rel="stylesheet" href="frontend_assets/css/font-awesome.min.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" media="screen" type="text/css" />
     <script>
         $(document).ready(function(){
             $('#siyadrop').on('click',function(){
@@ -41,7 +41,7 @@
             <div class="wrapper">
               <div class="float-left"><span>Build 90% or above Trust Score & Get FLAT 50% off*</span></div>
               <div class="float-right"><span class="pipe">Call +91-124-265 0000 (India)</span>
-                <span class="pipe"><a href="mailto:support@demo.com"> support@demo.com</a></span>
+                <span class="pipe"><a href="mailto:support@demo.com"> support@siyakeram.com</a></span>
              <span> <a href="javascript:;">Live Support </a></span></div>
             </div>
         </div>
@@ -62,7 +62,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ route('search') }}">Search</a></li>
                 <li><a href="{{ route('membership') }}">MEMBERSHIP</a></li>
-                <li><a href="{{ route('horoscope') }}">FREE HOROSCOPE</a></li>
+               <!--  <li><a href="{{ route('login') }}">FREE HOROSCOPE</a></li> -->
                 <li><a href="{{ route('help') }}">HELP</a></li>
 
                 @guest
@@ -96,7 +96,7 @@
                     </li>
                 @endguest
 
-                <li class="mobile-link-text"><a href="mailto:support@demo.com">support@lovevivah.com</a></li>
+                <li class="mobile-link-text"><a href="mailto:support@demo.com">support@siyakeram.com</a></li>
                 <li class="mobile-link-text"><a href="javascript:void(0)" >support +91-124-265 0000 (India)</a></li>
               </ul>
             </div>

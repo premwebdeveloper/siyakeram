@@ -36,6 +36,18 @@ Route::get('horoscope', 'WebsitePages@horoscope')->name('horoscope');
 
 Route::get('help', 'WebsitePages@help')->name('help');
 
+Route::get('aboutus', 'WebsitePages@aboutus')->name('aboutus');
+
+Route::get('contactus', 'WebsitePages@contactus')->name('contactus');
+
+Route::get('privacy', 'WebsitePages@privacy')->name('privacy');
+
+Route::get('terms', 'WebsitePages@terms')->name('terms');
+
+Route::get('disclaimer', 'WebsitePages@disclaimer')->name('disclaimer');
+
+Route::get('payment', 'WebsitePages@payment')->name('payment');
+
 Route::get('change_password', 'Users@change_password_view')->name('change_password');
 
 Route::post('change_password', 'Users@change_password')->name('change_password');

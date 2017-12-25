@@ -4,7 +4,7 @@
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> About Us</a></li>
+                    <li><a href="{{ route('aboutus') }}"><i class="fa fa-check"></i> About Us</a></li>
                     <li><a href="javascript:;" target="_blank"><i class="fa fa-check"></i> Blogs</a></li>
                     <li><a href="javascript:;"><i class="fa fa-check"></i> Sitemap</a></li>
                 </ul>
@@ -14,16 +14,16 @@
                 <ul>
                     <li><a href="javascript:;"><i class="fa fa-check"></i> Live Support</a></li>
                     <li><a href="javascript:;"><i class="fa fa-check"></i> Online Help - FAQ</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> Contact us</a></li>
+                    <li><a href="{{ route('contactus') }}"><i class="fa fa-check"></i> Contact us</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <h4>Policies</h4>
                 <ul>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> Privacy Policy</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> Terms of Use</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> Disclaimer</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-check"></i> Payment Policy</a></li>
+                    <li><a href="{{ route('privacy') }}"><i class="fa fa-check"></i> Privacy Policy</a></li>
+                    <li><a href="{{ route('terms') }}"><i class="fa fa-check"></i> Terms of Use</a></li>
+                    <li><a href="{{ route('disclaimer') }}"><i class="fa fa-check"></i> Disclaimer</a></li>
+                    <li><a href="{{ route('payment') }}"><i class="fa fa-check"></i> Payment Policy</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6">

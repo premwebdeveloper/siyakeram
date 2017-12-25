@@ -813,8 +813,8 @@ transform: scale(2.5);
 	padding: 0px;
 	margin: 0px;
 	list-style: none;
-	line-height: 20px;
-	font-size: 11px;
+	line-height: 21px;
+	font-size: 12px;
 }
 .add_info li:nth-child(odd) {
 	width: 40%;
@@ -853,7 +853,7 @@ transform: scale(2.5);
 }
 .img_list {
 	overflow: hidden;
-	min-height: 237px;
+	min-height: 300px;
 	position: relative;
 }
 .img_list img {
@@ -942,7 +942,7 @@ m .short_info span {
 	text-align: right;
 }
 .profile-actions p {
-	margin-bottom: 8px;
+	margin: 14px 0px;
 }
 .p-action-btn {
 	display: inline-block;
@@ -1045,7 +1045,7 @@ m .short_info span {
 /*== If blank dashboard offer CSS  ===*/
 
 .if-NoMatchFound {
-	background-image: url(../images/dashboard-ifblank.jpg);
+	background-image: url(/assets/images/dashboard-ifblank.jpg);
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% auto;
@@ -1472,9 +1472,261 @@ m .short_info span {
 .inbox-heading-mobile{
 	display:none;
 	}
-
+.wallet-payment span{
+	font-size:12px;
+	}
+	
+.viewall-profile{
+    float: right;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3879d9;
+	}
 
 /**==================== CSS for InboxListing page END========**/
+
+
+
+/**=========================================
+			STATIC PAGES CSS Start
+=========================================**/
+
+.banar {
+    background:url(../images/bgrp.jpg) repeat ;
+    height:300px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+.banar:before {
+    content: "";
+    background-color:rgba(15, 15, 15, 0.58);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.banar h1 {
+    font-size:28px;
+	font-weight: 500;
+}
+.banar h3 {
+    font-family: open sans;
+    font-size: 17px;
+    margin-bottom: 2em;
+	line-height:24px;
+	color:#CCC;
+}
+
+.helpsupport{
+	background: #ffffff;
+    z-index: 10;
+	margin-bottom:20px;
+	padding:20px;
+	   } 
+.helpsupport h3{
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 0px;
+	}
+.helpsupport p{
+    font-size: 13px;
+    font-weight: normal;
+    margin:0px;
+	margin-top:10px;
+	line-height:19px;
+	color:#72727d;
+	}
+
+.helpsupport ul{
+	margin-top:30px;
+	}	
+	
+.helpsupport ul li a{
+    font-size: 13px;
+    font-weight: normal;
+	padding:0px;
+    margin:0px;
+	line-height:19px;
+	color:#72727d;
+	transition: all 0.3s ease;
+	text-decoration:underline;
+	}
+.helpsupport ul li a:hover{
+	text-decoration:underline;
+	color:#cd3162;
+	
+	}
+
+	
+.help3-section{
+	margin-top:-57px;
+	margin-bottom:10px;
+	}
+.help-boxes{
+	background:#fff;
+	padding:20px;
+	text-align:center;
+	min-height:170px;
+	}
+.help-boxes p{
+	font-size:15px;
+	font-weight:600;
+	margin-top:15px;
+	margin-bottom:0px;
+	}	
+.help-boxes small{
+	font-weight:normal;
+	}
+.bg-white{
+	background:#fff;
+	display: inline-block;
+	width:100%;
+	margin-bottom:30px;
+	}
+	
+/** ====================== SITE MAP ===========**/
+.sitemap-container{
+	padding:40px;
+	}
+.sitemap-container h3{	
+	font-size:17px;
+	color:#24223e;
+	font-weight:600;
+	padding:0px;
+	padding-left:10px;
+	margin:0px;
+	margin-top:30px;
+	margin-bottom:15px;
+	border-left:#cd3162 solid 3px;
+	}
+.sitemap-box{
+	margin-bottom:21px;
+	min-height:50px;
+	}
+
+.sitemap-box h4{
+	font-size:15px;
+	color:#cd3162;
+	font-weight:600;
+	padding:0px;
+	margin:0px;
+	margin-bottom:5px;
+	}
+.sitemap-box ul{
+	padding-left:20px;
+	margin:0px;	
+	}
+.sitemap-box ul li{
+	padding:0px;
+	margin:0px;	
+	list-style:circle;
+	}
+.sitemap-box ul li a{
+	font-size:13px;
+	color:#696969;
+	font-weight:normal;
+	}
+.help3-section h5{
+	color:#fff;
+	background:#cd3162;
+	padding:10px;
+	margin:0px;
+	font-size:20px;
+	font-weight:600;
+	padding-left:20px;
+	}
+.main-link-sitemap{
+	background:#fafafa;
+	border:rgba(205, 49, 98, 0.27) solid 1px;
+	border-left:#cd3162 solid 5px;
+	margin-right:20px;
+	}
+.main-link-sitemap ul{
+	padding:0px;
+	}
+.main-link-sitemap ul li{
+	list-style:none;
+	display:block;
+	}
+.main-link-sitemap ul li a{
+	line-height: 36px;
+	padding-left:10px;
+	display:block;
+	border-bottom:#f1f1f1 solid 1px;
+	}
+.main-link-sitemap ul li a:hover{
+	text-decoration:none;
+	background:#f1f1f1;
+	}
+	
+.followus-site{
+	padding-left:0px!important;
+	}
+.followus-site li{	
+	display:inline;
+	padding-left: 21px!important;
+	list-style:circle!important;
+	}	
+
+/**=========================================
+			STATIC PAGES CSS END
+=========================================**/
+
+
+
+/**=========================================
+		Success Stories Page CSS
+=========================================**/
+
+ .success-story-banner{background-image:url(../images/success-banner.jpg);}
+		.success-parallax {background-position: 60% 50%;background-repeat: no-repeat;background-attachment: fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;
+			padding: 70px 0px;}
+		.story-banner{text-align:center;}
+		.story-banner h1{font-size:35px;font-weight:bold;color:#FFF; padding-top:20px;}
+		.story-banner p{font-size:17px;	font-weight:bold;color:#FFF;}
+		.couple-img-container{z-index: 950;}
+		.couple-detail-container{z-index: 900;}
+		.story-listing{margin-top:50px;}
+		.story-listing ul{padding:0px; margin:0px;}
+		.story-listing ul li{padding:0px; margin:50px 0px; display:block; list-style:none;}
+		.story-couple-img{border-radius:50px; background:#fff;overflow: hidden;max-height: 308px;}
+		.story-couple-img img{margin-left: auto;margin-right: auto;display: block;}
+		.story-couple-content{ border-radius:50px; background:#ffffff; margin-top:50px; margin-left:-60px; padding:30px; padding-left:75px;}
+		.story-couple-content-left{ border-radius:50px; background:#ffffff; margin-top:50px; margin-right:-60px; padding:30px; padding-right:75px;}
+		.story-couple {min-height: 210px;}
+		.story-couple .story-couple-name{text-align:center; width:100%; margin-top:-68px;}
+		.story-couple .story-couple-name h2{font-family: "Open Sans", Helvetica, Arial, sans-serif; font-size:14px; font-weight:bold; color:#fff; background:#ffba38; border-radius:30px;padding:10px 15px; display:inline-block; text-align:center;}
+		.story-couple p{font-family: "Open Sans", Helvetica, Arial, sans-serif; font-size:14px; font-weight:normal; color:#505c68; padding-top:20px; text-align:left; line-height:22px; margin:0px;}
+		.story-couple a{font-family: "Open Sans", Helvetica, Arial, sans-serif; font-size:14px; font-weight:normal; color:#3879d9; text-decoration:none; text-align:right; display: block;}
+		.story-couple a:hover{color:#3879d9; text-decoration:underline;}
+		.couple-img-right{float:right;}
+		.couple-text-left{float:left;}
+		
+		.success-pagi{text-align:center;}
+		/*.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+		.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{z-index: 3; color: #fff; cursor: default;
+    background-color: #cd3162; border-color: #cd3162;}*/
+
+		
+		
+/**=========================================
+		Success Stories Page CSS END
+=========================================**/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-device-width: 767px) and (orientation: landscape) {
@@ -1826,6 +2078,7 @@ m .short_info span {
 }
 .LVModal-content {
 	padding: 20px;
+	font-weight:normal;
 }
 .LVModal-content i {
 	font-size: 40px;
@@ -1867,10 +2120,186 @@ m .short_info span {
 }
 .profile-detailpop table {
 	font-size: 12px;
+	font-weight: normal;
 }
 .yellow-icon {
 	color: #f19607 !important;
 }
+
+
+
+
+/** Login Popup **/
+.btn-blue { background-color: #3879d9; color: #fff;font-family: 'Open Sans', sans-serif; }
+.btn-blue:hover { background-color: #2d67bc; color: #fff; text-decoration:none; }	
+.btn-primary { background-color: #cd3162; color: #fff; font-family: 'Open Sans', sans-serif; }
+.btn-primary:hover { background-color: #b41e4d; color: #fff; }
+.loginclose{font-size:20px; color:#999; float:right; padding:8px 18px;}
+.loginclose:hover{color:#cd3162; text-decoration:none;}
+.modal-content{border-radius: 0px;}
+.common-input {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 9px 0px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #34495e;
+    background-color: #fff;
+    background-image: none;
+    border-top: 0px solid #ccc;
+    border-left: 0px solid #ccc;
+    border-right: 0px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.common-input:focus {
+    border-color: #e11665;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .075) inset, 0 0 0px rgba(225, 186, 56, .6);
+    outline: 0;
+}
+.modal-body {
+    position: relative;
+    padding:0px;
+}
+.login-form-section{
+	padding:40px;
+	padding-bottom: 20px;
+	}
+.login-form-section h2{
+	font-size:22px;
+	font-weight:700;
+	color:#434142;
+	text-align:center;
+	padding:0px;
+	margin:0px;
+	margin-bottom:7px;
+	}
+.login-form-section p{
+	font-size:15px;
+	font-weight:normal;
+	color:#888888;
+	text-align:center;
+	margin:0px;
+	}
+
+.mt-10{
+	margin-top:10px;
+	}
+.login-form-section label{
+	font-size:13px;
+	color:#5f5f5f;
+	text-transform:uppercase;
+	font-weight:normal;
+	}
+.login-form-section input{
+	font-size:14px;
+	border: 1px solid #e4e4e4;
+	padding:12px 15px;
+	}
+.login-form-section input::placeholder{
+	color:#a1a1a1;
+	}
+.login-form-section .btn-login{
+	 font-weight:600;
+	 font-family:Open Sans;
+	}
+.login-form-section .login-forgot-link{
+	
+	}
+.login-form-section .login-forgot-link ul{
+	padding:0px;
+	margin:0px;	
+	text-align:center;
+	}
+.login-form-section .login-forgot-link ul li{
+	list-style:none;
+	display:inline;	
+	
+	}
+.login-form-section .login-forgot-link ul li a{
+	text-decoration:none;
+	color:#7b7b7b;
+	font-size:13px;	
+	font-weight:normal;
+	transition:all 0.3s;
+	}
+.login-form-section .login-forgot-link ul li a:hover{
+	color:#cd3162;
+	}
+.login-form-section .btn-register{
+	 font-weight:600;
+	 font-family:Open Sans;
+	 background:#fcba37;
+	}
+	
+.login-register-section{
+	margin-top:15px;
+	}
+		
+.login-register-section p{
+	margin-bottom:5px;
+	}	
+.mtb-50{
+	margin-top:50px;
+	margin-bottom:80px;
+	}
+	
+.login-or-register {
+    display: block;
+    margin-top: 10px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+	font-size: 14px;
+	font-weight:normal;
+    line-height: 18px;
+}
+
+.login-or-register>span {
+    display: inline-block;
+    position: relative;
+	color: #4b4f56;
+	text-align: center;
+    white-space: nowrap;
+}
+.login-or-register>span:before {
+    margin-right: 15px;
+    right: 100%;
+}
+.login-or-register>span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+.login-or-register>span:before, .login-or-register>span:after {
+    background: #e4e4e4;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+}
+	
+.lv-alert{
+	padding:3px 10px;
+	display:block;
+	font-weight:normal;
+	font-size:13px;
+	}
+	
+
+
+
+
+
+
 /**===========================
 
   SPINNER LOADER CSS
@@ -2036,12 +2465,12 @@ m .short_info span {
 	border-bottom-right-radius: 50px;
 }
 .pckg-option>li>a.bor-r-l {
-	-webkit-border-top-left-radius: 50px;
+/*	-webkit-border-top-left-radius: 50px;
 	-webkit-border-bottom-left-radius: 50px;
 	-moz-border-radius-topleft: 50px;
 	-moz-border-radius-bottomleft: 50px;
 	border-top-left-radius: 50px;
-	border-bottom-left-radius: 50px;
+	border-bottom-left-radius: 50px;*/
 }
 .pckg-option>li.active>a:after {
 	content: "\f0d7";
@@ -2722,7 +3151,7 @@ m .short_info span {
 /** ========================   Doashboard =====================**/
 
 .top-nav {
-	background: #cd3162;
+	background: #cd3162!important;
 	z-index: 1000;
 }
 .top-nav a {
@@ -3020,10 +3449,23 @@ ul.msg_list li a .messagenoti {
 	padding: 20px 0px;
 	border-top: #e2e2e2 solid 3px;
 }
+.dash-plan-expired .btn{
+    border-radius: 3px;
+	}
+.dash-plan-expired .btn-default{
+	background:#3879d9;
+	color:#fff;
+	}
+.dash-plan-expired .btn-default:hover{
+	background:#186aca;
+	}
+	
+
 .dash-plan-expired span {
 	color: #5b5b5b;
 	font-size: 15px;
 	text-transform: uppercase;
+	font-weight:normal;
 }
 .dash-plan-expired h3 {
 	font-size: 25px;
@@ -3034,8 +3476,17 @@ ul.msg_list li a .messagenoti {
 	font-family: 'Open Sans', sans-serif;
 }
 .dash-plan-expired p {
-	font-size: 12px;
-	margin-top: 10px;
+	font-size: 14px;
+    font-weight: bold;
+    background: #e2e2e2;
+    color: #424242;
+    display: block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .dash-personal-section {
 	padding: 20px;
@@ -3153,6 +3604,7 @@ ul.msg_list li a .messagenoti {
 	background: #FFF;
 	padding: 10px;
 	margin-top: 10px;
+	min-height: 83px;
 	transition: all 0.5s;
 	box-shadow: 0px 0px 13px -7px rgba(51, 51, 51, 0.6);
 	-moz-box-shadow: 0px 0px 13px -7px rgba(51, 51, 51, 0.6);
@@ -3208,6 +3660,7 @@ ul.msg_list li a .messagenoti {
 	font-family: 'Open Sans', sans-serif;
 	padding: 0px;
 	margin: 0px;
+	display: inline-block;
 }
 .dash-offer-besidematch {
 	margin-top: 42px;
@@ -3390,6 +3843,11 @@ footer {
 .three-dot {
 	display: none;
 }
+.direct_chat{
+	display:none;
+	}
+
+
 /** ==== NEW FOTTER ====**/
 
 section.browse-matrimonial {
@@ -3971,8 +4429,34 @@ section.browse-matrimonial h3 {
 	display: none!important;
 }
 }
-
+.direct_chat i {
+  animation: blinker 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+}
+@keyframes blinker {  
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+	
 @media (max-width:767px) {
+.direct_chat{
+	background: #f0f1f3;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    padding: 2px 10px;
+    margin-left: 10px;
+    border-radius: 13px;
+	display: block;
+    float: right;
+	}
+.direct_chat i{
+	color: #cd3162;
+    font-size: 13px;
+	margin-right:3px;
+	}
+	
+	
 .inbox-left-section {
 	display: none;
 }
@@ -4516,6 +5000,74 @@ section.footer {
 	right: 0;
 	left: auto;
 }
+
+.wallet-payment:before{
+	bottom:29px!important;
+	}
+.wallet-payment span{
+	font-size:11px;
+	float:left;
+	}
+	
+	
+/**====Static Pages=====**/
+
+.noo-more-feature-box{
+		text-align:center;
+		}
+.banar h1{
+		font-size:20px;
+		margin-top: 54px;
+    	font-weight: 700;
+		}
+.banar h3 {
+		font-family: open sans;
+		font-size: 13px;
+		margin: 0em;
+		line-height: 19px;
+		color: #eaeaea;
+		}
+.banar {		
+		height: 240px;		
+		}
+.help-boxes{
+		margin-bottom:5px;
+		}
+.mobile-height-site{
+		height: 328px;
+		}
+.sitemap-container{
+		padding:20px;
+		padding-top:30px;
+		margin-bottom:0px;
+		}
+.main-link-sitemap{
+		margin-right:0px;
+		}
+.help3-section{
+		padding:0px;
+		margin-bottom:0px;
+		margin-top: -150px;
+		}
+.no-padding-sm{
+		padding:0px
+		}		
+
+/**====Success Stories Pages=====**/
+.success-parallax{padding: 14px 0px; padding-top:0px;}
+			.story-banner h1{font-size: 20px;}
+			.story-banner p { font-size: 13px; font-weight: bold; color: #FFF;}
+			.story-listing { margin-top:5px;}
+			.story-listing ul li{margin:20px 0px;}
+			.story-couple-img{border-radius:5px 5px 0px 0px; background:#000 url(images/bgrp.jpg) repeat;overflow: hidden;}
+			.couple-img-right{float:inherit;}
+			.story-couple-content{border-radius:0px 0px 5px 5px; background:#fff; margin-top: 0px;  margin-left:0px;  padding: 30px; padding-left: 30px;}
+			.story-couple-content-left{border-radius:0px 0px 5px 5px; background:#fff; margin-top: 0px;  margin-right:0px;  padding: 30px; padding-right: 30px;}
+			.couple-detail-container {  z-index: 951;}
+			.story-couple-content p{padding-top:0px;}
+			.pagination li a { padding: 3px 9px;}
+
+
 }
 
 @media (max-width:480px) {
@@ -4795,7 +5347,7 @@ section.footer {
 .inbox-img_list {
 	min-height: 280px;
 }
-.inbox-actions .cometchat_profile{
+.inbox-actions .opencometchat{
 	display:none;
 	}
 .inbox-about-prf{
@@ -4938,7 +5490,7 @@ section.footer {
 @media (min-width: 970px) {
 .modal-body {
 	min-height: auto!important;
-	min-width: 490px;
+	min-width:100%;
 }
 }
 
@@ -4955,136 +5507,7 @@ section.footer {
 	text-transform: uppercase;
 	font-weight: normal;
 }
+.modal-sm {
+			width: 430px;
+		}
 }
-
-.horscope-icon {
-
-}
-
-.horscope-icon .tooltip {
-  background: #FBA905;
-  bottom: -55%;
-  color: #000;
-  display: block;
-  left: 0px;
-  margin-bottom: 15px;
-  opacity: 0;
-  padding: 8px;
-  pointer-events: none;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  -webkit-transform: translateY(10px);
-     -moz-transform: translateY(10px);
-      -ms-transform: translateY(10px);
-       -o-transform: translateY(10px);
-          transform: translateY(10px);
-  -webkit-transition: all .25s ease-out;
-     -moz-transition: all .25s ease-out;
-      -ms-transition: all .25s ease-out;
-       -o-transition: all .25s ease-out;
-          transition: all .25s ease-out;
-  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-     -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-      -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-       -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-          box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-}
-
-/* This bridges the gap so you can mouse into the tooltip without it disappearing */
-.horscope-icon .tooltip:before {
-  bottom: -20px;
-  content: " ";
-  display: block;
-  height: 20px;
-  left: 0;
-  position: absolute;
-  width: 100%;
-}  
-
-/* CSS Triangles - see Trevor's post */
-.horscope-icon .tooltip:after {
-  border-left: solid transparent 10px;
-  border-right: solid transparent 10px;
-  border-bottom: solid #FBA905 10px;
-  bottom: 50px;
-  content: " ";
-  height: 0;
-  left: 50%;
-  margin-left: -13px;
-  position: absolute;
-  width: 0;
-}
-  
-.horscope-icon:hover .tooltip {
-  opacity: 1;
-  pointer-events: auto;
-  -webkit-transform: translateY(0px);
-     -moz-transform: translateY(0px);
-      -ms-transform: translateY(0px);
-       -o-transform: translateY(0px);
-          transform: translateY(0px);
-}
-
-/* IE can just show/hide with no transition */
-.lte8 .horscope-icon .tooltip {
-  display: none;
-}
-
-.lte8 .horscope-icon:hover .tooltip {
-  display: block;
-}
-@media screen and (min-device-width: 320px) and (max-device-width: 768px) { 
-    /* STYLES HERE */
-	#showaddhar{	
-		margin-top: 50px !important;
-		font-size: 10px !important;
-		margin-left:-209px !important;
-	}
-	#showaddhar1{
-		margin-top: 48px !important;
-		font-size: 10px !important;
-	}
-}
-@media screen and (max-device-width: 1920px){
-	#showaddhar{
-		
-		margin-top:84px;
-		font-size:12px;
-		color:#000;
-		font-weight:bold;
-		position:absolute;
-		margin-left:-229px;
-	}
-	#showaddhar1{
-		margin-top:84px;
-		font-size:12px;
-		color:#000;
-		font-weight:bold;
-		position:absolute;
-		margin-left:12px;
-	}
-	
-	
-}
-.top-nav {
-    background-color: #cd3162 !important;
-    z-index: 1000;
-	color:#FFF !important;
-}
-.top-nav span{
-   
-	color:#FFF !important;
-}
-.navbar-inverse .navbar-nav>li>a {
-    color: #333;
-}	
-.custom-botton{
-	color:#fff!important;
-    background-color:0076c8!important;
-	border:0px solid transparent!important;
-	}
-	.custom-botton:hover, .custom-botton:active, .custom-botton:focus{
-	color:#fff!important;
-    background-color:0076c8!important;
-	}
