@@ -128,3 +128,20 @@ ALTER TABLE `family_details`
 
 ALTER TABLE `family_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'user_images' ON 26-12-2017--------------------------
+
+CREATE TABLE `user_images` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `user_images`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `user_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
