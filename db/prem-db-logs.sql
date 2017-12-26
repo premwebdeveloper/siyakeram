@@ -64,3 +64,16 @@ ALTER TABLE `years`
 
 ALTER TABLE `years`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
+-- ---------------------------Created Table 'height' ON 26-12-2017--------------------------
+
+CREATE TABLE `height` (
+  `id` int(11) NOT NULL,
+  `height` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `height`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `height`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
