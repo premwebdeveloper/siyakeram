@@ -16,6 +16,12 @@
 	.showvalue {
 	    float: left;
 	}
+	input[type=file] {
+	    display: block;
+	}
+	li .active {
+	     background-color: #eee;
+	}
 </style>
 <div class="main">
     <div class="row content wrapper share light">
@@ -37,16 +43,12 @@
             <div class="nav-tabs-three-sidebar">
                 <ul class="nav">
                     <li class="active">
-                    	<a href="#tab1" data-toggle="tab" role="tab" aria-expanded="true"><i class="fa fa-angle-right"></i>Basic Details</a>
+                    	<a href="#basic" data-toggle="tab" role="tab" aria-expanded="true">Basic Details</a>
                     </li>
-                    <li class=""><a href="#tab2" data-toggle="tab" role="tab" aria-expanded="false">Family Details</a></li>
-                    <li class=""><a href="#tab3" data-toggle="tab" role="tab" aria-expanded="false">Education and Career</a></li>
-                    <li class=""><a href="#tab4" data-toggle="tab" role="tab" aria-expanded="false">Address</a></li>
-                    <li class=""><a href="#tab5" data-toggle="tab" role="tab" aria-expanded="false">Media(Photos/Videos)</a></li>
-                    <li class=""><a href="#tab6" data-toggle="tab" role="tab" aria-expanded="false">Future Plans</a></li>
-                    <li class=""><a href="#tab7" data-toggle="tab" role="tab" aria-expanded="false">Fair Disclosure</a></li>
-                    <li class=""><a href="#tab8" data-toggle="tab" role="tab" aria-expanded="false">Verify(Facebook/LinkedIn)</a></li>
-                    <li class=""><a href="#tab9" data-toggle="tab" role="tab" aria-expanded="false">Partner Preference</a></li>
+                    <li class=""><a href="#family" data-toggle="tab" role="tab" aria-expanded="false">Family Details</a></li>
+                    <li class=""><a href="#education" data-toggle="tab" role="tab" aria-expanded="false">Education and Career</a></li>
+                    <li class=""><a href="#address" data-toggle="tab" role="tab" aria-expanded="false">Address</a></li>
+                    <li class=""><a href="#photo" data-toggle="tab" role="tab" aria-expanded="false">Media(Photos/Videos)</a></li>
                 </ul>
             </div>
       </div>
@@ -54,7 +56,7 @@
   	                <!-- Design Three Content -->
             <div class="nav-tabs-three-content">
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab1">
+                    <div class="tab-pane fade in active" id="basic">
         				<form>
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
@@ -131,7 +133,7 @@
 	                            </div>
 						  	</div>				  	
 						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">Phone No.</label>
+							    <label for="inputPassword" class="col-sm-2 col-form-label">State</label>
 							    <div class="col-md-6">
 	                                <select class="form-control" id="state" name="state" required="required">
 	                                    <option value="">Select State</option>
@@ -496,7 +498,347 @@
 	                        <div class="form-group">
 	                            <div class="col-md-6 col-md-offset-2">
 	                                <button type="submit" class="btn btn-success">
-	                                    Update Profile
+	                                    Next
+	                                </button>
+	                            </div>
+	                        </div>
+						</form> 
+                    </div>      
+
+                    <!-- #Family -->             
+                    <div class="tab-pane fade" id="family">
+        				<form>
+						  	<div class="form-group row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">About My Family</label>
+							    <div class="col-sm-6">
+							      	<textarea class="form-control" rows="3" cols="10"></textarea>
+							    </div>
+						  	</div>
+				  	
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Father's Occupation</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Father's Status</option>
+	                                    <option value="01">Father's Status</option>
+	                                    <option value="02">Business</option>
+	                                    <option value="03">Employed-Govt</option>
+	                                    <option value="04">Employed-Private</option>
+	                                    <option value="05">Not-Employed</option>
+	                                    <option value="06">Passed Away</option>
+	                                    <option value="07">Professional</option>
+	                                    <option value="08">Retired</option>
+                                    </select>
+	                            </div>					    
+						  	</div>				  	
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Mother's Occupation</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Mother's Status</option>
+	                                    <option value="01">Mother's Status</option>
+	                                    <option value="02">Business</option>
+	                                    <option value="03">Employed-Govt</option>
+	                                    <option value="04">Employed-Private</option>
+	                                    <option value="05">Homemaker</option>
+	                                    <option value="06">Passed Away</option>
+	                                    <option value="07">Professional</option>
+	                                    <option value="08">Retired</option>
+                                    </select>
+	                            </div>					    
+						  	</div>		
+
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Married Sisters</label>
+	                            <div class="col-md-6">
+	                                <input type="text" class="form-control" id="Subcaste">
+	                            </div>
+	                        </div>	
+
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Unmarried Sisters</label>
+	                            <div class="col-md-6">
+	                                <input type="text" class="form-control" id="Subcaste">
+	                            </div>
+	                        </div>	
+
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Married Brothers</label>
+	                            <div class="col-md-6">
+	                                <input type="text" class="form-control" id="Subcaste">
+	                            </div>
+	                        </div>	
+
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Unmarried Brothers</label>
+	                            <div class="col-md-6">
+	                                <input type="text" class="form-control" id="Subcaste">
+	                            </div>
+	                        </div>						  	
+						  	
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Native Country</label>
+	                            <div class="col-md-6">
+	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                    <option value="">Select Country</option>
+										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
+	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
+	                                    <option value="3" title="Addharmi">Addharmi</option>
+	                                    <option value="4" title="Aggarwal">Aggarwal</option>
+	                                    <option value="5" title="Agri">Agri</option>
+	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
+	                                    <option value="7" title="Ahom">Ahom</option>
+	                                    <option value="8" title="Dogri">Dogri</option>
+	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
+	                                    <option value="10" title="Arekatica">Arekatica</option>
+	                                    <option value="11" title="Arora">Arora</option>
+	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
+	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
+	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
+	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
+	                                    <option value="16" title="Baidya">Baidya</option>
+	                                </select>
+	                            </div>
+	                        </div>	
+
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Native State</label>
+	                            <div class="col-md-6">
+	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                    <option value="">Select State</option>
+										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
+	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
+	                                    <option value="3" title="Addharmi">Addharmi</option>
+	                                    <option value="4" title="Aggarwal">Aggarwal</option>
+	                                    <option value="5" title="Agri">Agri</option>
+	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
+	                                    <option value="7" title="Ahom">Ahom</option>
+	                                    <option value="8" title="Dogri">Dogri</option>
+	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
+	                                    <option value="10" title="Arekatica">Arekatica</option>
+	                                    <option value="11" title="Arora">Arora</option>
+	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
+	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
+	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
+	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
+	                                    <option value="16" title="Baidya">Baidya</option>
+	                                </select>
+	                            </div>
+	                        </div>						  	
+						  	
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Family Value</label>
+	                            <div class="col-md-6">
+	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                    <option value="">Family Values</option>
+										<option value="1" title="Liberal">Liberal</option>
+	                                    <option value="2" title="Moderate">Moderate</option>
+	                                    <option value="3" title="Moral">Moral</option>
+	                                    <option value="4" title="Traditional">Traditional</option>
+	                                </select>
+	                            </div>
+	                        </div>	                        
+	                        <div class="form-group row">
+	                            <label for="gender" class="col-md-2 control-label">Affluence Level</label>
+	                            <div class="col-md-6">
+	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                    <option value="">Select Affluence</option>
+										<option value="1" title="Affluence">Affluence</option>
+	                                    <option value="2" title="Middle Class">Middle Class</option>
+	                                    <option value="3" title="Upper Middle Class">Upper Middle Class</option>
+	                                </select>
+	                            </div>
+	                        </div>
+
+	                        <div class="form-group">
+	                            <div class="col-md-4 col-md-offset-2">
+	                                <button type="submit" class="btn btn-success">
+	                                    Skip
+	                                </button>
+	                            </div>	                            
+	                            <div class="col-md-4 col-md-offset-1">
+	                                <button type="submit" class="btn btn-success">
+	                                    Submit
+	                                </button>
+	                            </div>
+	                        </div>
+						</form> 
+                    </div>
+
+                    <!-- #Education -->             
+                    <div class="tab-pane fade" id="education">
+        				<form>
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Educational Qualification</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Educational Qualification</option>
+	                                    <option value="01">A.M.I.E</option>
+	                                    <option value="02">ACS</option>
+	                                    <option value="03">ANM</option>
+	                                    <option value="04">Associates Degree</option>
+	                                    <option value="05">B.A</option>
+	                                    <option value="06">B.Arch</option>
+	                                    <option value="07">B.Com</option>
+	                                    <option value="08">B.Ed</option>
+                                    </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Employed As</option>
+	                                    <option value="01">Accounting Professional</option>
+	                                    <option value="02">Actor</option>
+	                                    <option value="03">Admin Professional</option>
+	                                    <option value="04">Advertising Professional</option>
+	                                    <option value="05">Agent/Broker</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Area/Field</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Area/Field</option>
+	                                    <option value="01">Admnistrative Services</option>
+	                                    <option value="02">Advertising Marketing</option>
+	                                    <option value="03">Architecture</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed With</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Employed With</option>
+	                                    <option value="01">Business/Self Employed</option>
+	                                    <option value="02">Civil Services</option>
+	                                    <option value="03">Defense Forces</option>
+	                                    <option value="04">Goverment/Public Sector</option>
+	                                    <option value="05">NGO/NPT</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Annual Income</option>
+	                                    <option value="01">Dont Want to Specify</option>
+	                                    <option value="02">INR Up to 50 Thousand</option>
+	                                </select>
+	                            </div>					    
+						  	</div>		
+
+	                        <div class="form-group">
+	                            <div class="col-md-4 col-md-offset-2">
+	                                <button type="submit" class="btn btn-success">
+	                                    Skip
+	                                </button>
+	                            </div>	                            
+	                            <div class="col-md-4 col-md-offset-1">
+	                                <button type="submit" class="btn btn-success">
+	                                    Submit
+	                                </button>
+	                            </div>
+	                        </div>
+						</form> 
+                    </div>
+
+                    <!-- #Address -->             
+                    <div class="tab-pane fade" id="address">
+        				<form>
+						  	<div class="form-group row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Address</label>
+							    <div class="col-sm-6">
+							      	<textarea class="form-control" rows="3" cols="10"></textarea>
+							    </div>
+						  	</div>						  	
+						
+							<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Country</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Employed As</option>
+	                                    <option value="01">Accounting Professional</option>
+	                                    <option value="02">Actor</option>
+	                                    <option value="03">Admin Professional</option>
+	                                    <option value="04">Advertising Professional</option>
+	                                    <option value="05">Agent/Broker</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">State</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Area/Field</option>
+	                                    <option value="01">Admnistrative Services</option>
+	                                    <option value="02">Advertising Marketing</option>
+	                                    <option value="03">Architecture</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">City</label>
+							    <div class="col-md-6">
+	                                <select class="form-control" id="date" name="date" required="required">
+	                                    <option value="">Employed With</option>
+	                                    <option value="01">Business/Self Employed</option>
+	                                    <option value="02">Civil Services</option>
+	                                    <option value="03">Defense Forces</option>
+	                                    <option value="04">Goverment/Public Sector</option>
+	                                    <option value="05">NGO/NPT</option>
+	                                </select>
+	                            </div>					    
+						  	</div>	
+
+						  	<div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">ZipCode</label>
+							    <div class="col-md-6">
+
+	                                <input type="text" class="form-control" name="zipcode">
+	                               
+	                            </div>					    
+						  	</div>		
+
+	                        <div class="form-group">
+	                            <div class="col-md-4 col-md-offset-2">
+	                                <button type="submit" class="btn btn-success">
+	                                    Skip
+	                                </button>
+	                            </div>	                            
+	                            <div class="col-md-4 col-md-offset-1">
+	                                <button type="submit" class="btn btn-success">
+	                                    Submit
+	                                </button>
+	                            </div>
+	                        </div>
+						</form> 
+                    </div>
+
+                    <!-- #Address -->             
+                    <div class="tab-pane fade" id="photo">
+        				<form>
+						  	<div class="form-group row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Upload Images</label>
+							    <div class="col-sm-6">
+							      	<input type="file" class="form-control">
+							    </div>
+						  	</div>						  		
+
+	                        <div class="form-group">	                            
+	                            <div class="col-md-4 col-md-offset-2">
+	                                <button type="submit" class="btn btn-success">
+	                                    Submit
 	                                </button>
 	                            </div>
 	                        </div>
