@@ -77,3 +77,28 @@ ALTER TABLE `height`
 
 ALTER TABLE `height`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------Created Table 'caste' ON 26-12-2017--------------------------
+
+CREATE TABLE `caste` (
+  `id` int(11) NOT NULL,
+  `caste` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `caste`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `caste`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------Updated Table 'user_details' ON 26-12-2017--------------------------
+
+ALTER TABLE `user_details` ADD `country` INT NULL AFTER `year`;
+ALTER TABLE `user_details` ADD `address` TEXT NULL AFTER `year`;
+ALTER TABLE `user_details` ADD `city` INT NULL AFTER `state`;
+ALTER TABLE `user_details` ADD `zipcode` VARCHAR(15) NULL AFTER `city`;
+ALTER TABLE `user_details` ADD `height` INT NULL AFTER `mother_tongue`, ADD `marital_status` INT NULL AFTER `height`, ADD `caste` INT NULL AFTER `marital_status`, ADD `sub_caste` VARCHAR(255) NULL AFTER `caste`, ADD `complexion` INT NULL AFTER `sub_caste`, ADD `manglik` INT NULL AFTER `complexion`, ADD `gotra` VARCHAR(255) NULL AFTER `manglik`, ADD `bio` TEXT NULL AFTER `gotra`;
+ALTER TABLE `user_details` ADD `birth_hour` INT NULL AFTER `year`, ADD `birth_mint` INT NULL AFTER `birth_hour`, ADD `birth_sec` INT NULL AFTER `birth_mint`;
+ALTER TABLE `user_details` ADD `birth_place` VARCHAR(255) NULL AFTER `gotra`;
+ALTER TABLE `user_details` CHANGE `complexion` `complexion` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `user_details` CHANGE `religion` `religion` VARCHAR(255) NULL DEFAULT NULL;
