@@ -145,3 +145,76 @@ ALTER TABLE `user_images`
 
 ALTER TABLE `user_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'user_education_center' ON 26-12-2017--------------------------
+
+CREATE TABLE `user_education_center` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `edu_qualification` int(11) DEFAULT NULL,
+  `employed_as` int(11) DEFAULT NULL,
+  `area_field` int(11) DEFAULT NULL,
+  `employed_with` varchar(255) DEFAULT NULL,
+  `annual_income` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `user_education_center`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `user_education_center`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'educational_qualification' ON 26-12-2017--------------------------
+
+CREATE TABLE `educational_qualification` (
+  `id` int(11) NOT NULL,
+  `education` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `educational_qualification`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `educational_qualification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'employed_as' ON 26-12-2017--------------------------
+
+CREATE TABLE `employed_as` (
+  `id` int(11) NOT NULL,
+  `employed_as` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `employed_as`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `employed_as`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'area_field' ON 26-12-2017--------------------------
+
+CREATE TABLE `area_field` (
+  `id` int(11) NOT NULL,
+  `area_field` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `area_field`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `area_field`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------CREATEed Table 'annual_income' ON 26-12-2017--------------------------
+
+CREATE TABLE `annual_income` (
+  `id` int(11) NOT NULL,
+  `annual_income` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `annual_income`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `annual_income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
