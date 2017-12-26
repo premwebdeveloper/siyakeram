@@ -102,3 +102,29 @@ ALTER TABLE `user_details` ADD `birth_hour` INT NULL AFTER `year`, ADD `birth_mi
 ALTER TABLE `user_details` ADD `birth_place` VARCHAR(255) NULL AFTER `gotra`;
 ALTER TABLE `user_details` CHANGE `complexion` `complexion` VARCHAR(255) NULL DEFAULT NULL;
 ALTER TABLE `user_details` CHANGE `religion` `religion` VARCHAR(255) NULL DEFAULT NULL;
+
+-- ---------------------------CREATEed Table 'family_details' ON 26-12-2017--------------------------
+
+CREATE TABLE `family_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `father_occupation` varchar(255) DEFAULT NULL,
+  `mother_occupation` varchar(255) DEFAULT NULL,
+  `married_sisters` varchar(255) DEFAULT NULL,
+  `unmarried_sisters` varchar(255) DEFAULT NULL,
+  `married_brothers` varchar(255) DEFAULT NULL,
+  `unmarried_brothers` varchar(255) DEFAULT NULL,
+  `native_country` int(11) DEFAULT NULL,
+  `native_state` int(11) DEFAULT NULL,
+  `family_value` varchar(255) DEFAULT NULL,
+  `affluence_level` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `family_details`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `family_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
