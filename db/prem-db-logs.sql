@@ -218,3 +218,18 @@ ALTER TABLE `annual_income`
 
 ALTER TABLE `annual_income`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- ---------------------------Updated Table 'caste' ON 27-12-2017--------------------------
+ALTER TABLE `caste` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `caste`;
+
+-- ---------------------------Updated Table 'mother_tongue' ON 27-12-2017--------------------------
+ALTER TABLE `mother_tongue` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `mother_tongue`;
+
+-- ---------------------------Updated Table 'height' ON 27-12-2017--------------------------
+ALTER TABLE `height` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `height`;
+
+-- ---------------------------Updated Table 'area_field' ON 27-12-2017--------------------------
+ALTER TABLE `area_field` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `area_field`;
+
+-- ---------------------------Updated Table 'educational_qualification' ON 27-12-2017--------------------------
+ALTER TABLE `educational_qualification` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `education`;

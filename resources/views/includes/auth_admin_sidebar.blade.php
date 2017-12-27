@@ -18,6 +18,21 @@
             <li class="special_link">
                 <a href="{{ route('dashboard') }}"><i class="fa fa-database"></i> <span class="nav-label">Dashboard</span></a>
             </li>
+            <li>
+                <a href="{{ route('caste') }}"><i class="fa fa-database"></i> <span class="nav-label">Caste</span></a>
+            </li>
+            <li>
+                <a href="{{ route('mother_tongue') }}"><i class="fa fa-database"></i> <span class="nav-label">Mother Tongue</span></a>
+            </li>
+            <li>
+                <a href="{{ route('height') }}"><i class="fa fa-database"></i> <span class="nav-label">Height</span></a>
+            </li>
+            <li>
+                <a href="{{ route('area_field') }}"><i class="fa fa-database"></i> <span class="nav-label">Area / Field</span></a>
+            </li>
+            <li>
+                <a href="{{ route('qualification') }}"><i class="fa fa-database"></i> <span class="nav-label">Qualifications</span></a>
+            </li>
         </ul>
     </div>
 </nav>

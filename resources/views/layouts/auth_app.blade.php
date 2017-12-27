@@ -7,3 +7,5 @@
         @yield('content')
 
 @include('includes.auth_footer')
+
+@include('includes.auth_footer_scripts')

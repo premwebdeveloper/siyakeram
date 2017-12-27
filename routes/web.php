@@ -60,4 +60,35 @@ Route::get('profile', 'Profile@profile')->name('profile');
 Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
 {
     Route::get('dashboard', 'Dashboard@admin')->name('dashboard');
+
+    // Caste Add / View  / Delete
+    Route::get('caste', 'Admin@caste')->name('caste');
+    Route::get('addCaste', 'Admin@addCaste')->name('addCaste');
+    Route::post('add_caste', 'Admin@add_caste')->name('add_caste');
+    Route::get('deleteCaste', 'Admin@deleteCaste')->name('deleteCaste');
+
+    // Mother tongue Add / View / Delete
+    Route::get('mother_tongue', 'Admin@mother_tongue')->name('mother_tongue');
+    Route::get('addMotherTongue', 'Admin@addMotherTongue')->name('addMotherTongue');
+    Route::post('add_mother_tongue', 'Admin@add_mother_tongue')->name('add_mother_tongue');
+    Route::get('deleteMotherTongue', 'Admin@deleteMotherTongue')->name('deleteMotherTongue');
+
+    // Height Add / View / Delete
+    Route::get('height', 'Admin@height')->name('height');
+    Route::get('addHeight', 'Admin@addHeight')->name('addHeight');
+    Route::post('add_height', 'Admin@add_height')->name('add_height');
+    Route::get('deleteHeight', 'Admin@deleteHeight')->name('deleteHeight');
+
+    // Area-Field Add / View / Delete
+    Route::get('area_field', 'Admin@area_field')->name('area_field');
+    Route::get('addAreaField', 'Admin@addAreaField')->name('addAreaField');
+    Route::post('add_area_field', 'Admin@add_area_field')->name('add_area_field');
+    Route::get('deleteAreaField', 'Admin@deleteAreaField')->name('deleteAreaField');
+
+    // Qualifications Add / View / Delete
+    Route::get('qualification', 'Admin@qualification')->name('qualification');
+    Route::get('addQualification', 'Admin@addQualification')->name('addQualification');
+    Route::post('add_qualification', 'Admin@add_qualification')->name('add_qualification');
+    Route::get('deleteQualification', 'Admin@deleteQualification')->name('deleteQualification');
+
 });
