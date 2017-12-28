@@ -23,6 +23,51 @@
 	     background-color: #eee;
 	}
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#basicInformation').submit(function(e){
+			e.preventDefault();
+			var user_id = $('#user_id').val();
+			//var csrf = $('#csrf').val();
+			var inputFullName = $('#inputFullName').val();
+			var inputPhone = $('#inputPhone').val();
+			var inputDate = $('#inputDate').val();
+			var inputMonth = $('#inputMonth').val();
+			var inputYear = $('#inputYear').val();
+			var inputReligion = $('#inputReligion').val();
+			var inputMotherTongue = $('#inputMotherTongue').val();
+			var inputAboutus = $('#inputAboutus').val();
+			var inputHeight = $('#inputHeight').val();
+			var marital_for = $('.marital_for').val();
+			var inputCaste = $('#inputCaste').val();
+			var inputSubcaste = $('#inputSubcaste').val();
+			var inputComplexion = $('#inputComplexion').val();
+			var inputManglik = $('#inputManglik').val();
+			var inputGotra = $('#inputGotra').val();
+			var inputHrs = $('#inputHrs').val();
+			var inputMin = $('#inputMin').val();
+			var inputSec = $('#inputSec').val();
+			var inputBirthPlace = $('#inputBirthPlace').val();
+			
+				$.ajax({
+					url:'update_basic_info',
+					type:'post',
+					dataType:'json',
+                    headers: {
+                        'X-CSRF-TOKEN': csrf
+                    },
+                    data:{user_id: user_id, inputFullName: inputFullName, inputPhone: inputPhone, inputDate: inputDate, inputMonth: inputMonth, inputYear: inputYear, inputReligion: inputReligion, inputMotherTongue: inputMotherTongue, inputAboutus: inputAboutus, inputHeight: inputHeight, marital_for: marital_for, inputCaste: inputCaste, inputSubcaste: inputSubcaste, inputComplexion: inputComplexion, inputManglik: inputManglik, inputGotra: inputGotra, inputHrs: inputHrs, inputMin: inputMin, inputSec: inputSec, inputBirthPlace: inputBirthPlace}
+                    success:function(response){
+                    	alert('success');
+        				$('#family').addClass('in active');
+						$('#basic').removeClass('in active');
+						$(window).scrollTop(0);
+                    }
+				});
+		});
+	});
+
+</script>
 <div class="main">
     <div class="row content wrapper share light">
 	
@@ -42,13 +87,13 @@
       	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
             <div class="nav-tabs-three-sidebar">
                 <ul class="nav">
-                    <li class="active">
+                    <li class="active" id="a_basic">
                     	<a href="#basic" data-toggle="tab" role="tab" aria-expanded="true">Basic Details</a>
                     </li>
-                    <li class=""><a href="#family" data-toggle="tab" role="tab" aria-expanded="false">Family Details</a></li>
-                    <li class=""><a href="#education" data-toggle="tab" role="tab" aria-expanded="false">Education and Career</a></li>
-                    <li class=""><a href="#address" data-toggle="tab" role="tab" aria-expanded="false">Address</a></li>
-                    <li class=""><a href="#photo" data-toggle="tab" role="tab" aria-expanded="false">Media(Photos/Videos)</a></li>
+                    <li id="a_family"><a href="#family" data-toggle="tab" role="tab" aria-expanded="false">Family Details</a></li>
+                    <li id="a_education"><a href="#education" data-toggle="tab" role="tab" aria-expanded="false">Education and Career</a></li>
+                    <li id="a_address"><a href="#address" data-toggle="tab" role="tab" aria-expanded="false">Address</a></li>
+                    <li id="a_photo"><a href="#photo" data-toggle="tab" role="tab" aria-expanded="false">Media(Photos/Videos)</a></li>
                 </ul>
             </div>
       </div>
@@ -57,23 +102,26 @@
             <div class="nav-tabs-three-content">
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="basic">
-        				<form>
+        				<form id="basicInformation" action="" method="post">
+							{{ csrf_field() }}
+        					<input type="hidden" name="user_id" id="user_id" value="{{ $user->user_id }}">
+
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
 							    <div class="col-sm-6">
-							      <input type="text" readonly class="form-control" id="staticEmail" value="{{ $user->name }}">
+							      <input type="text" class="form-control" name="inputFullName" id="inputFullName" value="{{ $user->name }}">
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Phone No.</label>
 							    <div class="col-sm-6">
-							      <input type="text" class="form-control" id="inputPassword" value="{{ $user->phone }}" readonly>
+							      <input type="text" class="form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
 							    </div>
 						  	</div>				  	
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">DOB</label>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="date" name="date" required="required">
+	                                <select class="form-control" id="inputDate" name="inputDate">
 	                                    <option value="">Select date</option>
 	                                    <option label="01" value="01">01</option>
 	                                    <option label="02" value="02">02</option>
@@ -109,7 +157,7 @@
 	                                </select>
 	                            </div>					    
 							    <div class="col-md-2">
-	                                <select class="form-control" id="month" name="month" required="required">
+	                                <select class="form-control" id="inputMonth" name="inputMonth">
 	                                    <option value="">Select Month</option>
 	                                    <option label="January" value="01">January</option>
 	                                    <option label="February" value="02">February</option>
@@ -126,60 +174,16 @@
 	                                </select>
 	                            </div>					    
 							    <div class="col-md-2">
-	                                <select class="form-control" id="year" name="year" required="required">
+	                                <select class="form-control" id="inputYear" name="inputYear">
 	                                    <option value="">Select Year</option>
 	                                    <option label="1999" value="1999">1999</option><option label="1998" value="1998">1998</option><option label="1997" value="1997">1997</option><option label="1996" value="1996">1996</option><option label="1995" value="1995">1995</option><option label="1994" value="1994">1994</option><option label="1993" value="1993">1993</option><option label="1992" value="1992">1992</option><option label="1991" value="1991">1991</option><option label="1990" value="1990">1990</option><option label="1989" value="1989">1989</option><option label="1988" value="1988">1988</option><option label="1987" value="1987">1987</option><option label="1986" value="1986">1986</option><option label="1985" value="1985">1985</option><option label="1984" value="1984">1984</option><option label="1983" value="1983">1983</option><option label="1982" value="1982">1982</option><option label="1981" value="1981">1981</option><option label="1980" value="1980">1980</option><option label="1979" value="1979">1979</option><option label="1978" value="1978">1978</option><option label="1977" value="1977">1977</option><option label="1976" value="1976">1976</option><option label="1975" value="1975">1975</option><option label="1974" value="1974">1974</option><option label="1973" value="1973">1973</option><option label="1972" value="1972">1972</option><option label="1971" value="1971">1971</option><option label="1970" value="1970">1970</option><option label="1969" value="1969">1969</option><option label="1968" value="1968">1968</option><option label="1967" value="1967">1967</option><option label="1966" value="1966">1966</option><option label="1965" value="1965">1965</option><option label="1964" value="1964">1964</option><option label="1963" value="1963">1963</option><option label="1962" value="1962">1962</option><option label="1961" value="1961">1961</option><option label="1960" value="1960">1960</option><option label="1959" value="1959">1959</option><option label="1958" value="1958">1958</option><option label="1957" value="1957">1957</option><option label="1956" value="1956">1956</option><option label="1955" value="1955">1955</option><option label="1954" value="1954">1954</option><option label="1953" value="1953">1953</option><option label="1952" value="1952">1952</option><option label="1951" value="1951">1951</option><option label="1950" value="1950">1950</option>
 	                                </select>
 	                            </div>
 						  	</div>				  	
 						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">State</label>
-							    <div class="col-md-6">
-	                                <select class="form-control" id="state" name="state" required="required">
-	                                    <option value="">Select State</option>
-	                                    <option value="1" title="Andhra Pradesh">Andhra Pradesh</option>
-	                                    <option value="2" title="Arunachal Pradesh">Arunachal Pradesh</option>
-	                                    <option value="3" title="Assam">Assam</option>
-	                                    <option value="4" title="Bihar">Bihar</option>
-	                                    <option value="5" title="Chandigarh">Chandigarh</option>
-	                                    <option value="6" title="Chhattisgarh">Chhattisgarh</option>
-	                                    <option value="7" title="Dadra and Nagar">Dadra and Nagar</option>
-	                                    <option value="8" title="Daman and Diu">Daman and Diu</option>
-	                                    <option value="9" title="Delhi">Delhi</option>
-	                                    <option value="10" title="Goa">Goa</option>
-	                                    <option value="11" title="Gujarat">Gujarat</option>
-	                                    <option value="12" title="Haryana">Haryana</option>
-	                                    <option value="13" title="Himachal Pradesh">Himachal Pradesh</option>
-	                                    <option value="14" title="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
-	                                    <option value="15" title="Jharkhand">Jharkhand</option>
-	                                    <option value="16" title="Karnataka">Karnataka</option>
-	                                    <option value="17" title="Kerala">Kerala</option>
-	                                    <option value="18" title="LakshadweepIsland">LakshadweepIsland</option>
-	                                    <option value="19" title="Madhya Pradesh">Madhya Pradesh</option>
-	                                    <option value="20" title="Maharashtra">Maharashtra</option>
-	                                    <option value="21" title="Manipur">Manipur</option>
-	                                    <option value="22" title="Meghalaya">Meghalaya</option>
-	                                    <option value="23" title="Mizoram">Mizoram</option>
-	                                    <option value="24" title="Nagaland">Nagaland</option>
-	                                    <option value="25" title="Orissa">Orissa</option>
-	                                    <option value="26" title="Pondicherry">Pondicherry</option>
-	                                    <option value="27" title="Punjab">Punjab</option>
-	                                    <option value="28" title="Rajasthan">Rajasthan</option>
-	                                    <option value="29" title="Sikkim">Sikkim</option>
-	                                    <option value="30" title="Tamil Nadu">Tamil Nadu</option>
-	                                    <option value="31" title="Tripura">Tripura</option>
-	                                    <option value="32" title="Uttar Pradesh">Uttar Pradesh</option>
-	                                    <option value="33" title="Uttaranchal">Uttaranchal</option>
-	                                    <option value="34" title="West Bengal">West Bengal</option>
-	                                    <option value="35" title="Andaman&amp;Nicobar">Andaman&amp;Nicobar</option>
-	                                    <option value="36" title="Telangana">Telangana</option>
-	                                </select>
-	                            </div>
-						  	</div>
-						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Religion</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="religion" name="religion" required="required">
+	                                <select class="form-control" id="inputReligion" name="inputReligion">
 	                                    <option value="">Select Religion</option>
 	                                    <option value="1" title="Hindu">Hindu</option>
 	                                    <option value="2" title="Jain">Jain</option>
@@ -198,7 +202,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Mother Tongue</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="mother_tongue" name="mother_tongue" required="required">
+	                                <select class="form-control" id="inputMotherTongue" name="inputMotherTongue">
 	                                    <option value="">Select Mother Tongue</option>
 	                                    <option value="1" title="Arabic">Arabic</option>
 	                                    <option value="2" title="Assamese">Assamese</option>
@@ -245,13 +249,13 @@
 						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">About Us</label>
 	                            <div class="col-md-6">
-	                                <textarea class="form-control" rows="5" cols="5"></textarea>
+	                                <textarea class="form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus"></textarea>
 	                            </div>
 	                        </div>						  	
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Height</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste" placeholder="Height">
+	                                <input type="text" class="form-control" name="inputHeight" id="inputHeight" placeholder="Height">
 	                            </div>
 	                        </div>						  	
 	                        <div class="form-group row">
@@ -267,7 +271,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Caste</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputCaste" name="inputCaste">
 	                                    <option value="">Select Caste</option>
 										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
 	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
@@ -291,13 +295,13 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Sub-caste(optional)</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste" placeholder="Sub-caste(optional)">
+	                                <input type="text" class="form-control" name="inputSubcaste" id="inputSubcaste" placeholder="Sub-caste(optional)">
 	                            </div>
 	                        </div>						  	
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Complexion</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputComplexion" name="inputComplexion" >
 	                                    <option value="">Select Complexion</option>
 										<option value="1" title="Dark">Dark</option>
 	                                    <option value="2" title="Fair">Fair</option>
@@ -311,7 +315,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Manglik</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputManglik" name="inputManglik">
 	                                    <option value="">Select Manglik</option>
 										<option value="1" title="Don't Know">Don't Know</option>
 	                                    <option value="2" title="No">No</option>
@@ -323,7 +327,7 @@
                     		<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Gotra</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Gotra" placeholder="Gotra">
+	                                <input type="text" class="form-control" name="inputGotra" id="inputGotra" placeholder="Gotra">
 	                            </div>
 	                        </div>
 	                        <h5 style="color:red">*Please share your time and place of birth for horoscope matching.</h5>
@@ -331,7 +335,7 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Time of birth</label>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="hrs" name="hrs" required="required">
+	                                <select class="form-control" id="inputHrs" name="inputHrs">
 	                                    <option value="">Select Hrs</option>
 	                                    <option label="01" value="1">1</option>
 	                                    <option label="02" value="2">2</option>
@@ -359,7 +363,7 @@
 	                                </select>
 	                            </div>					    
 							    <div class="col-md-2">
-	                                <select class="form-control" id="min" name="min" required="required">
+	                                <select class="form-control" id="inputMin" name="inputMin">
 	                                    <option value="">Select Min</option>
 	                                    <option label="01" value="1">1</option>
 	                                    <option label="02" value="2">2</option>
@@ -424,7 +428,7 @@
 	                                </select>
 	                            </div>					    
 							    <div class="col-md-2">
-	                                <select class="form-control" id="sec" name="sec" required="required">
+	                                <select class="form-control" id="inputSec" name="inputSec">
 	                                    <option value="">Select Sec</option>
 	                                    <option label="01" value="1">1</option>
 	                                    <option label="02" value="2">2</option>
@@ -492,12 +496,12 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Place of birth</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste" placeholder="Birth Place">
+	                                <input type="text" class="form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place">
 	                            </div>
 	                        </div>	
 	                        <div class="form-group">
 	                            <div class="col-md-6 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="submit" id="basicNext" class="btn btn-success">
 	                                    Next
 	                                </button>
 	                            </div>

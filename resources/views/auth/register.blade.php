@@ -153,51 +153,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="gender" class="col-md-4 control-label">State</label>
-                            <div class="col-md-6">
-                                <select class="form-control" id="state" name="state" required="required">
-                                    <option value="">Select State</option>
-                                    <option value="1" title="Andhra Pradesh">Andhra Pradesh</option>
-                                    <option value="2" title="Arunachal Pradesh">Arunachal Pradesh</option>
-                                    <option value="3" title="Assam">Assam</option>
-                                    <option value="4" title="Bihar">Bihar</option>
-                                    <option value="5" title="Chandigarh">Chandigarh</option>
-                                    <option value="6" title="Chhattisgarh">Chhattisgarh</option>
-                                    <option value="7" title="Dadra and Nagar">Dadra and Nagar</option>
-                                    <option value="8" title="Daman and Diu">Daman and Diu</option>
-                                    <option value="9" title="Delhi">Delhi</option>
-                                    <option value="10" title="Goa">Goa</option>
-                                    <option value="11" title="Gujarat">Gujarat</option>
-                                    <option value="12" title="Haryana">Haryana</option>
-                                    <option value="13" title="Himachal Pradesh">Himachal Pradesh</option>
-                                    <option value="14" title="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
-                                    <option value="15" title="Jharkhand">Jharkhand</option>
-                                    <option value="16" title="Karnataka">Karnataka</option>
-                                    <option value="17" title="Kerala">Kerala</option>
-                                    <option value="18" title="LakshadweepIsland">LakshadweepIsland</option>
-                                    <option value="19" title="Madhya Pradesh">Madhya Pradesh</option>
-                                    <option value="20" title="Maharashtra">Maharashtra</option>
-                                    <option value="21" title="Manipur">Manipur</option>
-                                    <option value="22" title="Meghalaya">Meghalaya</option>
-                                    <option value="23" title="Mizoram">Mizoram</option>
-                                    <option value="24" title="Nagaland">Nagaland</option>
-                                    <option value="25" title="Orissa">Orissa</option>
-                                    <option value="26" title="Pondicherry">Pondicherry</option>
-                                    <option value="27" title="Punjab">Punjab</option>
-                                    <option value="28" title="Rajasthan">Rajasthan</option>
-                                    <option value="29" title="Sikkim">Sikkim</option>
-                                    <option value="30" title="Tamil Nadu">Tamil Nadu</option>
-                                    <option value="31" title="Tripura">Tripura</option>
-                                    <option value="32" title="Uttar Pradesh">Uttar Pradesh</option>
-                                    <option value="33" title="Uttaranchal">Uttaranchal</option>
-                                    <option value="34" title="West Bengal">West Bengal</option>
-                                    <option value="35" title="Andaman&amp;Nicobar">Andaman&amp;Nicobar</option>
-                                    <option value="36" title="Telangana">Telangana</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">Religion</label>
                             <div class="col-md-6">
                                 <select class="form-control" id="religion" name="religion" required="required">

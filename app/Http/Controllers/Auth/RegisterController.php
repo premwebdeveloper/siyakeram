@@ -95,7 +95,7 @@ class RegisterController extends Controller
 
         #user insert in user details table
         $user_insert = DB::table('user_details')->insert(
-             array(
+            array(
                     'user_id' => $user_id,
                     'name' => $data['name'],
                     'email' => $data['email'],
@@ -105,12 +105,25 @@ class RegisterController extends Controller
                     'date' => $data['date'],
                     'month' => $data['month'],
                     'year' => $data['year'],
-                    'state' => $data['state'],
                     'religion' => $data['religion'],
                     'mother_tongue' => $data['mother_tongue'],
                     'created_at' => $date,
                     'updated_at' => $date
-             )
+                )
+        );
+        #user insert in family_details table
+        $user_insert = DB::table('family_details')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'status' => 1
+                )
+        );
+        #user insert in user_education_center table
+        $user_insert = DB::table('user_education_center')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'status' => 1
+                )
         );
 
         $thisUser = User::findOrFail($user->id);
