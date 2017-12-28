@@ -93,4 +93,16 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     Route::post('add_qualification', 'Admin@add_qualification')->name('add_qualification');
     Route::get('deleteQualification', 'Admin@deleteQualification')->name('deleteQualification');
 
+    // Annual Income Add / View / Delete
+    Route::get('annual_income', 'Admin@annual_income')->name('annual_income');
+    Route::get('addAnnualIncome', 'Admin@addAnnualIncome')->name('addAnnualIncome');
+    Route::post('add_annual_income', 'Admin@add_annual_income')->name('add_annual_income');
+    Route::get('deleteAnnualIncome', 'Admin@deleteAnnualIncome')->name('deleteAnnualIncome');
+
+    // Employed As Add / View / Delete
+    Route::get('employed_as', 'Admin@employed_as')->name('employed_as');
+    Route::get('addEmployedAs', 'Admin@addEmployedAs')->name('addEmployedAs');
+    Route::post('add_employed_as', 'Admin@add_employed_as')->name('add_employed_as');
+    Route::get('deleteEmployedAs', 'Admin@deleteEmployedAs')->name('deleteEmployedAs');
+
 });

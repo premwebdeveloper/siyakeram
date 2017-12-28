@@ -233,3 +233,8 @@ ALTER TABLE `area_field` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `are
 
 -- ---------------------------Updated Table 'educational_qualification' ON 27-12-2017--------------------------
 ALTER TABLE `educational_qualification` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `education`;
+
+-- ---------------------------Updated Table 'user_details' ON 28-12-2017--------------------------
+ALTER TABLE `user_details` CHANGE `manglik` `manglik` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL;
+ALTER TABLE `annual_income` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `annual_income`;
+ALTER TABLE `employed_as` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `employed_as`;

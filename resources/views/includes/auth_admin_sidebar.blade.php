@@ -33,6 +33,12 @@
             <li>
                 <a href="{{ route('qualification') }}"><i class="fa fa-database"></i> <span class="nav-label">Qualifications</span></a>
             </li>
+            <li>
+                <a href="{{ route('annual_income') }}"><i class="fa fa-database"></i> <span class="nav-label">Annual Income</span></a>
+            </li>
+            <li>
+                <a href="{{ route('employed_as') }}"><i class="fa fa-database"></i> <span class="nav-label">Employed As</span></a>
+            </li>
         </ul>
     </div>
 </nav>
