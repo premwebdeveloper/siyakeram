@@ -25,6 +25,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#basicName').hide();
 		$(document).on("click", "#basicNext", function(){
 
 			var user_id = $('#user_id').val();
@@ -60,6 +61,9 @@
 
     				$('#family').addClass('in active');
 					$('#basic').removeClass('in active');
+					$('.shownamefirst').hide();
+					$('#basicName').html(inputFullName +' '+ "@SiyakeRam!");
+					$('#basicName').show();
 					$(window).scrollTop(0);
                 },
 			    error: function(data){
@@ -81,6 +85,7 @@
          	</div>
           	<h4 class="roboto-regular">Welcome
 	           Mr. <span class="shownamefirst">{{ $user->name }} @SiyakeRam!</span>
+           		   <span id="basicName"></span>
 	       	</h4>
           	<h2 class="light-pink">Share Your Identity</h2>
         </div>
@@ -266,6 +271,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Height</label>
 	                            <div class="col-md-6">
+	                            	
 	                            	<select class="form-control" id="inputHeight" name="inputHeight">
 	                                    <option value="">Select Height</option>
 										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
@@ -285,6 +291,7 @@
 	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
 	                                    <option value="16" title="Baidya">Baidya</option>
 	                                </select>
+
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
