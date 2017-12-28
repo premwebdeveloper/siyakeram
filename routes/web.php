@@ -54,7 +54,7 @@ Route::post('change_password', 'Users@change_password')->name('change_password')
 
 Route::get('profile', 'Profile@profile')->name('profile');
 
-Route::get('update_basic_info', 'AjaxController@update_basic_info')->name('update_basic_info');
+Route::post('/update_basic_info', 'AjaxController@update_basic_info')->name('update_basic_info');
 
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //

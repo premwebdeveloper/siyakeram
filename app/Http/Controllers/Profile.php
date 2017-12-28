@@ -19,7 +19,7 @@ class Profile extends Controller
     }
     public function profile()
     {
-    	# Get User Id 
+    	# Get User Id
     	$currentuserid = Auth::user()->id;
 
     	# Get User Role

@@ -10,8 +10,6 @@ class AjaxController extends Controller
 
     public function update_basic_info(Request $request)
     {
-    	echo "hii";
-    	exit;
     	$date = date('Y-m-d H:i:s');
 
     	$user_id = $request->user_id;
@@ -41,8 +39,7 @@ class AjaxController extends Controller
     		array(
     				'name' => $inputFullName,
     				'phone' => $inputPhone,
-    				'updated_at' => $date,
-    				'status' => 1
+    				'updated_at' => $date
     		)
 
     	);
@@ -65,14 +62,17 @@ class AjaxController extends Controller
     				'manglik' => $inputManglik,
     				'gotra' => $inputGotra,
     				'birth_hour' => $inputHrs,
-    				'birth_mint' => $inputSec,
-    				'birth_sec' => $inputBirthPlace,
+                    'birth_mint' => $inputMin,
+    				'birth_sec' => $inputSec,
+    				'birth_place' => $inputBirthPlace,
     				'updated_at' => $date,
     				'status' => 1
 			)
     	);
 
-        return redirect('profile');
+        $response = array('messager' => 'Update Basic Information');
+
+        return response()->json($response);
 
         exit;
     }

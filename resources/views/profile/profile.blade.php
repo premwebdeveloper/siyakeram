@@ -25,10 +25,9 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#basicInformation').submit(function(e){
-			e.preventDefault();
+		$(document).on("click", "#basicNext", function(){
+
 			var user_id = $('#user_id').val();
-			//var csrf = $('#csrf').val();
 			var inputFullName = $('#inputFullName').val();
 			var inputPhone = $('#inputPhone').val();
 			var inputDate = $('#inputDate').val();
@@ -48,43 +47,46 @@
 			var inputMin = $('#inputMin').val();
 			var inputSec = $('#inputSec').val();
 			var inputBirthPlace = $('#inputBirthPlace').val();
-			
-				$.ajax({
-					url:'update_basic_info',
-					type:'post',
-					dataType:'json',
-                    headers: {
-                        'X-CSRF-TOKEN': csrf
-                    },
-                    data:{user_id: user_id, inputFullName: inputFullName, inputPhone: inputPhone, inputDate: inputDate, inputMonth: inputMonth, inputYear: inputYear, inputReligion: inputReligion, inputMotherTongue: inputMotherTongue, inputAboutus: inputAboutus, inputHeight: inputHeight, marital_for: marital_for, inputCaste: inputCaste, inputSubcaste: inputSubcaste, inputComplexion: inputComplexion, inputManglik: inputManglik, inputGotra: inputGotra, inputHrs: inputHrs, inputMin: inputMin, inputSec: inputSec, inputBirthPlace: inputBirthPlace}
-                    success:function(response){
-                    	alert('success');
-        				$('#family').addClass('in active');
-						$('#basic').removeClass('in active');
-						$(window).scrollTop(0);
-                    }
-				});
+
+			$.ajax({
+				method : 'post',
+				url : 'update_basic_info',
+				async : true,
+                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
+                success:function(response){
+
+                	console.log('response');
+                	console.log(response);
+
+    				$('#family').addClass('in active');
+					$('#basic').removeClass('in active');
+					$(window).scrollTop(0);
+                },
+			    error: function(data){
+			        console.log(data);
+			    },
+			});
 		});
 	});
 
 </script>
 <div class="main">
     <div class="row content wrapper share light">
-	
+
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 padding-0">
           <span id="progress-val" class="progress-val">0% PROFILE COMPLETED</span>
           	<div class="progress">
 	            <div class="progress-bar no-grdaient no-gradient" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
          	</div>
-          	<h4 class="roboto-regular">Welcome 
-	           Mr. <span class="shownamefirst">{{ $user->name }} @SiyakeRam!</span>          
+          	<h4 class="roboto-regular">Welcome
+	           Mr. <span class="shownamefirst">{{ $user->name }} @SiyakeRam!</span>
 	       	</h4>
           	<h2 class="light-pink">Share Your Identity</h2>
         </div>
       </div>
       <div class="nav-tabs-three">
-      	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
+      	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="nav-tabs-three-sidebar">
                 <ul class="nav">
                     <li class="active" id="a_basic">
@@ -102,8 +104,8 @@
             <div class="nav-tabs-three-content">
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="basic">
-        				<form id="basicInformation" action="" method="post">
-							{{ csrf_field() }}
+        				<form id="basicInformation" method="post">
+
         					<input type="hidden" name="user_id" id="user_id" value="{{ $user->user_id }}">
 
 						  	<div class="form-group row">
@@ -117,7 +119,7 @@
 							    <div class="col-sm-6">
 							      <input type="text" class="form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
 							    </div>
-						  	</div>				  	
+						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">DOB</label>
 							    <div class="col-md-2">
@@ -155,7 +157,7 @@
 	                                    <option label="30" value="30">30</option>
 	                                    <option label="31" value="31">31</option>
 	                                </select>
-	                            </div>					    
+	                            </div>
 							    <div class="col-md-2">
 	                                <select class="form-control" id="inputMonth" name="inputMonth">
 	                                    <option value="">Select Month</option>
@@ -172,14 +174,14 @@
 	                                    <option label="November" value="11">November</option>
 	                                    <option label="December" value="12">December</option>
 	                                </select>
-	                            </div>					    
+	                            </div>
 							    <div class="col-md-2">
 	                                <select class="form-control" id="inputYear" name="inputYear">
 	                                    <option value="">Select Year</option>
 	                                    <option label="1999" value="1999">1999</option><option label="1998" value="1998">1998</option><option label="1997" value="1997">1997</option><option label="1996" value="1996">1996</option><option label="1995" value="1995">1995</option><option label="1994" value="1994">1994</option><option label="1993" value="1993">1993</option><option label="1992" value="1992">1992</option><option label="1991" value="1991">1991</option><option label="1990" value="1990">1990</option><option label="1989" value="1989">1989</option><option label="1988" value="1988">1988</option><option label="1987" value="1987">1987</option><option label="1986" value="1986">1986</option><option label="1985" value="1985">1985</option><option label="1984" value="1984">1984</option><option label="1983" value="1983">1983</option><option label="1982" value="1982">1982</option><option label="1981" value="1981">1981</option><option label="1980" value="1980">1980</option><option label="1979" value="1979">1979</option><option label="1978" value="1978">1978</option><option label="1977" value="1977">1977</option><option label="1976" value="1976">1976</option><option label="1975" value="1975">1975</option><option label="1974" value="1974">1974</option><option label="1973" value="1973">1973</option><option label="1972" value="1972">1972</option><option label="1971" value="1971">1971</option><option label="1970" value="1970">1970</option><option label="1969" value="1969">1969</option><option label="1968" value="1968">1968</option><option label="1967" value="1967">1967</option><option label="1966" value="1966">1966</option><option label="1965" value="1965">1965</option><option label="1964" value="1964">1964</option><option label="1963" value="1963">1963</option><option label="1962" value="1962">1962</option><option label="1961" value="1961">1961</option><option label="1960" value="1960">1960</option><option label="1959" value="1959">1959</option><option label="1958" value="1958">1958</option><option label="1957" value="1957">1957</option><option label="1956" value="1956">1956</option><option label="1955" value="1955">1955</option><option label="1954" value="1954">1954</option><option label="1953" value="1953">1953</option><option label="1952" value="1952">1952</option><option label="1951" value="1951">1951</option><option label="1950" value="1950">1950</option>
 	                                </select>
 	                            </div>
-						  	</div>				  	
+						  	</div>
 						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Religion</label>
 	                            <div class="col-md-6">
@@ -251,13 +253,13 @@
 	                            <div class="col-md-6">
 	                                <textarea class="form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus"></textarea>
 	                            </div>
-	                        </div>						  	
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Height</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" name="inputHeight" id="inputHeight" placeholder="Height">
 	                            </div>
-	                        </div>						  	
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Marital Status</label>
 	                            <div class="col-md-7">
@@ -267,7 +269,7 @@
 	                                <input type="radio" name="marital_for" class="marital_for" value="4" required> Divorced
 	                                <input type="radio" name="marital_for" class="marital_for" value="5" required> Widowed
 	                            </div>
-	                        </div>						  	
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Caste</label>
 	                            <div class="col-md-6">
@@ -291,13 +293,13 @@
 	                                    <option value="16" title="Baidya">Baidya</option>
 	                                </select>
 	                            </div>
-	                        </div>						  	
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Sub-caste(optional)</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" name="inputSubcaste" id="inputSubcaste" placeholder="Sub-caste(optional)">
 	                            </div>
-	                        </div>						  	
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Complexion</label>
 	                            <div class="col-md-6">
@@ -311,7 +313,7 @@
 	                                    <option value="6" title="Wheatish Medium">Wheatish Medium</option>
 	                                </select>
 	                            </div>
-	                        </div>	                        
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Manglik</label>
 	                            <div class="col-md-6">
@@ -361,7 +363,7 @@
 	                                    <option label="22" value="22">22</option>
 	                                    <option label="23" value="23">23</option>
 	                                </select>
-	                            </div>					    
+	                            </div>
 							    <div class="col-md-2">
 	                                <select class="form-control" id="inputMin" name="inputMin">
 	                                    <option value="">Select Min</option>
@@ -426,7 +428,7 @@
 	                                    <option label="23" value="58">58</option>
 	                                    <option label="23" value="59">59</option>
 	                                </select>
-	                            </div>					    
+	                            </div>
 							    <div class="col-md-2">
 	                                <select class="form-control" id="inputSec" name="inputSec">
 	                                    <option value="">Select Sec</option>
@@ -498,18 +500,16 @@
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place">
 	                            </div>
-	                        </div>	
+	                        </div>
 	                        <div class="form-group">
 	                            <div class="col-md-6 col-md-offset-2">
-	                                <button type="submit" id="basicNext" class="btn btn-success">
-	                                    Next
-	                                </button>
+	                                <input type="button" name="basicNext" id="basicNext" value="Next" class="btn btn-success">
 	                            </div>
 	                        </div>
-						</form> 
-                    </div>      
+						</form>
+                    </div>
 
-                    <!-- #Family -->             
+                    <!-- #Family -->
                     <div class="tab-pane fade" id="family">
         				<form>
 						  	<div class="form-group row">
@@ -518,7 +518,7 @@
 							      	<textarea class="form-control" rows="3" cols="10"></textarea>
 							    </div>
 						  	</div>
-				  	
+
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Father's Occupation</label>
 							    <div class="col-md-6">
@@ -533,8 +533,8 @@
 	                                    <option value="07">Professional</option>
 	                                    <option value="08">Retired</option>
                                     </select>
-	                            </div>					    
-						  	</div>				  	
+	                            </div>
+						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Mother's Occupation</label>
 							    <div class="col-md-6">
@@ -549,37 +549,37 @@
 	                                    <option value="07">Professional</option>
 	                                    <option value="08">Retired</option>
                                     </select>
-	                            </div>					    
-						  	</div>		
+	                            </div>
+						  	</div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Sisters</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" id="Subcaste">
 	                            </div>
-	                        </div>	
+	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Sisters</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" id="Subcaste">
 	                            </div>
-	                        </div>	
+	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Brothers</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" id="Subcaste">
 	                            </div>
-	                        </div>	
+	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Brothers</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="form-control" id="Subcaste">
 	                            </div>
-	                        </div>						  	
-						  	
+	                        </div>
+
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native Country</label>
 	                            <div class="col-md-6">
@@ -603,7 +603,7 @@
 	                                    <option value="16" title="Baidya">Baidya</option>
 	                                </select>
 	                            </div>
-	                        </div>	
+	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native State</label>
@@ -628,8 +628,8 @@
 	                                    <option value="16" title="Baidya">Baidya</option>
 	                                </select>
 	                            </div>
-	                        </div>						  	
-						  	
+	                        </div>
+
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Family Value</label>
 	                            <div class="col-md-6">
@@ -641,7 +641,7 @@
 	                                    <option value="4" title="Traditional">Traditional</option>
 	                                </select>
 	                            </div>
-	                        </div>	                        
+	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Affluence Level</label>
 	                            <div class="col-md-6">
@@ -659,17 +659,17 @@
 	                                <button type="submit" class="btn btn-success">
 	                                    Skip
 	                                </button>
-	                            </div>	                            
+	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
 	                                <button type="submit" class="btn btn-success">
 	                                    Submit
 	                                </button>
 	                            </div>
 	                        </div>
-						</form> 
+						</form>
                     </div>
 
-                    <!-- #Education -->             
+                    <!-- #Education -->
                     <div class="tab-pane fade" id="education">
         				<form>
 						  	<div class="form-group row">
@@ -686,8 +686,8 @@
 	                                    <option value="07">B.Com</option>
 	                                    <option value="08">B.Ed</option>
                                     </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
@@ -700,8 +700,8 @@
 	                                    <option value="04">Advertising Professional</option>
 	                                    <option value="05">Agent/Broker</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Area/Field</label>
@@ -712,8 +712,8 @@
 	                                    <option value="02">Advertising Marketing</option>
 	                                    <option value="03">Architecture</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed With</label>
@@ -726,8 +726,8 @@
 	                                    <option value="04">Goverment/Public Sector</option>
 	                                    <option value="05">NGO/NPT</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
@@ -737,25 +737,25 @@
 	                                    <option value="01">Dont Want to Specify</option>
 	                                    <option value="02">INR Up to 50 Thousand</option>
 	                                </select>
-	                            </div>					    
-						  	</div>		
+	                            </div>
+						  	</div>
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
 	                                <button type="submit" class="btn btn-success">
 	                                    Skip
 	                                </button>
-	                            </div>	                            
+	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
 	                                <button type="submit" class="btn btn-success">
 	                                    Submit
 	                                </button>
 	                            </div>
 	                        </div>
-						</form> 
+						</form>
                     </div>
 
-                    <!-- #Address -->             
+                    <!-- #Address -->
                     <div class="tab-pane fade" id="address">
         				<form>
 						  	<div class="form-group row">
@@ -763,8 +763,8 @@
 							    <div class="col-sm-6">
 							      	<textarea class="form-control" rows="3" cols="10"></textarea>
 							    </div>
-						  	</div>						  	
-						
+						  	</div>
+
 							<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Country</label>
 							    <div class="col-md-6">
@@ -776,8 +776,8 @@
 	                                    <option value="04">Advertising Professional</option>
 	                                    <option value="05">Agent/Broker</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">State</label>
@@ -788,8 +788,8 @@
 	                                    <option value="02">Advertising Marketing</option>
 	                                    <option value="03">Architecture</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">City</label>
@@ -802,34 +802,34 @@
 	                                    <option value="04">Goverment/Public Sector</option>
 	                                    <option value="05">NGO/NPT</option>
 	                                </select>
-	                            </div>					    
-						  	</div>	
+	                            </div>
+						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">ZipCode</label>
 							    <div class="col-md-6">
 
 	                                <input type="text" class="form-control" name="zipcode">
-	                               
-	                            </div>					    
-						  	</div>		
+
+	                            </div>
+						  	</div>
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
 	                                <button type="submit" class="btn btn-success">
 	                                    Skip
 	                                </button>
-	                            </div>	                            
+	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
 	                                <button type="submit" class="btn btn-success">
 	                                    Submit
 	                                </button>
 	                            </div>
 	                        </div>
-						</form> 
+						</form>
                     </div>
 
-                    <!-- #Address -->             
+                    <!-- #Address -->
                     <div class="tab-pane fade" id="photo">
         				<form>
 						  	<div class="form-group row">
@@ -837,16 +837,16 @@
 							    <div class="col-sm-6">
 							      	<input type="file" class="form-control">
 							    </div>
-						  	</div>						  		
+						  	</div>
 
-	                        <div class="form-group">	                            
+	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
 	                                <button type="submit" class="btn btn-success">
 	                                    Submit
 	                                </button>
 	                            </div>
 	                        </div>
-						</form> 
+						</form>
                     </div>
                 </div>
             </div>
