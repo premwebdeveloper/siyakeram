@@ -19,6 +19,9 @@
                 <a href="{{ route('dashboard') }}"><i class="fa fa-database"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li>
+                <a href="{{ route('users') }}"><i class="fa fa-database"></i> <span class="nav-label">Users</span></a>
+            </li>
+            <li>
                 <a href="{{ route('caste') }}"><i class="fa fa-database"></i> <span class="nav-label">Caste</span></a>
             </li>
             <li>

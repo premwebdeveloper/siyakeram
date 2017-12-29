@@ -63,6 +63,11 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
 {
     Route::get('dashboard', 'Dashboard@admin')->name('dashboard');
 
+    // Get All Users
+    Route::get('users', 'AdminUsers@index')->name('users');
+    Route::get('delete', 'AdminUsers@delete')->name('delete');
+    Route::get('view', 'AdminUsers@view')->name('view');
+
     // Caste Add / View  / Delete
     Route::get('caste', 'Admin@caste')->name('caste');
     Route::get('addCaste', 'Admin@addCaste')->name('addCaste');

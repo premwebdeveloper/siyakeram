@@ -41,7 +41,7 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="gender" class="col-md-4 control-label">
                                 Let's know for whom you are creating the profile?
                             </label>
@@ -54,7 +54,7 @@
                                 <input type="radio" name="profile_for" class="profile_for" value="6" required> Relative
                                 <input type="radio" name="profile_for" class="profile_for" value="7" required> Friend
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
