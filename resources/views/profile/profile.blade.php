@@ -1,6 +1,9 @@
 @extends('layouts.public_app')
 
 @section('content')
+<link href="{{ asset ('resources/frontend_assets/css/validationEngine.jquery.css') }}" rel="stylesheet" />
+<script src="{{ asset ('resources/frontend_assets/js/jquery.validationEngine-en.js') }}" type="text/javascript"></script>
+<script src="{{ asset ('resources/frontend_assets/js/jquery.validationEngine.js') }}" type="text/javascript"></script>
 
 <style>
 	.input-group1 {
@@ -26,8 +29,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#basicName').hide();
-		$(document).on("click", "#basicNext", function(){
-
+		$(document).on("click", "#basicNext", function(e){
+			e.preventDefault();
+			var valid = $("#myForm").validationEngine("validate", {promptPosition : "topLeft"});
+			if(valid==true)
+			{
 			var user_id = $('#user_id').val();
 			var inputFullName = $('#inputFullName').val();
 			var inputPhone = $('#inputPhone').val();
@@ -70,6 +76,13 @@
 			        console.log(data);
 			    },
 			});
+		}
+		});
+
+		//#Family Info
+		$('#familySkip').on('click', function(){
+			$('#education').addClass('in active');
+			$('#family').removeClass('in active');
 		});
 	});
 
@@ -109,27 +122,31 @@
             <div class="nav-tabs-three-content">
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="basic">
-        				<form id="basicInformation" method="post">
+        				<form id="myForm" method="post">
 
         					<input type="hidden" name="user_id" id="user_id" value="{{ $user->user_id }}">
 
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
 							    <div class="col-sm-6">
-							      <input type="text" class="form-control" name="inputFullName" id="inputFullName" value="{{ $user->name }}">
+							      <input type="text" class="validate[required] form-control" name="inputFullName" id="inputFullName" value="{{ $user->name }}">
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Phone No.</label>
 							    <div class="col-sm-6">
-							      <input type="text" class="form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
+							      <input type="text" class="validate[required] form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">DOB</label>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="inputDate" name="inputDate">
-	                                    <option value="">Select date</option>
+	                                <select class="validate[required] form-control" id="inputDate" name="inputDate">
+	                                	@if($user->date)
+	                                    <option value="{{$user->date}}">{{$user->date}}</option>
+	                                    @else
+	                                    <option value="">Select Date</option>
+	                                    @endif
 	                                    <option label="01" value="01">01</option><option label="02" value="02">02</option>
 	                                    <option label="03" value="03">03</option><option label="04" value="04">04</option>
 	                                    <option label="05" value="05">05</option><option label="06" value="06">06</option>
@@ -148,9 +165,65 @@
 	                                    <option label="31" value="31">31</option>
 	                                </select>
 	                            </div>
-							    <div class="col-md-2">
-	                                <select class="form-control" id="inputMonth" name="inputMonth">
+								    <div class="col-md-2">
+										<?php
+
+								    		if($user->month == '01')
+								    		{
+												$month = 'January';
+								    		}
+							    			if($user->month == '02')
+							    			{
+												$month = 'February';
+							    			}
+							    			if($user->month == '03')
+							    			{
+												$month = 'March';
+							    			}
+							    			if($user->month == '04')
+							    			{
+												$month = 'April';
+							    			}
+								    		if($user->month == '05')
+								    		{
+												$month = 'May';
+								    		}
+							    			if($user->month == '06')
+							    			{
+												$month = 'June';
+							    			}
+							    			if($user->month == '07')
+							    			{
+												$month = 'July';
+							    			}
+							    			if($user->month == '08')
+							    			{
+												$month = 'August';
+							    			}								    		
+							    			if($user->month == '09')
+								    		{
+												$month = 'September';
+								    		}
+							    			if($user->month == '10')
+							    			{
+												$month = 'October';
+							    			}
+							    			if($user->month == '11')
+							    			{
+												$month = 'November';
+							    			}
+							    			if($user->month == '12')
+							    			{
+												$month = 'December';
+							    			}
+
+						    			?>
+	                                <select class="validate[required] form-control" id="inputMonth" name="inputMonth">
+	                                	@if($user->month)
+	                                    <option value="{{$user->month}}">{{$month}}</option>
+	                                    @else
 	                                    <option value="">Select Month</option>
+	                                    @endif
 	                                    <option label="January" value="01">January</option>
 	                                    <option label="February" value="02">February</option>
 	                                    <option label="March" value="03">March</option>
@@ -166,8 +239,12 @@
 	                                </select>
 	                            </div>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="inputYear" name="inputYear">
+	                                <select class="validate[required] form-control" id="inputYear" name="inputYear">
+	                                    @if($user->year)
+	                                    <option value="{{$user->year}}">{{$user->year}}</option>
+	                                    @else
 	                                    <option value="">Select Year</option>
+	                                    @endif
 	                                    <option value="1999">1999</option><option value="1998">1998</option>
 	                                    <option value="1997">1997</option><option value="1996">1996</option>
 	                                    <option value="1995">1995</option><option value="1994">1994</option>
@@ -199,8 +276,12 @@
 						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Religion</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputReligion" name="inputReligion">
+	                                <select class="validate[required] form-control" id="inputReligion" name="inputReligion">
+	                                    @if($user->religion)
+	                                    <option value="{{$user->religion}}">{{$user->religion}}</option>
+	                                    @else
 	                                    <option value="">Select Religion</option>
+	                                    @endif
 	                                    <option value="Hindu" title="Hindu">Hindu</option>
 	                                    <option value="Jain" title="Jain">Jain</option>
 	                                    <option value="Muslim" title="Muslim">Muslim</option>
@@ -218,127 +299,108 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Mother Tongue</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputMotherTongue" name="inputMotherTongue">
+	                                <select class="validate[required] form-control" id="inputMotherTongue" name="inputMotherTongue">
+	                                    @if(!empty($mother_details->mother_tongue))
+	                                    <option value="{{$mother_details->id}}">{{$mother_details->mother_tongue}}</option>
+	                                    @else
 	                                    <option value="">Select Mother Tongue</option>
-	                                    <option value="1" title="Arabic">Arabic</option>
-	                                    <option value="2" title="Assamese">Assamese</option>
-	                                    <option value="3" title="Awadhi">Awadhi</option>
-	                                    <option value="4" title="Bangali">Bangali</option>
-	                                    <option value="5" title="Bhojpuri">Bhojpuri</option>
-	                                    <option value="6" title="Chattisgari">Chattisgari</option>
-	                                    <option value="7" title="Coorgi">Coorgi</option>
-	                                    <option value="8" title="Dogri">Dogri</option>
-	                                    <option value="9" title="English">English</option>
-	                                    <option value="10" title="French">French</option>
-	                                    <option value="11" title="Garhwali">Garhwali</option>
-	                                    <option value="12" title="Gujarati">Gujarati</option>
-	                                    <option value="13" title="Haryanavi">Haryanavi</option>
-	                                    <option value="14" title="Himachali">Himachali</option>
-	                                    <option value="15" title="Hindi">Hindi</option>
-	                                    <option value="16" title="Jewish">Jewish</option>
-	                                    <option value="17" title="Kannada">Kannada</option>
-	                                    <option value="18" title="Kashmiri">Kashmiri</option>
-	                                    <option value="19" title="Konkani">Konkani</option>
-	                                    <option value="20" title="Kumaoni">Kumaoni</option>
-	                                    <option value="21" title="Kutchi">Kutchi</option>
-	                                    <option value="22" title="Magahi">Magahi</option>
-	                                    <option value="23" title="Malayalam">Malayalam</option>
-	                                    <option value="24" title="Manipuri">Manipuri</option>
-	                                    <option value="25" title="Marathi">Marathi</option>
-	                                    <option value="26" title="Marwari">Marwari</option>
-	                                    <option value="27" title="Nepali">Nepali</option>
-	                                    <option value="28" title="Oriya">Oriya</option>
-	                                    <option value="29" title="Persian">Persian</option>
-	                                    <option value="30" title="Punjabi">Punjabi</option>
-	                                    <option value="31" title="Rajasthani">Rajasthani</option>
-	                                    <option value="32" title="Russian">Russian</option>
-	                                    <option value="33" title="Sindhi">Sindhi</option>
-	                                    <option value="34" title="Spanish">Spanish</option>
-	                                    <option value="35" title="Tamil">Tamil</option>
-	                                    <option value="36" title="Telugu">Telugu</option>
-	                                    <option value="37" title="Tulu">Tulu</option>
-	                                    <option value="38" title="Urdu">Urdu</option>
-	                                    <option value="39" title="Other">Other</option>
+	                                    @endif
+	                                    @foreach($mother_tongue as $tongue)
+	                                        <option value="{{ $tongue->id }}" title="{{ $tongue->mother_tongue }}">{{ $tongue->mother_tongue }}</option>
+	                                    @endforeach
 	                                </select>
 	                            </div>
 	                        </div>
 						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">About Us</label>
 	                            <div class="col-md-6">
-	                                <textarea class="form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus"></textarea>
-	                            </div>
+	                                <textarea class="validate[required] form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus">
+	                                	{{ $user->bio }}
+	                                </textarea>
+	                            </div>	
 	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Height</label>
 	                            <div class="col-md-6">
 	                            	
-	                            	<select class="form-control" id="inputHeight" name="inputHeight">
+	                            	<select class="validate[required] form-control" id="inputHeight" name="inputHeight">
+	                            		@if(!empty($height_details->height))
+	                                    <option value="{{$height_details->id}}">{{$height_details->height}}</option>
+	                                    @else
 	                                    <option value="">Select Height</option>
-										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
-	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
-	                                    <option value="3" title="Addharmi">Addharmi</option>
-	                                    <option value="4" title="Aggarwal">Aggarwal</option>
-	                                    <option value="5" title="Agri">Agri</option>
-	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
-	                                    <option value="7" title="Ahom">Ahom</option>
-	                                    <option value="8" title="Dogri">Dogri</option>
-	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
-	                                    <option value="10" title="Arekatica">Arekatica</option>
-	                                    <option value="11" title="Arora">Arora</option>
-	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
-	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
-	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
-	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
-	                                    <option value="16" title="Baidya">Baidya</option>
+	                                    @endif
+	                                    @foreach($height as $heig)
+											<option value="{{ $heig->id }}" title="{{ $heig->height }}">{{ $heig->height }}</option>
+										@endforeach
 	                                </select>
 
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
+	                        		<?php
+
+							    		if($user->marital_status == '1')
+							    		{
+											$Never = 'checked';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = '';
+							    		}
+						    			if($user->marital_status == '2')
+						    			{
+											$Never = '';$Annulled = 'checked';$Awaiting = '';$Divorced = '';$Widowed = '';
+						    			}
+						    			if($user->marital_status == '3')
+						    			{
+											$Never = '';$Annulled = '';$Awaiting = 'checked';$Divorced = '';$Widowed = '';
+						    			}
+						    			if($user->marital_status == '4')
+						    			{
+											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = 'checked';$Widowed = '';
+						    			}
+							    		if($user->marital_status == '5')
+							    		{
+											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = 'checked';
+							    		}
+
+					    			?>
 	                            <label for="gender" class="col-md-2 control-label">Marital Status</label>
 	                            <div class="col-md-7">
-                                    <input type="radio" name="marital_for" class="marital_for" value="1" required> Never Married
-	                                <input type="radio" name="marital_for" class="marital_for" value="2" required> Annulled
-	                                <input type="radio" name="marital_for" class="marital_for" value="3" required> Awaiting Divorce
-	                                <input type="radio" name="marital_for" class="marital_for" value="4" required> Divorced
-	                                <input type="radio" name="marital_for" class="marital_for" value="5" required> Widowed
+
+                                	<input type="radio" name="marital_for" class="validate[required] marital_for" value="1" {{$Never}}> Never Married
+	                                <input type="radio" name="marital_for" class="validate[required] marital_for" value="2" {{$Annulled}}> Annulled
+	                                <input type="radio" name="marital_for" class="validate[required] marital_for" value="3" {{$Awaiting}}> Awaiting Divorce
+	                                <input type="radio" name="marital_for" class="validate[required] marital_for" value="4" {{$Divorced}}> Divorced
+	                                <input type="radio" name="marital_for" class="validate[required] marital_for" value="5" {{$Widowed}}> Widowed
+
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Caste</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputCaste" name="inputCaste">
+	                                <select class="validate[required] form-control" id="inputCaste" name="inputCaste">
+	                                	@if(!empty($caste_details->caste))
+	                                    <option value="{{$caste_details->id}}">{{$caste_details->caste}}</option>
+	                                    @endif
 	                                    <option value="">Select Caste</option>
-										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
-	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
-	                                    <option value="3" title="Addharmi">Addharmi</option>
-	                                    <option value="4" title="Aggarwal">Aggarwal</option>
-	                                    <option value="5" title="Agri">Agri</option>
-	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
-	                                    <option value="7" title="Ahom">Ahom</option>
-	                                    <option value="8" title="Dogri">Dogri</option>
-	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
-	                                    <option value="10" title="Arekatica">Arekatica</option>
-	                                    <option value="11" title="Arora">Arora</option>
-	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
-	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
-	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
-	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
-	                                    <option value="16" title="Baidya">Baidya</option>
+	                                    @foreach($caste as $cast)
+										<option value="{{$cast->id}}" title="{{$cast->caste}}">{{$cast->caste}}</option>
+										@endforeach
 	                                </select>
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Sub-caste(optional)</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" name="inputSubcaste" id="inputSubcaste" placeholder="Sub-caste(optional)">
+	                                <input type="text" class="form-control validate[required]" name="inputSubcaste" id="inputSubcaste" placeholder="Sub-caste(optional)" value="{{$user->sub_caste}}">
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Complexion</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputComplexion" name="inputComplexion" >
+	                                <select class="validate[required] form-control" id="inputComplexion" name="inputComplexion">
+	                                	@if($user->complexion)
+	                                    <option value="{{$user->complexion}}">{{$user->complexion}}</option>
+	                                    @else
 	                                    <option value="">Select Complexion</option>
+	                                    @endif
 										<option value="Dark" title="Dark">Dark</option>
 	                                    <option value="Fair" title="Fair">Fair</option>
 	                                    <option value="Very Fair" title="Very Fair">Very Fair</option>
@@ -351,9 +413,13 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Manglik</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputManglik" name="inputManglik">
+	                                <select class="validate[required] form-control" id="inputManglik" name="inputManglik">
+	                                	@if($user->manglik)
+	                                    <option value="{{$user->manglik}}">{{$user->manglik}}</option>
+	                                    @else
 	                                    <option value="">Select Manglik</option>
-										<option value="Dont Know" title="Don't Know">Dont Know</option>
+	                                    @endif
+	                                    <option value="Dont Know" title="Don't Know">Dont Know</option>
 	                                    <option value="No" title="No">No</option>
 	                                    <option value="Yes" title="Yes">Yes</option>
 	                                    <option value="Anshik" title="Anshik">Anshik</option>
@@ -363,7 +429,7 @@
                     		<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Gotra</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" name="inputGotra" id="inputGotra" placeholder="Gotra">
+	                                <input type="text" class="validate[required] form-control" name="inputGotra" id="inputGotra" placeholder="Gotra" value="{{$user->gotra}}">
 	                            </div>
 	                        </div>
 	                        <h5 style="color:red">*Please share your time and place of birth for horoscope matching.</h5>
@@ -371,8 +437,12 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Time of birth</label>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="inputHrs" name="inputHrs">
+	                                <select class="validate[required] form-control" id="inputHrs" name="inputHrs">
+	                                	@if($user->birth_hour)
+	                                    <option value="{{$user->birth_hour}}">{{$user->birth_hour}}</option>
+	                                    @else
 	                                    <option value="">Select Hrs</option>
+	                                    @endif
 	                                    <option label="01" value="01">1</option><option label="02" value="02">2</option>
 	                                    <option label="03" value="03">3</option><option label="04" value="04">4</option>
 	                                    <option label="05" value="05">5</option><option label="06" value="06">6</option>
@@ -388,8 +458,12 @@
 	                                </select>
 	                            </div>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="inputMin" name="inputMin">
+	                                <select class="validate[required] validate[required] form-control" id="inputMin" name="inputMin">
+	                                	@if($user->birth_mint)
+	                                    <option value="{{$user->birth_mint}}">{{$user->birth_mint}}</option>
+	                                    @else
 	                                    <option value="">Select Min</option>
+	                                    @endif
 	                                    <option label="01" value="01">1</option><option label="02" value="02">2</option>
 	                                    <option label="03" value="03">3</option><option label="04" value="04">4</option>
 	                                    <option label="05" value="05">5</option><option label="06" value="06">6</option>
@@ -423,8 +497,12 @@
 	                                </select>
 	                            </div>
 							    <div class="col-md-2">
-	                                <select class="form-control" id="inputSec" name="inputSec">
+	                                <select class="validate[required] form-control" id="inputSec" name="inputSec">
+	                                	@if($user->birth_sec)
+	                                    <option value="{{$user->birth_sec}}">{{$user->birth_sec}}</option>
+	                                    @else
 	                                    <option value="">Select Sec</option>
+	                                    @endif
 	                                    <option label="01" value="01">1</option><option label="02" value="02">2</option>
 	                                    <option label="03" value="03">3</option><option label="04" value="04">4</option>
 	                                    <option label="05" value="05">5</option><option label="06" value="06">6</option>
@@ -461,7 +539,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Place of birth</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place">
+	                                <input type="text" class="validate[required] form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place" value="{{ $user->birth_place }}">
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
@@ -619,12 +697,12 @@
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="submit" class="btn btn-success" id="familySkip">
 	                                    Skip
 	                                </button>
 	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="submit" class="btn btn-success" id="familyInfo">
 	                                    Submit
 	                                </button>
 	                            </div>
