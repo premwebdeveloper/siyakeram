@@ -217,45 +217,9 @@
                             <div class="col-md-6">
                                 <select class="form-control" id="mother_tongue" name="mother_tongue" required="required">
                                     <option value="">Select Mother Tongue</option>
-                                    <option value="1" title="Arabic">Arabic</option>
-                                    <option value="2" title="Assamese">Assamese</option>
-                                    <option value="3" title="Awadhi">Awadhi</option>
-                                    <option value="4" title="Bangali">Bangali</option>
-                                    <option value="5" title="Bhojpuri">Bhojpuri</option>
-                                    <option value="6" title="Chattisgari">Chattisgari</option>
-                                    <option value="7" title="Coorgi">Coorgi</option>
-                                    <option value="8" title="Dogri">Dogri</option>
-                                    <option value="9" title="English">English</option>
-                                    <option value="10" title="French">French</option>
-                                    <option value="11" title="Garhwali">Garhwali</option>
-                                    <option value="12" title="Gujarati">Gujarati</option>
-                                    <option value="13" title="Haryanavi">Haryanavi</option>
-                                    <option value="14" title="Himachali">Himachali</option>
-                                    <option value="15" title="Hindi">Hindi</option>
-                                    <option value="16" title="Jewish">Jewish</option>
-                                    <option value="17" title="Kannada">Kannada</option>
-                                    <option value="18" title="Kashmiri">Kashmiri</option>
-                                    <option value="19" title="Konkani">Konkani</option>
-                                    <option value="20" title="Kumaoni">Kumaoni</option>
-                                    <option value="21" title="Kutchi">Kutchi</option>
-                                    <option value="22" title="Magahi">Magahi</option>
-                                    <option value="23" title="Malayalam">Malayalam</option>
-                                    <option value="24" title="Manipuri">Manipuri</option>
-                                    <option value="25" title="Marathi">Marathi</option>
-                                    <option value="26" title="Marwari">Marwari</option>
-                                    <option value="27" title="Nepali">Nepali</option>
-                                    <option value="28" title="Oriya">Oriya</option>
-                                    <option value="29" title="Persian">Persian</option>
-                                    <option value="30" title="Punjabi">Punjabi</option>
-                                    <option value="31" title="Rajasthani">Rajasthani</option>
-                                    <option value="32" title="Russian">Russian</option>
-                                    <option value="33" title="Sindhi">Sindhi</option>
-                                    <option value="34" title="Spanish">Spanish</option>
-                                    <option value="35" title="Tamil">Tamil</option>
-                                    <option value="36" title="Telugu">Telugu</option>
-                                    <option value="37" title="Tulu">Tulu</option>
-                                    <option value="38" title="Urdu">Urdu</option>
-                                    <option value="39" title="Other">Other</option>
+                                    @foreach($mother_tongue as $tongue)
+                                        <option value="{{ $tongue->id }}" title="{{ $tongue->mother_tongue }}">{{ $tongue->mother_tongue }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

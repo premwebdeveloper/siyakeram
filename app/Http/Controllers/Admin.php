@@ -277,4 +277,112 @@ class Admin extends Controller
         return redirect('qualification')->with('status', $status);
     }
 
+    // View Annual Income Page
+    public function annual_income()
+    {
+        $annual_income = DB::table('annual_income')->where('status', 1)->get();
+
+        return view('admin.annual_income', array('annual_income' => $annual_income));
+    }
+
+    // View Add Annual Income page
+    public function addAnnualIncome()
+    {
+        return view('admin.addAnnualIncome');
+    }
+
+    // Add Annual Income in database
+    public function add_annual_income(Request $request)
+    {
+        $annual_income = $request->annual_income;
+
+        $insert = DB::table('annual_income')->insert(
+             array(
+                    'annual_income' => $annual_income,
+                    'status' => 1
+             )
+        );
+
+        if($insert)
+        {
+            $status = 'Annual Income Added successfully.';
+        }
+        else
+        {
+            $status = 'Something went wrong !';
+        }
+
+        return redirect('annual_income')->with('status', $status);
+    }
+
+    // Delete Annual Income
+    public function deleteAnnualIncome(Request $request)
+    {
+        $annual_income_id = $request->id;
+
+        $update = DB::table('annual_income')->where('id', $annual_income_id)->update(
+            array(
+                    'status' => 0
+            )
+        );
+
+        $status = 'Annual Income deleted successfully.';
+
+        return redirect('annual_income')->with('status', $status);
+    }
+
+    // View Employed As Page
+    public function employed_as()
+    {
+        $employed_as = DB::table('employed_as')->where('status', 1)->get();
+
+        return view('admin.employed_as', array('employed_as' => $employed_as));
+    }
+
+    // View Add Employed As page
+    public function addEmployedAs()
+    {
+        return view('admin.addEmployedAs');
+    }
+
+    // Add Employed As in database
+    public function add_employed_as(Request $request)
+    {
+        $employed_as = $request->employed;
+
+        $insert = DB::table('employed_as')->insert(
+             array(
+                    'employed_as' => $employed_as,
+                    'status' => 1
+             )
+        );
+
+        if($insert)
+        {
+            $status = 'Employed As Added successfully.';
+        }
+        else
+        {
+            $status = 'Something went wrong !';
+        }
+
+        return redirect('employed_as')->with('status', $status);
+    }
+
+    // Delete Employed As
+    public function deleteEmployedAs(Request $request)
+    {
+        $employed_as_id = $request->id;
+
+        $update = DB::table('employed_as')->where('id', $employed_as_id)->update(
+            array(
+                    'status' => 0
+            )
+        );
+
+        $status = 'Employed As deleted successfully.';
+
+        return redirect('employed_as')->with('status', $status);
+    }
+
 }

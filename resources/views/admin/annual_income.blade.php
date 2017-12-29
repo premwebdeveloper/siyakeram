@@ -4,19 +4,19 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>All Castes</h2>
+        <h2>All Annual Income</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('dashboard') }}">Home</a>
             </li>
             <li class="active">
-                <strong>Castes</strong>
+                <strong>Annual Income</strong>
             </li>
         </ol>
     </div>
     <div class="col-lg-2 text-right">
     	<h2>
-			<a href="{{ route('addCaste') }}" class="btn btn-info">Add Caste</a>
+			<a href="{{ route('addAnnualIncome') }}" class="btn btn-info">Add Annual Income</a>
     	</h2>
     </div>
 </div>
@@ -27,7 +27,7 @@
 	        <div class="ibox float-e-margins">
 
 	            <div class="ibox-title">
-	                <h5>Castes</h5>
+	                <h5>Annual Incomes</h5>
 	                <div class="ibox-tools">
 	                    <a class="collapse-link">
 	                        <i class="fa fa-chevron-up"></i>
@@ -45,18 +45,18 @@
 	                    <table class="table table-striped table-bordered table-hover dataTables-example" >
 	                        <thead>
 	                            <tr>
-	                                <th>Caste</th>
+	                                <th>Annual Income</th>
 	                                <th>Action</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
 
-	                            @foreach($castes as $caste)
+	                            @foreach($annual_income as $income)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $caste->caste }}</td>
+	                                    <td>{{ $income->annual_income }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteCaste', ['id' => $caste->id]) }}">
+	                                        <a class="btn btn-success" href="{{ route('deleteAnnualIncome', ['id' => $income->id]) }}">
 	                                            Delete
 	                                        </a>
 	                                    </td>
