@@ -34,7 +34,7 @@
 			var valid = $("#myForm").validationEngine("validate", {promptPosition : "topLeft"});
 			if(valid==true)
 			{
-			var user_id = $('#user_id').val();
+			var user_id = $('.user_id').val();
 			var inputFullName = $('#inputFullName').val();
 			var inputPhone = $('#inputPhone').val();
 			var inputDate = $('#inputDate').val();
@@ -77,12 +77,64 @@
 			    },
 			});
 		}
+		});		
+
+		//#familyInfo Update
+		$(document).on("click", "#familyInfo", function(e){
+			e.preventDefault();
+			var valid = $("#familyForm").validationEngine("validate", {promptPosition : "topLeft"});
+			if(valid==true)
+			{
+			var user_id = $('.user_id').val();
+			var inputFamily = $('#inputFamily').val();
+			var inputFather = $('#inputFather').val();
+			var inputMother = $('#inputMother').val();
+			var inputMSister = $('#inputMSister').val();
+			var inputUMSister = $('#inputUMSister').val();
+			var inputMBrother = $('#inputMBrother').val();
+			var inputUMBrother = $('#inputUMBrother').val();
+			var inputNativeCountry = $('#inputNativeCountry').val();
+			var inputNativeState = $('#inputNativeState').val();
+			var inputFamilyValue = $('#inputFamilyValue').val();
+			var inputAffluence = $('#inputAffluence').val();
+
+			$.ajax({
+				method : 'post',
+				url : 'update_family_info',
+				async : true,
+                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFamily': inputFamily, 'inputFather': inputFather, 'inputMother': inputMother, 'inputMSister': inputMSister, 'inputUMSister': inputUMSister, 'inputMBrother': inputMBrother, 'inputUMBrother': inputUMBrother, 'inputNativeCountry': inputNativeCountry, 'inputNativeState': inputNativeState, 'inputFamilyValue': inputFamilyValue, 'inputAffluence': inputAffluence},
+                success:function(response){
+
+                	console.log('response');
+                	console.log(response);
+
+					$('#education').addClass('in active');
+					$('#family').removeClass('in active');
+					$(window).scrollTop(0);
+                },
+			    error: function(data){
+			        console.log(data);
+			    },
+			});
+		}
 		});
 
 		//#Family Info
 		$('#familySkip').on('click', function(){
 			$('#education').addClass('in active');
 			$('#family').removeClass('in active');
+		});
+
+		//#Education Info
+		$('#educationSkip').on('click', function(){
+			$('#address').addClass('in active');
+			$('#education').removeClass('in active');
+		});
+
+		//#Education Info
+		$('#addressSkip').on('click', function(){
+			$('#photo').addClass('in active');
+			$('#address').removeClass('in active');
 		});
 	});
 
@@ -124,7 +176,7 @@
                     <div class="tab-pane fade in active" id="basic">
         				<form id="myForm" method="post">
 
-        					<input type="hidden" name="user_id" id="user_id" value="{{ $user->user_id }}">
+        					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
 
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
@@ -314,9 +366,7 @@
 						  	<div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">About Us</label>
 	                            <div class="col-md-6">
-	                                <textarea class="validate[required] form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus">
-	                                	{{ $user->bio }}
-	                                </textarea>
+	                                <textarea class="validate[required] form-control" rows="5" cols="5" name="inputAboutus" id="inputAboutus">{{ $user->bio }}</textarea>
 	                            </div>	
 	                        </div>
 	                        <div class="form-group row">
@@ -343,23 +393,26 @@
 							    		{
 											$Never = 'checked';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = '';
 							    		}
-						    			if($user->marital_status == '2')
+						    			elseif($user->marital_status == '2')
 						    			{
 											$Never = '';$Annulled = 'checked';$Awaiting = '';$Divorced = '';$Widowed = '';
 						    			}
-						    			if($user->marital_status == '3')
+						    			elseif($user->marital_status == '3')
 						    			{
 											$Never = '';$Annulled = '';$Awaiting = 'checked';$Divorced = '';$Widowed = '';
 						    			}
-						    			if($user->marital_status == '4')
+						    			elseif($user->marital_status == '4')
 						    			{
 											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = 'checked';$Widowed = '';
 						    			}
-							    		if($user->marital_status == '5')
+							    		elseif($user->marital_status == '5')
 							    		{
 											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = 'checked';
 							    		}
-
+							    		else
+							    		{
+							    			$Never = 'checked';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = '';
+							    		}
 					    			?>
 	                            <label for="gender" class="col-md-2 control-label">Marital Status</label>
 	                            <div class="col-md-7">
@@ -552,43 +605,42 @@
 
                     <!-- #Family -->
                     <div class="tab-pane fade" id="family">
-        				<form>
+        				<form id="familyForm" method="post">
+        					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">About My Family</label>
 							    <div class="col-sm-6">
-							      	<textarea class="form-control" rows="3" cols="10"></textarea>
+							      	<textarea class="form-control" rows="3" cols="10" id="inputFamily"></textarea>
 							    </div>
 						  	</div>
 
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Father's Occupation</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Father's Status</option>
-	                                    <option value="01">Father's Status</option>
-	                                    <option value="02">Business</option>
-	                                    <option value="03">Employed-Govt</option>
-	                                    <option value="04">Employed-Private</option>
-	                                    <option value="05">Not-Employed</option>
-	                                    <option value="06">Passed Away</option>
-	                                    <option value="07">Professional</option>
-	                                    <option value="08">Retired</option>
+	                                <select class="form-control" id="inputFather" name="inputFather">
+	                                    <option value="">Father's Occupation</option>
+	                                    <option value="Business">Business</option>
+	                                    <option value="Employed-Govt">Employed-Govt</option>
+	                                    <option value="Employed-Private">Employed-Private</option>
+	                                    <option value="Not-Employed">Not-Employed</option>
+	                                    <option value="Passed Away">Passed Away</option>
+	                                    <option value="Professional">Professional</option>
+	                                    <option value="Retired">Retired</option>
                                     </select>
 	                            </div>
 						  	</div>
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Mother's Occupation</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Mother's Status</option>
-	                                    <option value="01">Mother's Status</option>
-	                                    <option value="02">Business</option>
-	                                    <option value="03">Employed-Govt</option>
-	                                    <option value="04">Employed-Private</option>
-	                                    <option value="05">Homemaker</option>
-	                                    <option value="06">Passed Away</option>
-	                                    <option value="07">Professional</option>
-	                                    <option value="08">Retired</option>
+	                                <select class="form-control" id="inputMother" name="inputMother">
+	                                    <option value="">Mother's Occupation</option>
+	                                    <option value="Business">Business</option>
+	                                    <option value="Employed-Govt">Employed-Govt</option>
+	                                    <option value="Employed-Private">Employed-Private</option>
+	                                    <option value="Homemaker">Homemaker</option>
+	                                    <option value="Passed Away">Passed Away</option>
+	                                    <option value="Professional">Professional</option>
+	                                    <option value="Retired">Retired</option>
                                     </select>
 	                            </div>
 						  	</div>
@@ -596,35 +648,35 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Sisters</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste">
+	                                <input type="text" class="form-control" id="inputMSister" name="inputMSister">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Sisters</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste">
+	                                <input type="text" class="form-control" id="inputUMSister"" name="inputUMSister">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Brothers</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste">
+	                                <input type="text" class="form-control" id="inputMBrother" name="inputMBrother">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Brothers</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="Subcaste">
+	                                <input type="text" class="form-control" id="inputUMBrother" name="inputUMBrother">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native Country</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputNativeCountry" name="inputNativeCountry" required="required">
 	                                    <option value="">Select Country</option>
 										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
 	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
@@ -649,7 +701,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native State</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputNativeState" name="inputNativeState" required="required">
 	                                    <option value="">Select State</option>
 										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
 	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
@@ -674,23 +726,23 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Family Value</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputFamilyValue" name="inputFamilyValue">
 	                                    <option value="">Family Values</option>
-										<option value="1" title="Liberal">Liberal</option>
-	                                    <option value="2" title="Moderate">Moderate</option>
-	                                    <option value="3" title="Moral">Moral</option>
-	                                    <option value="4" title="Traditional">Traditional</option>
+										<option value="Liberal" title="Liberal">Liberal</option>
+	                                    <option value="Moderate" title="Moderate">Moderate</option>
+	                                    <option value="Moral" title="Moral">Moral</option>
+	                                    <option value="Traditional" title="Traditional">Traditional</option>
 	                                </select>
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Affluence Level</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="caste" name="caste" required="required">
+	                                <select class="form-control" id="inputAffluence" name="inputAffluence">
 	                                    <option value="">Select Affluence</option>
-										<option value="1" title="Affluence">Affluence</option>
-	                                    <option value="2" title="Middle Class">Middle Class</option>
-	                                    <option value="3" title="Upper Middle Class">Upper Middle Class</option>
+										<option value="Affluence" title="Affluence">Affluence</option>
+	                                    <option value="Middle Class" title="Middle Class">Middle Class</option>
+	                                    <option value="Upper Middle Class" title="Upper Middle Class">Upper Middle Class</option>
 	                                </select>
 	                            </div>
 	                        </div>
@@ -783,7 +835,7 @@
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="submit" class="btn btn-success" id="educationSkip">
 	                                    Skip
 	                                </button>
 	                            </div>
@@ -857,7 +909,7 @@
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="submit" class="btn btn-success" id="addressSkip">
 	                                    Skip
 	                                </button>
 	                            </div>

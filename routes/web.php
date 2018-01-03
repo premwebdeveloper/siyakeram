@@ -56,6 +56,8 @@ Route::get('profile', 'Profile@profile')->name('profile');
 
 Route::post('/update_basic_info', 'AjaxController@update_basic_info')->name('update_basic_info');
 
+Route::post('/update_family_info', 'AjaxController@update_family_info')->name('update_family_info');
+
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //
 ////////////////////////////////////////////////////////

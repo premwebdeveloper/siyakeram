@@ -53,6 +53,11 @@ class Profile extends Controller
 
         $caste = DB::table('caste')->where('status', 1)->get();
 
+        $countries = DB::table('countries')->get();
+
+        $states = DB::table('states')->get();
+
+
     	return view('profile.profile', array('user' => $user, 'mother_tongue' => $mother_tongue, 'height' => $height, 'caste' => $caste, 'caste_details' => $caste_details, 'mother_details' => $mother_details, 'height_details' => $height_details));
     }
 }
