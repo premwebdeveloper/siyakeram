@@ -30,6 +30,8 @@ Route::get('sendEmail', 'EmailController@sendEmail');
 
 Route::get('search', 'WebsitePages@search')->name('search');
 
+Route::post('search_for', 'WebsitePages@search_for')->name('search_for');
+
 Route::get('membership', 'WebsitePages@membership')->name('membership');
 
 Route::get('horoscope', 'WebsitePages@horoscope')->name('horoscope');
