@@ -35,7 +35,7 @@
                         <h4><strong>{{$user->name}}</strong></h4>
                         <h5><strong>{{$user->email}}</strong></h5>
                         <h5><strong>{{$user->phone}}</strong></h5>
-                        <p><i class="fa fa-map-marker"></i> address </p>
+                        <p><i class="fa fa-map-marker"></i> Address :  {{$user->address}}, {{$user->city}}, {{$user->state}}, {{$user->country}} - {{$user->zipcode}}</p>
 
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                         <div class="tabs-container">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#tab-1"> Personal Information</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-2">Optional Information</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-3">Family Members</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-2">Family Information</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-3">User Images</a></li>
                             </ul>
                             <div class="tab-content">
 

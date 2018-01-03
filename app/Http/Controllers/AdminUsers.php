@@ -21,10 +21,23 @@ class AdminUsers extends Controller
     {
         $user_id = $request->user_id;
 
-        # Get All Users
+        # Get User details
         $user = DB::table('user_details')->where('user_id', $user_id)->first();
 
-        return view('admin_users.view', array('user' => $user));
+        # Get User Images
+        $user_images = DB::table('user_images')->where('user_id', $user_id)->first();
+
+        # Get User Education Information
+        $user_education_details= DB::table('user_education_center')->where('user_id', $user_id)->first();
+
+        # Get User Family Details
+        $user_family_details = DB::table('family_details')->where('user_id', $user_id)->first();
+
+        /*echo '<pre>';
+        print_r($user);
+        exit;*/
+
+        return view('admin_users.view', array('user' => $user, 'images' => $user_images, 'education_details' => $user_education_details, 'family_details' => $user_family_details));
     }
 
     // Disable user
