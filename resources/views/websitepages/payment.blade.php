@@ -11,13 +11,13 @@
       	<section class="content-template-holder">
 
 		    <p>
-		        Welcome to LoveVivah.com! We are a leading Indian matrimonial matchmaking service provider. Our experienced and highly dedicated team is committed to provide 360 degree solutions to all prospective Indian brides and grooms. We are technology driven company providing the best platform to those who are genuinely looking for their soul mates. We have a long list of Happy Customers, who are pleased with our end-to-end services.
+		        Welcome to Siya Ke Ram! We are a leading Indian matrimonial matchmaking service provider. Our experienced and highly dedicated team is committed to provide 360 degree solutions to all prospective Indian brides and grooms. We are technology driven company providing the best platform to those who are genuinely looking for their soul mates. We have a long list of Happy Customers, who are pleased with our end-to-end services.
 
 		    </p>
 		</section>
 	<section class="content-template-holder">
-	    <h3 class="light-pink roboto-medium">What makes LoveVivah Different?</h3>
-	    <p>We are the first and only platform that ensures the validation of all new registered profiles through Aadhaar Card details in real-time. We authenticate profiles through Aadhaar UIDAI to check the genuineness information provided by the user. LoveVivah.com is a genuine matrimonial platform that opens a new world for those who are serious about commitments and register with us for marriage purpose only. This is not a dating site, and to discourage the registration of fake users, we ask for a few mandatory documents and details to authenticate the profile of the new users. All new users are required to complete the authentication process before their profile is made  live on LoveVivah.com </p>
+	    <h3 class="light-pink roboto-medium">What makes Siya Ke Ram Different?</h3>
+	    <p>We are the first and only platform that ensures the validation of all new registered profiles through Aadhaar Card details in real-time. We authenticate profiles through Aadhaar UIDAI to check the genuineness information provided by the user. Siya Ke Ram.com is a genuine matrimonial platform that opens a new world for those who are serious about commitments and register with us for marriage purpose only. This is not a dating site, and to discourage the registration of fake users, we ask for a few mandatory documents and details to authenticate the profile of the new users. All new users are required to complete the authentication process before their profile is made  live on Siya Ke Ram </p>
 	</section>
 	<section class="content-template-holder">
 	    <h3 class="light-pink roboto-medium">Five points of Authentication</h3>
@@ -30,7 +30,7 @@
 		4.	Verifying information from Facebook profile <br>
 		5.	Verifying education and other details from Linked In profile <br>
 
-	To ensure the genuineness and authentication of profiles we have created this process. 
+	To ensure the genuineness and authentication of profiles we have created this process.
 
 
 	    </p>
@@ -41,14 +41,14 @@
 	</section>
 	<section class="content-template-holder">
 	    <h3 class="light-pink roboto-medium">Wider &amp; Better Search Options </h3>
-	    <p>We serve to all Indian communities in India and abroad with prime focus on USA, Canada, UK, Australia and Singapore. In a short-span of time, we have become the first choice of all Indian communities to search the perfect life partner with ease. This is one of the best platforms to search and connect with the special someone. 
+	    <p>We serve to all Indian communities in India and abroad with prime focus on USA, Canada, UK, Australia and Singapore. In a short-span of time, we have become the first choice of all Indian communities to search the perfect life partner with ease. This is one of the best platforms to search and connect with the special someone.
 	    </p>
 	</section>
 	<section class="content-template-holder">
-	    <h3 class="light-pink roboto-medium">LoveVivah helps you better</h3>
-	    <p>The site is solely managed by Tanisha Systems Inc.  LoveVivah was started with the vision to provide a customer friendly and highly authentic platform for all potential users. We provide an exclusive matchmaking experience that enables our users to find the perfect match for them without any hassle. 
+	    <h3 class="light-pink roboto-medium">Siya Ke Ram helps you better</h3>
+	    <p>The site is solely managed by Tanisha Systems Inc.  Siya Ke Ram was started with the vision to provide a customer friendly and highly authentic platform for all potential users. We provide an exclusive matchmaking experience that enables our users to find the perfect match for them without any hassle.
 
-	We believe that LOVEVIVAH can help you to find that special person in the world for whom you have been waiting for all your life! All we ask is to give us a chance!
+	We believe that Siya Ke Ram can help you to find that special person in the world for whom you have been waiting for all your life! All we ask is to give us a chance!
 	What makes our experienced team a go-getter?<br>
 	•	We understand your requirements and try to meet your criteria from the Day 1.<br>
 	•	We provide completely personalized service to our customers.<br>
@@ -75,7 +75,7 @@
         </div>
         <h3 class="white-text">100% Trustworthy</h3>
         <p>
-          We are highly authentic, 100% trustworthy matrimonial platform. We follow multi-level authentication to ensure genuine profiles.  
+          We are highly authentic, 100% trustworthy matrimonial platform. We follow multi-level authentication to ensure genuine profiles.
         </p>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 text-center">
@@ -86,7 +86,7 @@
           </div>
         </div>
         <h3 class="white-text">Higher Authentication</h3>
-        <p> 
+        <p>
         Higher level of verification to keep fake users at bay. We authenticate Aadhaar Card Number through UIDAI to ensure credibility of members.
         </p>
       </div>
@@ -98,7 +98,7 @@
           </div>
         </div>
         <h3 class="white-text">Better Search &amp; Matches</h3>
-        <p> 
+        <p>
            Better search results &amp; matches based on your preferences. Search the desired profiles without any hassle &amp; get relevant matches.
         </p>
       </div>
@@ -111,7 +111,7 @@
         </div>
         <h3 class="white-text">Explore &amp; Connect</h3>
         <p>
-         Explore and connect anytime, anywhere with registered users at your ease. Get access to unlimited profiles &amp; share interest with the one you like.  
+         Explore and connect anytime, anywhere with registered users at your ease. Get access to unlimited profiles &amp; share interest with the one you like.
         </p>
       </div>
     </div>

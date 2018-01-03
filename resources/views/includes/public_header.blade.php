@@ -55,7 +55,7 @@
                     <span class = "icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('resources/frontend_assets/images/lv.png')}}" alt="lovevivah logo">
+                    <img src="{{asset('resources/frontend_assets/images/lv.png')}}" alt="logo">
                 </a>
             </div>
             <div  class="collapse navbar-collapse" id="myNavbar">

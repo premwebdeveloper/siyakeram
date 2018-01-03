@@ -248,7 +248,7 @@
         <div>
           <div class="content-holder">
             <h3 class="sub-heading">Aadhaar Authentic & Trustworthy Profiles</h3>
-            <div class="sub-content">To make this platform safe, truic and Aadhaar number Authentication of the registered members of LoveVivah.com.</div>
+            <div class="sub-content">To make this platform safe, truic and Aadhaar number Authentication of the registered members of Siya Ke Ram.</div>
           </div>
           <div class="image-holder features_img_1"></div>
         </div>
