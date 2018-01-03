@@ -119,6 +119,187 @@
 		}
 		});
 
+
+		//#Education Update
+		$(document).on("click", ".educationSkip", function(e){
+			e.preventDefault();
+			var valid = $("#educationForm").validationEngine("validate", {promptPosition : "topLeft"});
+			if(valid==true)
+			{
+				var user_id = $('.user_id').val();
+				var inputEducational = $('#inputEducational').val();
+				var inputEmployedAs = $('#inputEmployedAs').val();
+				var inputArea = $('#inputArea').val();
+				var inputEmployedWith = $('#inputEmployedWith').val();
+				var inputAnnual = $('#inputAnnual').val();
+
+				$.ajax({
+					method : 'post',
+					url : 'update_education_info',
+					async : true,
+	                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputEducational': inputEducational, 'inputEmployedAs': inputEmployedAs, 'inputArea': inputArea, 'inputEmployedWith': inputEmployedWith, 'inputAnnual': inputAnnual},
+	                success:function(response){
+
+	                	console.log('response');
+	                	console.log(response);
+
+						$('#address').addClass('in active');
+						$('#education').removeClass('in active');
+						$(window).scrollTop(0);
+	                },
+				    error: function(data){
+				        console.log(data);
+				    },
+				});
+			}
+		});
+
+		//#Address Update
+		$(document).on("click", "#addresSubmit", function(e){
+			e.preventDefault();
+			var valid = $("#addressForm").validationEngine("validate", {promptPosition : "topLeft"});
+			if(valid==true)
+			{
+				var user_id = $('.user_id').val();
+				var inputAddress = $('#inputAddress').val();
+				var inputAddressCountry = $('#inputAddressCountry').val();
+				var inputAddressState = $('#inputAddressState').val();
+				var inputAddressCity = $('#inputAddressCity').val();
+				var inputZipcode = $('#inputZipcode').val();
+				
+				$.ajax({
+					method : 'post',
+					url : 'update_address_info',
+					async : true,
+	                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputAddress': inputAddress, 'inputAddressCountry': inputAddressCountry, 'inputAddressState': inputAddressState, 'inputAddressCity': inputAddressCity, 'inputZipcode': inputZipcode},
+	                success:function(response){
+
+	                	console.log('response');
+	                	console.log(response);
+
+						$('#photo').addClass('in active');
+						$('#address').removeClass('in active');
+						$(window).scrollTop(0);
+	                },
+				    error: function(data){
+				        console.log(data);
+				    },
+				});
+			}
+		});
+
+
+		//# Select State
+    	$(document).on("change", "#inputNativeCountry", function(){
+    		var country = $('#inputNativeCountry').val();
+    		if(country == '')
+    		{
+    			$("#inputNativeState").html('');
+    			$("#inputNativeState").html('<option value="">Select State</option>');
+    			$("#inputNativeState").attr('disabled', 'disabled');
+    		}
+    		else
+    		{
+    			$.ajax({
+				    method: 'post',
+				    url: 'getStateByCountryForUser',
+				    data: {"_token": "{{ csrf_token() }}", 'country' : country},
+				    async: true,
+				    success: function(response){
+
+				    	console.log(response);
+
+				        var states = '';
+				        $.each(response, function(i, item) {
+						    states += '<option value="'+item.id+'">'+item.name+'</option>';
+						})
+
+						$("#inputNativeState").html('');
+						$("#inputNativeState").html(states);
+						$("#inputNativeState").removeAttr('disabled');
+				    },
+				    error: function(data){
+				        console.log(data);
+				    },
+				});
+    		}
+
+    	});
+
+		//# Select Address State
+    	$(document).on("change", "#inputAddressCountry", function(){
+    		var country = $('#inputAddressCountry').val();
+    		if(country == '')
+    		{
+    			$("#inputAddressState").html('');
+    			$("#inputAddressState").html('<option value="">Select State</option>');
+    			$("#inputAddressState").attr('disabled', 'disabled');
+    		}
+    		else
+    		{
+    			$.ajax({
+				    method: 'post',
+				    url: 'getStateByCountryForUser',
+				    data: {"_token": "{{ csrf_token() }}", 'country' : country},
+				    async: true,
+				    success: function(response){
+
+				    	console.log(response);
+
+				        var states = '';
+				        $.each(response, function(i, item) {
+						    states += '<option value="'+item.id+'">'+item.name+'</option>';
+						})
+
+						$("#inputAddressState").html('');
+						$("#inputAddressState").html(states);
+						$("#inputAddressState").removeAttr('disabled');
+				    },
+				    error: function(data){
+				        console.log(data);
+				    },
+				});
+    		}
+
+    	});
+
+		//# Select Address City
+    	$(document).on("change", "#inputAddressState", function(){
+    		var state = $('#inputAddressState').val();
+    		if(state == '')
+    		{
+    			$("#inputAddressCity").html('');
+    			$("#inputAddressCity").html('<option value="">Select City</option>');
+    			$("#inputAddressCity").attr('disabled', 'disabled');
+    		}
+    		else
+    		{
+    			$.ajax({
+				    method: 'post',
+				    url: 'getStateByStateForUser',
+				    data: {"_token": "{{ csrf_token() }}", 'state' : state},
+				    async: true,
+				    success: function(response){
+
+				    	console.log(response);
+
+				        var cities = '';
+				        $.each(response, function(i, item) {
+						    cities += '<option value="'+item.id+'">'+item.name+'</option>';
+						})
+
+						$("#inputAddressCity").html('');
+						$("#inputAddressCity").html(cities);
+						$("#inputAddressCity").removeAttr('disabled');
+				    },
+				    error: function(data){
+				        console.log(data);
+				    },
+				});
+    		}
+
+    	});
+
 		//#Family Info
 		$('#familySkip').on('click', function(){
 			$('#education').addClass('in active');
@@ -610,7 +791,7 @@
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">About My Family</label>
 							    <div class="col-sm-6">
-							      	<textarea class="form-control" rows="3" cols="10" id="inputFamily"></textarea>
+							      	<textarea class="form-control" rows="3" cols="10" id="inputFamily">{{$family->about_family}}</textarea>
 							    </div>
 						  	</div>
 
@@ -618,6 +799,9 @@
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Father's Occupation</label>
 							    <div class="col-md-6">
 	                                <select class="form-control" id="inputFather" name="inputFather">
+	                                	@if($family->father_occupation)
+	                                    <option value="{{$family->father_occupation}}">{{$family->father_occupation}}</option>
+	                                    @endif
 	                                    <option value="">Father's Occupation</option>
 	                                    <option value="Business">Business</option>
 	                                    <option value="Employed-Govt">Employed-Govt</option>
@@ -633,6 +817,9 @@
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Mother's Occupation</label>
 							    <div class="col-md-6">
 	                                <select class="form-control" id="inputMother" name="inputMother">
+	                                	@if($family->mother_occupation)
+	                                    <option value="{{$family->mother_occupation}}">{{$family->mother_occupation}}</option>
+	                                    @endif
 	                                    <option value="">Mother's Occupation</option>
 	                                    <option value="Business">Business</option>
 	                                    <option value="Employed-Govt">Employed-Govt</option>
@@ -648,52 +835,49 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Sisters</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="inputMSister" name="inputMSister">
+	                                <input type="text" class="form-control" id="inputMSister" value="{{$family->married_sisters}}" name="inputMSister">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Sisters</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="inputUMSister"" name="inputUMSister">
+	                                <input type="text" class="form-control" id="inputUMSister" value="{{$family->unmarried_sisters}}" name="inputUMSister">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Married Brothers</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="inputMBrother" name="inputMBrother">
+	                                <input type="text" class="form-control" id="inputMBrother" value="{{$family->married_brothers}}" name="inputMBrother">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Unmarried Brothers</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" id="inputUMBrother" name="inputUMBrother">
+	                                <input type="text" class="form-control" id="inputUMBrother" value="{{$family->unmarried_brothers}}" name="inputUMBrother">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native Country</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputNativeCountry" name="inputNativeCountry" required="required">
-	                                    <option value="">Select Country</option>
-										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
-	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
-	                                    <option value="3" title="Addharmi">Addharmi</option>
-	                                    <option value="4" title="Aggarwal">Aggarwal</option>
-	                                    <option value="5" title="Agri">Agri</option>
-	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
-	                                    <option value="7" title="Ahom">Ahom</option>
-	                                    <option value="8" title="Dogri">Dogri</option>
-	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
-	                                    <option value="10" title="Arekatica">Arekatica</option>
-	                                    <option value="11" title="Arora">Arora</option>
-	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
-	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
-	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
-	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
-	                                    <option value="16" title="Baidya">Baidya</option>
+	                                <select class="form-control" id="inputNativeCountry" name="inputNativeCountry">
+	                                    
+	                                	@if(!empty($country_details->id))
+	                                		<option value="{{$country_details->id}}">{{$country_details->name}}</option>
+                            		  		<option value="">Select Country</option>
+		                                    @foreach($countries as $country)
+												<option value="{{$country->id}}" title="{{$country->name}}">{{$country->name}}</option>
+											@endforeach
+	                                	@else
+	                                		<option value="">Select Country</option>
+		                                    @foreach($countries as $country)
+												<option value="{{$country->id}}" title="{{$country->name}}">{{$country->name}}</option>
+											@endforeach
+	                                	@endif
+
 	                                </select>
 	                            </div>
 	                        </div>
@@ -701,24 +885,12 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Native State</label>
 	                            <div class="col-md-6">
-	                                <select class="form-control" id="inputNativeState" name="inputNativeState" required="required">
-	                                    <option value="">Select State</option>
-										<option value="1" title="6000 Niyogi">6000 Niyogi</option>
-	                                    <option value="2" title="96K Kokanastha">96K Kokanastha</option>
-	                                    <option value="3" title="Addharmi">Addharmi</option>
-	                                    <option value="4" title="Aggarwal">Aggarwal</option>
-	                                    <option value="5" title="Agri">Agri</option>
-	                                    <option value="6" title="Ahluwalia">Ahluwalia</option>
-	                                    <option value="7" title="Ahom">Ahom</option>
-	                                    <option value="8" title="Dogri">Dogri</option>
-	                                    <option value="9" title="Ambalavasi">Ambalavasi</option>
-	                                    <option value="10" title="Arekatica">Arekatica</option>
-	                                    <option value="11" title="Arora">Arora</option>
-	                                    <option value="12" title="Arunthathiyar">Arunthathiyar</option>
-	                                    <option value="13" title="Arya Vysya">Arya Vysya</option>
-	                                    <option value="14" title="Aryasamaj">Aryasamaj</option>
-	                                    <option value="15" title="Baghel/Pal/Gaderiya">Baghel/Pal/Gaderiya</option>
-	                                    <option value="16" title="Baidya">Baidya</option>
+	                                <select id="inputNativeState" name="inputNativeState" class="form-control" disabled="disabled">
+	                                	@if(!empty($state_details->id))
+		                                	<option value="{{$state_details->id}}">{{$state_details->name}}</option>
+	                                	@else
+		                                	<option value="">Select State</option>
+	                                	@endif
 	                                </select>
 	                            </div>
 	                        </div>
@@ -727,6 +899,9 @@
 	                            <label for="gender" class="col-md-2 control-label">Family Value</label>
 	                            <div class="col-md-6">
 	                                <select class="form-control" id="inputFamilyValue" name="inputFamilyValue">
+	                                	@if($family->family_value)
+	                                    <option value="{{$family->family_value}}">{{$family->family_value}}</option>
+	                                    @endif
 	                                    <option value="">Family Values</option>
 										<option value="Liberal" title="Liberal">Liberal</option>
 	                                    <option value="Moderate" title="Moderate">Moderate</option>
@@ -739,6 +914,9 @@
 	                            <label for="gender" class="col-md-2 control-label">Affluence Level</label>
 	                            <div class="col-md-6">
 	                                <select class="form-control" id="inputAffluence" name="inputAffluence">
+	                                	@if($family->affluence_level)
+	                                    <option value="{{$family->affluence_level}}">{{$family->affluence_level}}</option>
+	                                    @endif
 	                                    <option value="">Select Affluence</option>
 										<option value="Affluence" title="Affluence">Affluence</option>
 	                                    <option value="Middle Class" title="Middle Class">Middle Class</option>
@@ -749,9 +927,9 @@
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success" id="familySkip">
+<!-- 	                                <button type="submit" class="btn btn-success" id="familySkip">
 	                                    Skip
-	                                </button>
+	                                </button> -->
 	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
 	                                <button type="submit" class="btn btn-success" id="familyInfo">
@@ -764,20 +942,25 @@
 
                     <!-- #Education -->
                     <div class="tab-pane fade" id="education">
-        				<form>
+        				<form method="post" id="educationForm">
+        					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Educational Qualification</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Educational Qualification</option>
-	                                    <option value="01">A.M.I.E</option>
-	                                    <option value="02">ACS</option>
-	                                    <option value="03">ANM</option>
-	                                    <option value="04">Associates Degree</option>
-	                                    <option value="05">B.A</option>
-	                                    <option value="06">B.Arch</option>
-	                                    <option value="07">B.Com</option>
-	                                    <option value="08">B.Ed</option>
+	                                <select class="validate[required] form-control" id="inputEducational" name="inputEducational">
+	                                	@if(!empty($educational_details->id))
+	                                		<option value="{{$educational_details->id}}">{{$educational_details->education}}</option>
+		                                    <option value="">Educational Qualification</option>
+		                                    @foreach($educational as $edu)
+		                                    	<option value="01">{{$edu->education}}</option>
+		                                    @endforeach
+	                                	@else
+		                                    <option value="">Educational Qualification</option>
+		                                    @foreach($educational as $edu)
+		                                    	<option value="{{$edu->id}}">{{$edu->education}}</option>
+		                                    @endforeach
+	                                	@endif
+
                                     </select>
 	                            </div>
 						  	</div>
@@ -785,13 +968,20 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Employed As</option>
-	                                    <option value="01">Accounting Professional</option>
-	                                    <option value="02">Actor</option>
-	                                    <option value="03">Admin Professional</option>
-	                                    <option value="04">Advertising Professional</option>
-	                                    <option value="05">Agent/Broker</option>
+	                                <select class="validate[required] form-control" id="inputEmployedAs" name="inputEmployed">
+	                                	@if(!empty($employed_details->id))
+	                                		<option value="{{$employed_details->id}}">{{$employed_details->employed_as}}</option>
+		                                    <option value="">Employed As</option>
+		                                    @foreach($employed_as as $employed)
+		                                    	<option value="{{$employed->id}}">{{$employed->employed_as}}</option>
+		                                    @endforeach
+	                                	@else
+		                                    <option value="">Employed As</option>
+		                                    @foreach($employed_as as $employed)
+		                                    	<option value="{{$employed->id}}">{{$employed->employed_as}}</option>
+		                                    @endforeach
+	                                	@endif
+
 	                                </select>
 	                            </div>
 						  	</div>
@@ -799,11 +989,20 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Area/Field</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Area/Field</option>
-	                                    <option value="01">Admnistrative Services</option>
-	                                    <option value="02">Advertising Marketing</option>
-	                                    <option value="03">Architecture</option>
+	                                <select class="validate[required] form-control" id="inputArea" name="inputArea">
+	                                	@if(!empty($area_details->id))
+	                                		<option value="{{$area_details->id}}">{{$area_details->area_field}}</option>
+		                                    <option value="">Area/Field</option>
+		                                    @foreach($area_field as $area)
+		                                    	<option value="{{$area->id}}">{{$area->area_field}}</option>
+		                                    @endforeach
+	                                	@else
+		                                    <option value="">Area/Field</option>
+		                                    @foreach($area_field as $area)
+		                                    	<option value="{{$area->id}}">{{$area->area_field}}</option>
+		                                    @endforeach
+	                                	@endif
+
 	                                </select>
 	                            </div>
 						  	</div>
@@ -811,36 +1010,55 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed With</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
+	                                <select class="validate[required] form-control" id="inputEmployedWith" name="inputEmployedWith">
+	                                	@if($education_center->employed_with)
+	                                    <option value="{{$education_center->employed_with}}">{{$education_center->employed_with}}</option>
+	                                    @endif
 	                                    <option value="">Employed With</option>
-	                                    <option value="01">Business/Self Employed</option>
-	                                    <option value="02">Civil Services</option>
-	                                    <option value="03">Defense Forces</option>
-	                                    <option value="04">Goverment/Public Sector</option>
-	                                    <option value="05">NGO/NPT</option>
+	                                    
+                                    	<option value="Business/Self Employed">Business/Self Employed</option>
+                                    	<option value="Civil Services">Civil Services</option>
+                                    	<option value="Defense Forces">Defense Forces</option>
+                                    	<option value="Government/Public Sector">Government/Public Sector</option>
+                                    	<option value="NGO/NPT">NGO/NPT</option>
+                                    	<option value="Political Group">Political Group</option>
+                                    	<option value="Private Company">Private Company</option>
+                                    	<option value="Not Working">Not Working</option>
+                                    	<option value="Others">Others</option>
+	                                   
 	                                </select>
 	                            </div>
 						  	</div>
 
 						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Annual Income</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Annual Income</option>
-	                                    <option value="01">Dont Want to Specify</option>
-	                                    <option value="02">INR Up to 50 Thousand</option>
+	                                <select class="validate[required] form-control" id="inputAnnual" name="inputAnnual">
+	                                	@if(!empty($annual_details->id))
+	                                		<option value="{{$annual_details->id}}">{{$annual_details->annual_income}}</option>
+		                                    <option value="">Annual Income</option>
+		                                    @foreach($annual_income as $annual)
+		                                    	<option value="{{$annual->id}}">{{$annual->annual_income}}</option>
+		                                    @endforeach
+	                                	@else
+		                                    <option value="">Annual Income</option>
+		                                    @foreach($annual_income as $annual)
+		                                    	<option value="{{$annual->id}}">{{$annual->annual_income}}</option>
+		                                    @endforeach
+	                                	@endif
+
 	                                </select>
 	                            </div>
 						  	</div>
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success" id="educationSkip">
+	<!--                                 <button type="button" class="btn btn-success" id="educationSkip">
 	                                    Skip
-	                                </button>
+	                                </button> -->
 	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="button" class="btn btn-success educationSkip">
 	                                    Submit
 	                                </button>
 	                            </div>
@@ -850,24 +1068,33 @@
 
                     <!-- #Address -->
                     <div class="tab-pane fade" id="address">
-        				<form>
+        				<form method="post" id="addressForm">
+        					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Address</label>
 							    <div class="col-sm-6">
-							      	<textarea class="form-control" rows="3" cols="10"></textarea>
+				      	<textarea class="validate[required] form-control" rows="3" cols="10" id="inputAddress" name="inputAddress">{{$user->address}}</textarea>
 							    </div>
 						  	</div>
 
 							<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Country</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Employed As</option>
-	                                    <option value="01">Accounting Professional</option>
-	                                    <option value="02">Actor</option>
-	                                    <option value="03">Admin Professional</option>
-	                                    <option value="04">Advertising Professional</option>
-	                                    <option value="05">Agent/Broker</option>
+	                                <select class="validate[required] form-control" id="inputAddressCountry" name="inputAddressCountry">
+	                                    
+	                                	@if(!empty($countries_details->id))
+	                                		<option value="{{$countries_details->id}}">{{$countries_details->name}}</option>
+                            		  		<option value="">Select Country</option>
+		                                    @foreach($countries as $country)
+												<option value="{{$country->id}}" title="{{$country->name}}">{{$country->name}}</option>
+											@endforeach
+	                                	@else
+	                                		<option value="">Select Country</option>
+		                                    @foreach($countries as $country)
+												<option value="{{$country->id}}" title="{{$country->name}}">{{$country->name}}</option>
+											@endforeach
+	                                	@endif
+
 	                                </select>
 	                            </div>
 						  	</div>
@@ -875,11 +1102,12 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">State</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Area/Field</option>
-	                                    <option value="01">Admnistrative Services</option>
-	                                    <option value="02">Advertising Marketing</option>
-	                                    <option value="03">Architecture</option>
+	                                <select id="inputAddressState" name="inputAddressState" class="validate[required] form-control" disabled="disabled">
+	                                	@if(!empty($states_details->id))
+		                                	<option value="{{$states_details->id}}">{{$states_details->name}}</option>
+	                                	@else
+		                                	<option value="">Select State</option>
+	                                	@endif
 	                                </select>
 	                            </div>
 						  	</div>
@@ -887,13 +1115,12 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">City</label>
 							    <div class="col-md-6">
-	                                <select class="form-control" id="date" name="date" required="required">
-	                                    <option value="">Employed With</option>
-	                                    <option value="01">Business/Self Employed</option>
-	                                    <option value="02">Civil Services</option>
-	                                    <option value="03">Defense Forces</option>
-	                                    <option value="04">Goverment/Public Sector</option>
-	                                    <option value="05">NGO/NPT</option>
+	                                <select id="inputAddressCity" name="inputAddressCity" class="validate[required] form-control" disabled="disabled">
+	                                	@if(!empty($cities_details->id))
+		                                	<option value="{{$cities_details->id}}">{{$cities_details->name}}</option>
+	                                	@else
+		                                	<option value="">Select City</option>
+	                                	@endif
 	                                </select>
 	                            </div>
 						  	</div>
@@ -902,19 +1129,19 @@
 							    <label for="inputPassword" class="col-sm-2 col-form-label">ZipCode</label>
 							    <div class="col-md-6">
 
-	                                <input type="text" class="form-control" name="zipcode">
+	                                <input type="text" class="form-control" id="inputZipcode" value="{{$user->zipcode}}" name="inputZipcode">
 
 	                            </div>
 						  	</div>
 
 	                        <div class="form-group">
 	                            <div class="col-md-4 col-md-offset-2">
-	                                <button type="submit" class="btn btn-success" id="addressSkip">
+	<!--                                 <button type="button" class="btn btn-success" id="addressSkip">
 	                                    Skip
-	                                </button>
+	                                </button> -->
 	                            </div>
 	                            <div class="col-md-4 col-md-offset-1">
-	                                <button type="submit" class="btn btn-success">
+	                                <button type="button" class="btn btn-success" id="addresSubmit">
 	                                    Submit
 	                                </button>
 	                            </div>

@@ -81,45 +81,129 @@ class AjaxController extends Controller
 
     public function update_family_info(Request $request)
     {
-    	$date = date('Y-m-d H:i:s');
+        $date = date('Y-m-d H:i:s');
 
-    	$user_id = $request->user_id;
+        $user_id = $request->user_id;
 
-    	$inputFamily = $request->inputFamily;
-    	$inputFather = $request->inputFather;
-    	$inputMother = $request->inputMother;
-    	$inputMSister = $request->inputMSister;
-    	$inputUMSister = $request->inputUMSister;
-    	$inputMBrother = $request->inputMBrother;
-    	$inputUMBrother = $request->inputUMBrother;
-    	$inputNativeCountry = $request->inputNativeCountry;
-    	$inputNativeState = $request->inputNativeState;
-    	$inputFamilyValue = $request->inputFamilyValue;
-    	$inputAffluence = $request->inputAffluence;
+        $inputFamily = $request->inputFamily;
+        $inputFather = $request->inputFather;
+        $inputMother = $request->inputMother;
+        $inputMSister = $request->inputMSister;
+        $inputUMSister = $request->inputUMSister;
+        $inputMBrother = $request->inputMBrother;
+        $inputUMBrother = $request->inputUMBrother;
+        $inputNativeCountry = $request->inputNativeCountry;
+        $inputNativeState = $request->inputNativeState;
+        $inputFamilyValue = $request->inputFamilyValue;
+        $inputAffluence = $request->inputAffluence;
 
-    	$family_info_update = DB::table('family_details')->where('user_id', $user_id)->update(
+        $family_info_update = DB::table('family_details')->where('user_id', $user_id)->update(
 
-    		array(
+            array(
                     'about_family' => $inputFamily,
-    				'father_occupation' => $inputFather,
-    				'mother_occupation' => $inputMother,
-    				'married_sisters' => $inputMSister,
-    				'unmarried_sisters' => $inputUMSister,
-    				'married_brothers' => $inputMBrother,
-    				'unmarried_brothers' => $inputUMBrother,
-    				'native_country' => $inputNativeCountry,
-    				'native_state' => $inputNativeState,
-    				'family_value' => $inputFamilyValue,
-    				'affluence_level' => $inputAffluence,
-    				'updated_at' => $date,
-    				'status' => 1
-			)
-    	);
+                    'father_occupation' => $inputFather,
+                    'mother_occupation' => $inputMother,
+                    'married_sisters' => $inputMSister,
+                    'unmarried_sisters' => $inputUMSister,
+                    'married_brothers' => $inputMBrother,
+                    'unmarried_brothers' => $inputUMBrother,
+                    'native_country' => $inputNativeCountry,
+                    'native_state' => $inputNativeState,
+                    'family_value' => $inputFamilyValue,
+                    'affluence_level' => $inputAffluence,
+                    'updated_at' => $date,
+                    'status' => 1
+            )
+        );
 
         $response = array('messager' => 'Update Family Information');
 
         return response()->json($response);
 
         exit;
+    }
+
+    public function update_education_info(Request $request)
+    {
+        $date = date('Y-m-d H:i:s');
+
+        $user_id = $request->user_id;
+
+        $inputEducational = $request->inputEducational;
+        $inputEmployedAs = $request->inputEmployedAs;
+        $inputArea = $request->inputArea;
+        $inputEmployedWith = $request->inputEmployedWith;
+        $inputAnnual = $request->inputAnnual;  
+
+        $education_info_update = DB::table('user_education_center')->where('user_id', $user_id)->update(
+
+            array(
+                    'edu_qualification' => $inputEducational,
+                    'employed_as' => $inputEmployedAs,
+                    'area_field' => $inputArea,
+                    'employed_with' => $inputEmployedWith,
+                    'annual_income' => $inputAnnual,
+                    'updated_at' => $date,
+                    'status' => 1
+            )
+        );
+
+        $response = array('messager' => 'Update Educational Information');
+
+        return response()->json($response);
+
+        exit;
+    }
+
+    public function update_address_info(Request $request)
+    {
+    	$date = date('Y-m-d H:i:s');
+
+    	$user_id = $request->user_id;
+
+    	$inputAddress = $request->inputAddress;
+    	$inputAddressCountry = $request->inputAddressCountry;
+    	$inputAddressState = $request->inputAddressState;
+    	$inputAddressCity = $request->inputAddressCity;
+    	$inputZipcode = $request->inputZipcode;  
+
+    	$address_info_update = DB::table('user_details')->where('user_id', $user_id)->update(
+
+    		array(
+                    'address' => $inputAddress,
+    				'country' => $inputAddressCountry,
+    				'state' => $inputAddressState,
+    				'city' => $inputAddressCity,
+    				'zipcode' => $inputZipcode,
+    				'updated_at' => $date,
+    				'status' => 1
+			)
+    	);
+
+        $response = array('messager' => 'Update Address Information');
+
+        return response()->json($response);
+
+        exit;
+    }
+
+    public function getStateByCountryForUser(Request $request)
+    {
+        $country = $request->country;
+
+        // Get all districts of this state
+        $states = DB::table('states')->where('country_id', $country)->get();
+
+        return response()->json($states);
+    }
+
+    public function getStateByStateForUser(Request $request)
+    {
+        $state = $request->state;
+
+        // Get all districts of this state
+        $cities = DB::table('cities')->where('state_id', $state)->get();
+
+        return response()->json($cities);
     }
 }

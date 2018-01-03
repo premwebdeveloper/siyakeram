@@ -60,6 +60,14 @@ Route::post('/update_basic_info', 'AjaxController@update_basic_info')->name('upd
 
 Route::post('/update_family_info', 'AjaxController@update_family_info')->name('update_family_info');
 
+Route::post('/update_education_info', 'AjaxController@update_education_info')->name('update_education_info');
+
+Route::post('/update_address_info', 'AjaxController@update_address_info')->name('update_address_info');
+
+Route::post('getStateByCountryForUser', 'AjaxController@getStateByCountryForUser')->name('getStateByCountryForUser');
+
+Route::post('getStateByStateForUser', 'AjaxController@getStateByStateForUser')->name('getStateByStateForUser');
+
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //
 ////////////////////////////////////////////////////////
