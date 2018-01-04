@@ -44,13 +44,19 @@ class Profile extends Controller
         $annual_id = $education_center->annual_income;
 
         
-        
-
         $caste_details = array();
         $mother_details = array();
         $height_details = array();
         $country_details = array();
         $state_details = array();
+
+        $educational_details = array();
+        $employed_details = array();
+        $area_details = array();
+        $annual_details = array();
+        $countries_details = array();
+        $states_details = array();
+        $states_details = array();
         
         if(!empty($caste_id))
             {

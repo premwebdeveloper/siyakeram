@@ -73,3 +73,22 @@ ALTER TABLE `employed_as`
 
 ALTER TABLE `employed_as`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+-- ---------------------------Updated Table employed_as ON 04-01-2018--------------------------
+
+  CREATE TABLE `height` (
+  `id` int(11) NOT NULL,
+  `height` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `height` (`id`, `height`, `status`) VALUES
+(1, '122cm - 4ft', 1),
+(2, '125cm - 4ft 1in', 1),
+(3, '128cm - 4ft 2in', 1);
+
+ALTER TABLE `height`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `height`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

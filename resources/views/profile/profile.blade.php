@@ -31,6 +31,7 @@
 		$('#basicName').hide();
 		$(document).on("click", "#basicNext", function(e){
 			e.preventDefault();
+
 			var valid = $("#myForm").validationEngine("validate", {promptPosition : "topLeft"});
 			if(valid==true)
 			{
@@ -44,7 +45,7 @@
 			var inputMotherTongue = $('#inputMotherTongue').val();
 			var inputAboutus = $('#inputAboutus').val();
 			var inputHeight = $('#inputHeight').val();
-			var marital_for = $('.marital_for').val();
+			var marital_for = $('input[name=marital_for]:checked').val();
 			var inputCaste = $('#inputCaste').val();
 			var inputSubcaste = $('#inputSubcaste').val();
 			var inputComplexion = $('#inputComplexion').val();
@@ -589,10 +590,6 @@
 							    		elseif($user->marital_status == '5')
 							    		{
 											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = 'checked';
-							    		}
-							    		else
-							    		{
-							    			$Never = 'checked';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = '';
 							    		}
 					    			?>
 	                            <label for="gender" class="col-md-2 control-label">Marital Status</label>
