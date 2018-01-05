@@ -115,6 +115,8 @@ class RegisterController extends Controller
         $user_insert = DB::table('family_details')->insert(
             array(
                     'user_id' => $user_id,
+                    'created_at' => $date,
+                    'updated_at' => $date,
                     'status' => 1
                 )
         );
@@ -122,9 +124,11 @@ class RegisterController extends Controller
         $user_insert = DB::table('user_education_center')->insert(
             array(
                     'user_id' => $user_id,
+                    'created_at' => $date,
+                    'updated_at' => $date,
                     'status' => 1
                 )
-        );
+        );        
 
         $thisUser = User::findOrFail($user->id);
         $this->sendEmail($thisUser);

@@ -318,6 +318,15 @@
 			$('#photo').addClass('in active');
 			$('#address').removeClass('in active');
 		});
+		<?php
+			if(isset($insert_img) && $insert_img==1)
+			{
+		?>
+			$('#photo').addClass('in active');
+
+		<?php		
+			}
+		?>
 	});
 
 </script>
@@ -590,6 +599,10 @@
 							    		elseif($user->marital_status == '5')
 							    		{
 											$Never = '';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = 'checked';
+							    		}
+							    		else
+							    		{
+							    			$Never = 'checked';$Annulled = '';$Awaiting = '';$Divorced = '';$Widowed = '';
 							    		}
 					    			?>
 	                            <label for="gender" class="col-md-2 control-label">Marital Status</label>
@@ -1148,11 +1161,16 @@
 
                     <!-- #Address -->
                     <div class="tab-pane fade" id="photo">
-        				<form>
+						@if(session('status'))
+							<div class="alert alert-success"> {{ session('status') }} </div>
+						@endif
+        				<form action="{{ route('profile_image') }}" method="post" enctype="multipart/form-data">
+        					{{ csrf_field() }}
+        					<input type="hidden" name="user_id" value="{{ $user->user_id }}">
 						  	<div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Upload Images</label>
 							    <div class="col-sm-6">
-							      	<input type="file" class="form-control">
+							      	<input type="file" name="file[]" class="form-control" multiple>
 							    </div>
 						  	</div>
 
@@ -1164,7 +1182,60 @@
 	                            </div>
 	                        </div>
 						</form>
-                    </div>
+						<br>
+					  	<table class="table">
+						    <thead>
+						      <tr>
+						        <th>#</th>
+						        <th>Image</th>
+						        <th>delete</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+					    	<?php
+					    		$i=1;
+					    	?>
+					    	@foreach($profile_img as $img)
+						      	<tr>
+							        <td>{{ $i }}</td>
+									<td><img src="storage/app/uploads/profile_images/{{$img->image}}" style="width: 100px;"></td>
+							        <td><a href="#{{ $img->id }}" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></a></td>
+						       </tr>
+								<div id="{{$img->id}}" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+										  <div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title"><i class="fa fa-trash"></i> Delete Profile Image</h4>
+										  </div>
+										  <div class="modal-body">
+											<p style="padding: 10px;">Are you sure you want to Delete ?</p>
+										  </div>
+										  <div class="modal-footer">
+											<form method="post" action="{{route('deleteProfileImage')}}">
+
+												{{ csrf_field() }}
+
+												<input type="hidden" id="delt" name="delete_family_member" value="{{$img->id}}">
+
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button class="btn btn-danger" type="submit" name="delete" value="{{$img->id}}">Delete</button>
+											</form>
+										  </div>
+										</div>
+
+									</div>
+								</div>
+						      	<?php
+						      		$i++;
+						      	?>
+					       @endforeach
+
+						    </tbody>
+					  	</table>
+					 </div>
                 </div>
             </div>
         </div>

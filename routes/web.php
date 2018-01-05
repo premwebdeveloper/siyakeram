@@ -68,6 +68,10 @@ Route::post('getStateByCountryForUser', 'AjaxController@getStateByCountryForUser
 
 Route::post('getStateByStateForUser', 'AjaxController@getStateByStateForUser')->name('getStateByStateForUser');
 
+Route::post('profile_image', 'Profile@profile_image')->name('profile_image');
+
+Route::post('deleteProfileImage', 'Profile@deleteProfileImage')->name('deleteProfileImage');
+
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //
 ////////////////////////////////////////////////////////

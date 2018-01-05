@@ -25,7 +25,8 @@ class Profile extends Controller
     	# Get User Role
         $user = DB::table('user_details')->where('user_id', $currentuserid)->first();
         $family = DB::table('family_details')->where('user_id', $currentuserid)->first();
-    	$education_center = DB::table('user_education_center')->where('user_id', $currentuserid)->first();
+        $education_center = DB::table('user_education_center')->where('user_id', $currentuserid)->first();
+    	$profile_img = DB::table('user_images')->where('user_id', $currentuserid)->get();
 
         $caste_id = $user->caste;
         $mother_id = $user->mother_tongue;
@@ -56,8 +57,9 @@ class Profile extends Controller
         $annual_details = array();
         $countries_details = array();
         $states_details = array();
-        $states_details = array();
-        
+        $cities_details = array();
+    
+
         if(!empty($caste_id))
             {
                 $caste_details = DB::table('caste')->where('id', $caste_id)->first();
@@ -127,6 +129,76 @@ class Profile extends Controller
         $states = DB::table('states')->get();
 
 
-    	return view('profile.profile', array('user' => $user, 'mother_tongue' => $mother_tongue, 'height' => $height, 'caste' => $caste, 'caste_details' => $caste_details, 'mother_details' => $mother_details, 'height_details' => $height_details, 'countries' => $countries, 'states' => $states, 'country_details' => $country_details, 'state_details' => $state_details, 'family' => $family, 'area_field' => $area_field, 'educational' => $educational, 'annual_income' => $annual_income, 'employed_as' => $employed_as, 'educational_details' => $educational_details, 'employed_details' => $employed_details, 'area_details' => $area_details, 'annual_details' => $annual_details, 'education_center' => $education_center, 'countries_details' => $countries_details, 'states_details' => $states_details, 'cities_details' => $cities_details));
+    	return view('profile.profile', array('user' => $user, 'mother_tongue' => $mother_tongue, 'height' => $height, 'caste' => $caste, 'caste_details' => $caste_details, 'mother_details' => $mother_details, 'height_details' => $height_details, 'countries' => $countries, 'states' => $states, 'country_details' => $country_details, 'state_details' => $state_details, 'family' => $family, 'area_field' => $area_field, 'educational' => $educational, 'annual_income' => $annual_income, 'employed_as' => $employed_as, 'educational_details' => $educational_details, 'employed_details' => $employed_details, 'area_details' => $area_details, 'annual_details' => $annual_details, 'education_center' => $education_center, 'countries_details' => $countries_details, 'states_details' => $states_details, 'cities_details' => $cities_details, 'profile_img' => $profile_img));
     }
+
+    public function profile_image(Request $request)
+    {
+        $user_id = $request->user_id;
+
+        $date = date('Y-m-d H:i:s');
+        //return $request->all();
+        if($request->hasFile('file')) {
+
+            foreach ($request->file as $file) {
+
+                $filename = $file->getClientOriginalName();
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $filename = substr(md5(microtime()),rand(0,26),6);
+
+                $filename .= '.'.$ext;
+
+                $filesize = $file->getClientSize();
+
+                $destinationPath = config('app.fileDestinationPath').'/'.$filename;
+                $uploaded = Storage::put($destinationPath, file_get_contents($file->getRealPath()));
+
+                if($uploaded)
+                {
+                     $image_update = DB::table('user_images')->insert(
+                        array(
+                            'user_id' => $user_id,
+                            'image' => $filename,
+                            'created_at' => $date,
+                            'updated_at' => $date,
+                            'status' => 1
+                        )
+                    );
+                }
+
+                if($uploaded)
+                {
+                    $status = 'image upload successfully.';
+                }
+                else
+                {
+                    $status = 'No File Selected';
+                }
+            }
+        }
+
+        return redirect('profile')->with('status', $status);
+    }
+
+    public function deleteProfileImage(Request $request)
+        {
+            $date = date('Y-m-d H:i:s');
+
+            $member_id = $request->delete_family_member;
+            
+            $delete_profile_img = DB::table('user_images')->where('id', $member_id)->delete();
+
+            if($delete_profile_img)
+            {
+                $status = 'Delete Profile Image successfully.';
+            }
+            else
+            {
+                $status = 'Something went wrong !';
+            }
+
+            return redirect('profile')->with('status', $status);
+        }
 }

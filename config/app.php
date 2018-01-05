@@ -2,6 +2,8 @@
 
 return [
 
+    'fileDestinationPath' => 'uploads/profile_images',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
