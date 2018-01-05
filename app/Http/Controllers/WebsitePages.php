@@ -21,7 +21,8 @@ class WebsitePages extends Controller
         $country = $request->country;
         $state = $request->state;
         $city = $request->city;
-        $search_key = $request->search_key;
+        //$search_key = $request->search_key;
+
         $working_as = $request->working_as;
         $income = $request->income;
         $education = $request->education;
@@ -31,19 +32,101 @@ class WebsitePages extends Controller
         $smoke = $request->smoke;
         $manglik = $request->manglik;
 
-        $query = DB::table('user_details');
+        // Curret date and year
+        $date = date('Y-m-d');
+        $y = date('Y', strtotime($date));
 
+        $query = DB::table('user_details')
+                ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->leftjoin('states', 'states.id', '=', 'user_details.state')
+                ->leftjoin('cities', 'cities.id', '=', 'user_details.city')
+                ->leftjoin('mother_tongue', 'mother_tongue.id', '=', 'user_details.mother_tongue')
+                ->select('user_details.*', 'caste.caste as caste', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue');
+
+        // If Age from is not empty
+        if (!empty($age_from))
+        {
+            $year = $y - $age_from;
+            $query->where('user_details.year', '<=', $year);
+        }
+
+        // If Age to is not empty
+        if (!empty($age_to))
+        {
+            $year = $y - $age_to;
+            $query->where('user_details.year', '>=', $year);
+        }
+
+        // If religion is not empty
+        if (!empty($religion))
+        {
+            $query->where('user_details.religion', $religion);
+        }
+
+        // If caste is not empty
         if (!empty($caste))
         {
-            $query->where('caste', $caste);
+            $query->where('user_details.caste', $caste);
+        }
+
+        // If mother_tongue is not empty
+        if (!empty($mother_tongue))
+        {
+            $query->where('user_details.mother_tongue', $mother_tongue);
+        }
+
+        // If marital_status is not empty
+        if (!empty($marital_status))
+        {
+            $query->where('user_details.marital_status', $marital_status);
+        }
+
+        // If country is not empty
+        if (!empty($country))
+        {
+            $query->where('user_details.country', $country);
+        }
+
+        // If state is not empty
+        if (!empty($state))
+        {
+            $query->where('user_details.state', $state);
+        }
+
+        // If city is not empty
+        if (!empty($city))
+        {
+            $query->where('user_details.city', $city);
+        }
+
+        // If working_as is not empty
+        if (!empty($working_as))
+        {
+            $query->where('user_education_center.employed_as', $working_as);
+        }
+
+        // If income is not empty
+        if (!empty($income))
+        {
+            $query->where('user_education_center.annual_income', $income);
+        }
+
+        // If education is not empty
+        if (!empty($education))
+        {
+            $query->where('user_education_center.edu_qualification', $education);
         }
 
         $results = $query->get();
 
-        echo '<pre>';
+        //echo $query->toSql();
+        /*echo '<pre>';
         print_r($results);
-        exit;
+        exit;*/
 
+        return view('websitepages.searched_users', array('search_results' => $results));
     }
 
     public function search()

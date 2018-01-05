@@ -37,6 +37,21 @@
                                     <h4>Age From</h4>
                                     <select name="age_from" id="age_from" class="form-control">
                                         <option value="">Select Age</option>
+                                        <option value="18">18</option><option value="19">19</option>
+                                        <option value="20">20</option><option value="21">21</option>
+                                        <option value="22">22</option><option value="23">23</option>
+                                        <option value="24">24</option><option value="25">25</option>
+                                        <option value="26">26</option><option value="27">27</option>
+                                        <option value="28">28</option><option value="29">29</option>
+                                        <option value="30">30</option><option value="31">31</option>
+                                        <option value="32">32</option><option value="33">33</option>
+                                        <option value="34">34</option><option value="35">35</option>
+                                        <option value="36">36</option><option value="37">37</option>
+                                        <option value="38">38</option><option value="39">39</option>
+                                        <option value="40">40</option><option value="45">45</option>
+                                        <option value="50">50</option><option value="55">55</option>
+                                        <option value="60">60</option><option value="65">65</option>
+                                        <option value="70">70</option><option value="75">75</option>
                                     </select>
                 	         	</div>
 
@@ -44,6 +59,21 @@
                 		            <h4>Age To</h4>
                                     <select name="age_to" id="age_to" class="form-control">
                                         <option value="">Select Age</option>
+                                        <option value="18">18</option><option value="19">19</option>
+                                        <option value="20">20</option><option value="21">21</option>
+                                        <option value="22">22</option><option value="23">23</option>
+                                        <option value="24">24</option><option value="25">25</option>
+                                        <option value="26">26</option><option value="27">27</option>
+                                        <option value="28">28</option><option value="29">29</option>
+                                        <option value="30">30</option><option value="31">31</option>
+                                        <option value="32">32</option><option value="33">33</option>
+                                        <option value="34">34</option><option value="35">35</option>
+                                        <option value="36">36</option><option value="37">37</option>
+                                        <option value="38">38</option><option value="39">39</option>
+                                        <option value="40">40</option><option value="45">45</option>
+                                        <option value="50">50</option><option value="55">55</option>
+                                        <option value="60">60</option><option value="65">65</option>
+                                        <option value="70">70</option><option value="75">75</option>
                                     </select>
                 	         	</div>
 
@@ -142,12 +172,12 @@
                                     </select>
                 				</div>
 
-                	         	<div class="col-md-3">
-                		         	<h4>Search By Keyword </h4>
-                		          	<div class="src_field_box">
-                						<input type="text" name="search_key" id="search_key" class="common-input ui-autocomplete-input" placeholder="eg. Doctor, IIT, IIM">
-                		           	</div>
-                	           </div>
+                	         	<!-- <div class="col-md-3">
+                                     <h4>Search By Keyword </h4>
+                                      <div class="src_field_box">
+                                        <input type="text" name="search_key" id="search_key" class="common-input ui-autocomplete-input" placeholder="eg. Doctor, IIT, IIM">
+                                       </div>
+                               </div> -->
 
             	       	   </div>
                         </div>
@@ -251,4 +281,76 @@
         </div>
  	</div>
 </div>
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                // Get states of selected country
+                $(document).on("change", "#country", function(){
+                    var country = $(this).val();
+                    if(country == '')
+                    {
+                        $("#state").html('');
+                        $("#state").html('<option value="">Select State</option>');
+                    }
+                    else
+                    {
+                        $.ajax({
+                            method: 'post',
+                            url: 'getStateByCountryForUser',
+                            data: {"_token": "{{ csrf_token() }}", 'country' : country},
+                            async: true,
+                            success: function(response){
+
+                                var states = '<option value="">Select State</option>';
+                                $.each(response, function(i, item) {
+                                    states += '<option value="'+item.id+'">'+item.name+'</option>';
+                                })
+
+                                $("#state").html('');
+                                $("#state").html(states);
+                            },
+                            error: function(data){
+                                console.log(data);
+                            },
+                        });
+                    }
+                });
+
+                // Get Cities of selected state
+                $(document).on("change", "#state", function(){
+                    var state = $(this).val();
+                    if(state == '')
+                    {
+                        $("#city").html('');
+                        $("#city").html('<option value="">Select City</option>');
+                    }
+                    else
+                    {
+                        $.ajax({
+                            method: 'post',
+                            url: 'getStateByStateForUser',
+                            data: {"_token": "{{ csrf_token() }}", 'state' : state},
+                            async: true,
+                            success: function(response){
+
+                                var cities = '<option value="">Select City</option>';
+                                $.each(response, function(i, item) {
+                                    cities += '<option value="'+item.id+'">'+item.name+'</option>';
+                                })
+
+                                $("#city").html('');
+                                $("#city").html(cities);
+                            },
+                            error: function(data){
+                                console.log(data);
+                            },
+                        });
+                    }
+                });
+            });
+
+        </script>
 @endsection
