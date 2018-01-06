@@ -238,3 +238,6 @@ ALTER TABLE `educational_qualification` ADD `status` TINYINT(1) NOT NULL DEFAULT
 ALTER TABLE `user_details` CHANGE `manglik` `manglik` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL;
 ALTER TABLE `annual_income` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `annual_income`;
 ALTER TABLE `employed_as` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `employed_as`;
+
+-- ---------------------------Updated Table 'user_details' ON 06-01-2018--------------------------
+ALTER TABLE `user_details` ADD `diet` INT NULL AFTER `birth_place`;
