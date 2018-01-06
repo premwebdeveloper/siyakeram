@@ -28,9 +28,9 @@ class WebsitePages extends Controller
         $education = $request->education;
 
         $diet = $request->diet;
-        $drink = $request->drink;
+        /*$drink = $request->drink;
         $smoke = $request->smoke;
-        $manglik = $request->manglik;
+        $manglik = $request->manglik;*/
 
         // Curret date and year
         $date = date('Y-m-d');
@@ -39,11 +39,18 @@ class WebsitePages extends Controller
         $query = DB::table('user_details')
                 ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
                 ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
                 ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
                 ->leftjoin('states', 'states.id', '=', 'user_details.state')
                 ->leftjoin('cities', 'cities.id', '=', 'user_details.city')
                 ->leftjoin('mother_tongue', 'mother_tongue.id', '=', 'user_details.mother_tongue')
-                ->select('user_details.*', 'caste.caste as caste', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue');
+                ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue');
+
+        // If Age from is not empty
+        if (!empty($looking_for))
+        {
+            $query->where('user_details.gender', $looking_for);
+        }
 
         // If Age from is not empty
         if (!empty($age_from))
@@ -57,6 +64,18 @@ class WebsitePages extends Controller
         {
             $year = $y - $age_to;
             $query->where('user_details.year', '>=', $year);
+        }
+
+        // If Height from is not empty
+        if (!empty($height_from))
+        {
+            $query->where('user_details.height', '>=', $height_from);
+        }
+
+        // If Height to is not empty
+        if (!empty($height_to))
+        {
+            $query->where('user_details.height', '<=', $height_to);
         }
 
         // If religion is not empty
@@ -119,12 +138,13 @@ class WebsitePages extends Controller
             $query->where('user_education_center.edu_qualification', $education);
         }
 
-        $results = $query->get();
+        // If diet is not empty
+        if (!empty($diet))
+        {
+            $query->whereIn('user_details.diet', $diet);
+        }
 
-        //echo $query->toSql();
-        /*echo '<pre>';
-        print_r($results);
-        exit;*/
+        $results = $query->get();
 
         return view('websitepages.searched_users', array('search_results' => $results));
     }

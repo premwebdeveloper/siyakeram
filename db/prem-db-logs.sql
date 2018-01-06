@@ -241,3 +241,4 @@ ALTER TABLE `employed_as` ADD `status` TINYINT(1) NOT NULL DEFAULT '1' AFTER `em
 
 -- ---------------------------Updated Table 'user_details' ON 06-01-2018--------------------------
 ALTER TABLE `user_details` ADD `diet` INT NULL AFTER `birth_place`;
+ALTER TABLE `height` ADD `height_cms` VARCHAR(255) NOT NULL AFTER `height`;

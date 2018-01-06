@@ -17,11 +17,11 @@
             		        <div class="col-md-9 col-sm-8 center-small">
             		            <span class="segmented">
             						<label>
-            						 	<input type="radio" name="looking_for" value="1" checked="checked">
+            						 	<input type="radio" name="looking_for" value="2" checked="checked">
             						 	<span class="label">Bride</span>
             						</label>
             						<label>
-            							<input type="radio" name="looking_for" value="2">
+            							<input type="radio" name="looking_for" value="1">
             						  	<span class="label">Groom</span>
             						</label>
             					</span>
@@ -82,7 +82,7 @@
                                     <select name="height_from" id="height_from" class="form-control">
                                         <option value="">Select Height</option>
                                         @foreach($height as $hyt)
-                                            <option value="{{ $hyt->id }}">{{ $hyt->height }}</option>
+                                            <option value="{{ $hyt->height_cms }}">{{ $hyt->height }}</option>
                                         @endforeach
                                     </select>
                 	         	</div>
@@ -92,7 +92,7 @@
                                     <select name="height_to" id="height_to" class="form-control">
                                         <option value="">Select Height</option>
                                         @foreach($height as $hyt)
-                                            <option value="{{ $hyt->id }}">{{ $hyt->height }}</option>
+                                            <option value="{{ $hyt->height_cms }}">{{ $hyt->height }}</option>
                                         @endforeach
                                     </select>
                 	         	</div>
@@ -219,20 +219,20 @@
                             <div class="col-md-6">
                                 <h4>Diet </h4>
                                 <div class="search-checkbox display-inline">
-                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg150" value="150">
+                                    <!-- <input type="checkbox" class="radInput" name="diet[]" id="Veg150" value="1">
                                         <label for="Veg150">Eggetarian </label>
-                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg1089" value="1089">
-                                        <label for="Veg1089">Jain </label>
-                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg148" value="148">
+                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg1089" value="2">
+                                        <label for="Veg1089">Jain </label> -->
+                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg148" value="1">
                                         <label for="Veg148">Non-Veg </label>
-                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg147" value="147">
+                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg147" value="2">
                                         <label for="Veg147">Veg </label>
-                                    <input type="checkbox" class="radInput" name="diet[]" id="Veg152" value="152">
-                                        <label for="Veg152">Vegan </label>
+                                    <!-- <input type="checkbox" class="radInput" name="diet[]" id="Veg152" value="5">
+                                        <label for="Veg152">Vegan </label> -->
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <h4>Drink </h4>
                                 <div class="search-checkbox display-inline">
                                     <input id="DrinkYes" name="drink[]" value="1" type="checkbox">
@@ -264,7 +264,7 @@
                                     <input id="NoMangliks" name="manglik[]" value="2" type="checkbox">
                                     <label for="NoMangliks">No Mangliks</label>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>

@@ -134,9 +134,12 @@ class Admin extends Controller
     {
         $height = $request->height;
 
+        $height_cms = substr($height,0, 3);
+
         $insert = DB::table('height')->insert(
              array(
                     'height' => $height,
+                    'height_cms' => $height_cms,
                     'status' => 1
              )
         );
