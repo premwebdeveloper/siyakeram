@@ -146,6 +146,9 @@ class WebsitePages extends Controller
 
         $results = $query->get();
 
+        /*echo $query->tosql();
+        exit;*/
+
         return view('websitepages.searched_users', array('search_results' => $results));
     }
 

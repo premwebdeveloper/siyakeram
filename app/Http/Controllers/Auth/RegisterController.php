@@ -83,6 +83,21 @@ class RegisterController extends Controller
 
         $date = date("Y-m-d H:i:s");
 
+        // get user details from user_details table
+        $last_row = DB::table('user_details')->orderBy('id', 'desc')->first();
+
+        if(!empty($last_row))
+        {
+            $last_unique_id = $last_row->unique_id;
+            $last_unique_id = explode("-", $last_unique_id);
+            $unique_id = $last_unique_id[1] + 1;
+            $unique_id = "SR-".$unique_id;
+        }
+        else
+        {
+            $unique_id = 'SR-1001';
+        }
+
         # Create user role
         $user_role = DB::table('user_roles')->insert(
              array(
@@ -97,6 +112,7 @@ class RegisterController extends Controller
         $user_insert = DB::table('user_details')->insert(
             array(
                     'user_id' => $user_id,
+                    'unique_id' => $unique_id,
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'phone' => $data['phone'],
@@ -128,7 +144,7 @@ class RegisterController extends Controller
                     'updated_at' => $date,
                     'status' => 1
                 )
-        );        
+        );
 
         $thisUser = User::findOrFail($user->id);
         $this->sendEmail($thisUser);
