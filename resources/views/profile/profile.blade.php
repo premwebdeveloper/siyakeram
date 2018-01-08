@@ -692,7 +692,7 @@
 	                        			$veg = 'checked'; $non_veg = '';
 	                        		}
 	                        	?>
-	                            <label for="gender" class="col-md-2 control-label">Gotra</label>
+	                            <label for="gender" class="col-md-2 control-label">Diet</label>
 	                            <div class="col-md-6">
                                 	<input type="radio" name="diet" class="validate[required] inputDiet" value="1" {{$veg}}> Vegetarian
 	                                <input type="radio" name="diet" class="validate[required] inputDiet" value="2" {{$non_veg}}> Non-Vegetarian

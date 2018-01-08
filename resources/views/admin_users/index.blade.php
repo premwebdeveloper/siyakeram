@@ -64,11 +64,11 @@
                                         <td>{{ $user->phone }}</td>
 	                                    <td>{{ $gender }}</td>
 	                                    <td>
-                                            <!-- <a class="btn btn-success" title="View" href="{{ route('view', ['user_id' => $user->user_id]) }}">
+                                            <a class="btn btn-success" title="View" href="{{ route('view', ['user_id' => $user->user_id]) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
-                                            </a> -->
+                                            </a>
 	                                        <a class="btn btn-info" title="Delete" href="{{ route('delete', ['user_id' => $user->user_id]) }}">
-	                                            <i class="fa fa-ban" aria-hidden="true"></i>
+	                                            <i class="fa fa-trash" aria-hidden="true"></i>
 	                                        </a>
 	                                    </td>
 	                                </tr>
