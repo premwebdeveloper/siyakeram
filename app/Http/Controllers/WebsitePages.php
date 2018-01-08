@@ -146,10 +146,25 @@ class WebsitePages extends Controller
 
         $results = $query->get();
 
-        /*echo $query->tosql();
-        exit;*/
+        // Get all castes
+        $caste = DB::table('caste')->where('status', 1)->get();
 
-        return view('websitepages.searched_users', array('search_results' => $results));
+        // Get all height
+        $height = DB::table('height')->where('status', 1)->get();
+
+        // Get all mother_tongue
+        $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
+
+        // Get all annual_income
+        $annual_income = DB::table('annual_income')->where('status', 1)->get();
+
+        // Get all educational_qualification
+        $educational_qualification = DB::table('educational_qualification')->where('status', 1)->get();
+
+        // Get all employed_as
+        $employed_as = DB::table('employed_as')->where('status', 1)->get();
+
+        return view('websitepages.searched_users', array('search_results' => $results, 'caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as));
     }
 
     public function search()
