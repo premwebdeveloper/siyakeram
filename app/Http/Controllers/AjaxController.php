@@ -29,6 +29,7 @@ class AjaxController extends Controller
         $inputComplexion = $request->inputComplexion;
         $inputManglik = $request->inputManglik;
         $inputGotra = $request->inputGotra;
+        $inputDiet = $request->inputDiet;
         $inputHrs = $request->inputHrs;
         $inputMin = $request->inputMin;
         $inputSec = $request->inputSec;
@@ -62,6 +63,7 @@ class AjaxController extends Controller
                     'complexion' => $inputComplexion,
                     'manglik' => $inputManglik,
                     'gotra' => $inputGotra,
+                    'diet' => $inputDiet,
                     'birth_hour' => $inputHrs,
                     'birth_mint' => $inputMin,
                     'birth_sec' => $inputSec,

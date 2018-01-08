@@ -51,6 +51,7 @@
 			var inputComplexion = $('#inputComplexion').val();
 			var inputManglik = $('#inputManglik').val();
 			var inputGotra = $('#inputGotra').val();
+			var inputDiet = $('.inputDiet:checked').val();
 			var inputHrs = $('#inputHrs').val();
 			var inputMin = $('#inputMin').val();
 			var inputSec = $('#inputSec').val();
@@ -60,7 +61,7 @@
 				method : 'post',
 				url : 'update_basic_info',
 				async : true,
-                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
+                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputDiet': inputDiet, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
                 success:function(response){
 
                 	console.log('response');
@@ -571,7 +572,7 @@
 	                                    <option value="">Select Height</option>
 	                                    @endif
 	                                    @foreach($height as $heig)
-											<option value="{{ $heig->id }}" title="{{ $heig->height }}">{{ $heig->height }}</option>
+											<option value="{{ $heig->height_cms }}" title="{{ $heig->height }}">{{ $heig->height }}</option>
 										@endforeach
 	                                </select>
 
@@ -674,6 +675,27 @@
 	                            <label for="gender" class="col-md-2 control-label">Gotra</label>
 	                            <div class="col-md-6">
 	                                <input type="text" class="validate[required] form-control" name="inputGotra" id="inputGotra" placeholder="Gotra" value="{{$user->gotra}}">
+	                            </div>
+	                        </div>                    		
+	                        <div class="form-group row">
+	                        	<?php
+	                        		if($user->diet == '1')
+	                        		{
+	                        			$veg = 'checked'; $non_veg = '';
+	                        		}
+	                        		elseif($user->diet == '2')
+	                        		{
+	                        			$veg = ''; $non_veg = 'checked';
+	                        		}
+	                        		else
+	                        		{
+	                        			$veg = 'checked'; $non_veg = '';
+	                        		}
+	                        	?>
+	                            <label for="gender" class="col-md-2 control-label">Gotra</label>
+	                            <div class="col-md-6">
+                                	<input type="radio" name="diet" class="validate[required] inputDiet" value="1" {{$veg}}> Vegetarian
+	                                <input type="radio" name="diet" class="validate[required] inputDiet" value="2" {{$non_veg}}> Non-Vegetarian
 	                            </div>
 	                        </div>
 	                        <h5 style="color:red">*Please share your time and place of birth for horoscope matching.</h5>
