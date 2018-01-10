@@ -32,7 +32,7 @@ class Profile extends Controller
         $mother_id = $user->mother_tongue;
         $height_id = $user->height;
         $country_id = $family->native_country;
-        $state_id = $family->native_state;        
+        $state_id = $family->native_state;
 
         #address detail
         $add_country_id = $user->country;
@@ -44,7 +44,7 @@ class Profile extends Controller
         $area_id = $education_center->area_field;
         $annual_id = $education_center->annual_income;
 
-        
+
         $caste_details = array();
         $mother_details = array();
         $height_details = array();
@@ -58,7 +58,7 @@ class Profile extends Controller
         $countries_details = array();
         $states_details = array();
         $cities_details = array();
-    
+
 
         if(!empty($caste_id))
             {
@@ -71,47 +71,47 @@ class Profile extends Controller
         if(!empty($height_id))
             {
                 $height_details = DB::table('height')->where('id', $height_id)->first();
-            }        
+            }
         if(!empty($country_id))
             {
                 $country_details = DB::table('countries')->where('id', $country_id)->first();
-            }        
+            }
         if(!empty($state_id))
             {
                 $state_details = DB::table('states')->where('id', $state_id)->first();
-            }        
+            }
         if(!empty($educational_id))
             {
                 $educational_details = DB::table('educational_qualification')->where('id', $educational_id)->first();
-            }        
+            }
         if(!empty($employed_id))
             {
                 $employed_details = DB::table('employed_as')->where('id', $employed_id)->first();
-            }        
+            }
         if(!empty($area_id))
             {
                 $area_details = DB::table('area_field')->where('id', $area_id)->first();
-            }        
+            }
         if(!empty($annual_id))
             {
                 $annual_details = DB::table('annual_income')->where('id', $annual_id)->first();
-            }        
+            }
         if(!empty($add_country_id))
             {
                 $countries_details = DB::table('countries')->where('id', $add_country_id)->first();
-            }        
+            }
         if(!empty($add_state_id))
             {
                 $states_details = DB::table('states')->where('id', $add_state_id)->first();
-            }       
+            }
         if(!empty($add_city_id))
             {
                 $cities_details = DB::table('cities')->where('id', $add_city_id)->first();
             }
-        
+
 
         $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
-        
+
         $height = DB::table('height')->where('status', 1)->get();
 
         $caste = DB::table('caste')->where('status', 1)->get();
@@ -183,24 +183,34 @@ class Profile extends Controller
     }
 
     public function deleteProfileImage(Request $request)
+    {
+        $date = date('Y-m-d H:i:s');
+
+        $member_id = $request->delete_family_member;
+
+        $delete_profile_img = DB::table('user_images')->where('id', $member_id)->delete();
+
+        if($delete_profile_img)
         {
-            $date = date('Y-m-d H:i:s');
-
-            $member_id = $request->delete_family_member;
-            
-            $delete_profile_img = DB::table('user_images')->where('id', $member_id)->delete();
-
-            if($delete_profile_img)
-            {
-                $status = 'Delete Profile Image successfully.';
-            }
-            else
-            {
-                $status = 'Something went wrong !';
-            }
-
-            return redirect('profile')->with('status', $status);
+            $status = 'Delete Profile Image successfully.';
         }
+        else
+        {
+            $status = 'Something went wrong !';
+        }
+
+        return redirect('profile')->with('status', $status);
+    }
+
+    // View user profile
+    public function user_profile(Request $request)
+    {
+        $user_id = $request->id;
+
+        $userInfo = DB::table('user_details')->where('user_id', $user_id)->first();
+
+        return view('websitepages.user_profile', array('userInfo' => $userInfo));
+    }
 
     public function user_profile()
     {

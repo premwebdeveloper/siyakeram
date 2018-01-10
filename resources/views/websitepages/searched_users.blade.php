@@ -446,13 +446,14 @@
                                                 <div class="profile-actions">
                                                     <div class="gallery">
                                                         <p>
-                                                            <a href="javascript:;" class="p-action-btn btn-grey-light border-r2 ripplelink" target="_blank">
-                                                            <i class="fa fa-eye"><strong>View</strong></i> <span>View</span></a>
+                                                            <a href="{{ route('user_profile', ['id' => $result->user_id] ) }}" class="p-action-btn btn-grey-light border-r2 ripplelink">
+                                                                <i class="fa fa-eye"></i> <span>View</span>
+                                                            </a>
                                                         </p>
 
                                                         <p>
                                                             <a href="javascript:;" data-toggle="modal" data-target="#loginModal" class="p-action-btn btn-grey-light border-r2 ripplelink">
-                                                                <i class="fa fa-phone"><strong>Contact</strong></i> <span>Contact</span></a>
+                                                                <i class="fa fa-phone"></i> <span>Contact</span></a>
                                                         </p>
                                                     </div>
                                                 </div>
