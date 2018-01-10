@@ -18,6 +18,7 @@
     <link href="{{ asset('resources/frontend_assets/css/prettyPhoto.css') }}" rel="stylesheet">
     <link href="{{ asset('resources/frontend_assets/css/overrideade.css') }}" rel="stylesheet">
     <link href="{{ asset('resources/frontend_assets/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/frontend_assets/css/user-profile.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:300,400,400i,500,700" rel="stylesheet">

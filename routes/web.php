@@ -113,6 +113,8 @@ Route::post('profile_image', 'Profile@profile_image')->name('profile_image');
 
 Route::post('deleteProfileImage', 'Profile@deleteProfileImage')->name('deleteProfileImage');
 
+Route::get('user_profile', 'Profile@user_profile')->name('user_profile');
+
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //
 ////////////////////////////////////////////////////////

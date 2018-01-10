@@ -201,4 +201,9 @@ class Profile extends Controller
 
             return redirect('profile')->with('status', $status);
         }
+
+    public function user_profile()
+    {
+        return view('websitepages.user_profile');
+    }
 }

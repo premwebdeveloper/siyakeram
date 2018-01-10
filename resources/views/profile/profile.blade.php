@@ -1215,14 +1215,25 @@
 						    </thead>
 						    <tbody>
 					    	<?php
+					    		$count = count($profile_img);
 					    		$i=1;
 					    	?>
 					    	@foreach($profile_img as $img)
+
+					    	<?php
+					    		$image = $img->image;
+								if($image != 'user.png')
+					    		{
+					    	?>
 						      	<tr>
 							        <td>{{ $i }}</td>
 									<td><img src="storage/app/uploads/profile_images/{{$img->image}}" style="width: 100px;"></td>
 							        <td><a href="#{{ $img->id }}" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></a></td>
 						       </tr>
+					        <?php
+					       		$i++;
+					       		}
+					        ?>
 								<div id="{{$img->id}}" class="modal fade" role="dialog">
 									<div class="modal-dialog">
 
@@ -1250,9 +1261,7 @@
 
 									</div>
 								</div>
-						      	<?php
-						      		$i++;
-						      	?>
+
 					       @endforeach
 
 						    </tbody>

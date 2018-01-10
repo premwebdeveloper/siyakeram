@@ -36,7 +36,33 @@
 
                 <div>
                     <div class="ibox-content no-padding border-left-right">
-                        <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/{{ $images->image }}">
+                        <?php   
+                            $count = count($images);
+                            if($count==1)
+                            {
+                                ?>
+                                    <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/user.png">
+                                <?php
+                            }
+                            else{
+
+                                    foreach($images as $user_img)
+                                    {
+                                        
+                                        if($user_img->image != 'user.png')
+                                        {
+
+                                            ?>
+                                                <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/{{$user_img->image}}">
+                                            <?php
+                                           
+                                        }
+                                        break;
+                                    }
+                                }
+                        ?>
+
+
                     </div>
                     <div class="ibox-content profile-content">
                         <h4><strong>{{$user->name}}</strong></h4>
@@ -240,24 +266,54 @@
                                <!-- Family Information -->
                                 <div id="tab-2" class="tab-pane">
                                     <div class="panel-body">
-
+                                       <strong>About My Family</strong>
+                                        @if($family_details->about_family)
+                                        <p> {{$family_details->about_family}} </p>
+                                        @endif
                                         <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Relation</th>
-                                                </tr>
-                                            </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
+                                                    <td>Father's Occupation</td>
+                                                    <td class="prtd">@if(!empty($family_details->father_occupation)) {{$family_details->father_occupation}} @endif</td>
+
+                                                    <td>Mother's Occupation</td>
+                                                    <td class="prtd">@if(!empty($family_details->mother_occupation)) {{$family_details->mother_occupation}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>Father's Occupation</td>
+                                                    <td class="prtd">@if(!empty($family_details->father_occupation)) {{$family_details->father_occupation}} @endif</td>
+
+                                                    <td>Mother's Occupation</td>
+                                                    <td class="prtd">@if(!empty($family_details->mother_occupation)) {{$family_details->mother_occupation}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>Married Sisters</td>
+                                                    <td class="prtd">@if(!empty($family_details->married_sisters)) {{$family_details->married_sisters}} @endif</td>
+
+                                                    <td>Unmarried Sisters</td>
+                                                    <td class="prtd">@if(!empty($family_details->unmarried_sisters)) {{$family_details->unmarried_sisters}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>Married Brothers</td>
+                                                    <td class="prtd">@if(!empty($family_details->married_brothers)) {{$family_details->married_brothers}} @endif</td>
+
+                                                    <td>Unmarried Brothers</td>
+                                                    <td class="prtd">@if(!empty($family_details->unmarried_brothers)) {{$family_details->unmarried_brothers}} @endif</td>
+                                                </tr>                                                
+
+                                                <tr>
+                                                    <td>Native Country</td>
+                                                    <td class="prtd">@if(!empty($country_details->id)) {{$country_details->name}} @endif</td>
+
+                                                    <td>Native State</td>
+                                                    <td class="prtd">@if(!empty($state_details->id)) {{$state_details->name}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>Family Value</td>
+                                                    <td class="prtd">@if(!empty($family_details->family_value)) {{$family_details->family_value}} @endif</td>
+
+                                                    <td>Affluence Level</td>
+                                                    <td class="prtd">@if(!empty($family_details->affluence_level)) {{$family_details->affluence_level}} @endif</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -271,22 +327,25 @@
                                         <strong>&nbsp;</strong>
 
                                         <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Relation</th>
-                                                </tr>
-                                            </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
+                                                    <td>Educational Qualification</td>
+                                                    <td class="prtd">@if(!empty($educational->id)) {{$educational->education}} @endif</td>
+
+                                                    <td>Employed As</td>
+                                                    <td class="prtd">@if(!empty($employed_details->id)) {{$employed_details->employed_as}} @endif</td>
+                                                </tr>                                                
+
+                                                <tr>
+                                                    <td>Area/Field</td>
+                                                    <td class="prtd">@if(!empty($area_details->id)) {{$area_details->area_field}} @endif</td>
+
+                                                    <td>Employed With</td>
+                                                    <td class="prtd">@if(!empty($educational_details->employed_with)) {{$educational_details->employed_with}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>Annual Income</td>
+                                                    <td class="prtd">@if(!empty($annual_details->id)) {{$annual_details->annual_income}} @endif</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -300,22 +359,25 @@
                                         <strong>&nbsp;</strong>
 
                                         <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Relation</th>
-                                                </tr>
-                                            </thead>
                                             <tbody>
+
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
+                                                    <td>Address</td>
+                                                    <td class="prtd">@if(!empty($user->address)) {{$user->address}} @endif</td>
+
+                                                    <td>Country</td>
+                                                    <td class="prtd">@if(!empty($countries_details->id)) {{$countries_details->name}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>State</td>
+                                                    <td class="prtd">@if(!empty($states_details->id)) {{$states_details->name}} @endif</td>
+
+                                                    <td>City</td>
+                                                    <td class="prtd">@if(!empty($cities_details->id)) {{$cities_details->name}} @endif</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>ZipCode</td>
+                                                    <td class="prtd">@if(!empty($user->zipcode)) {{$user->zipcode}} @endif</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -332,20 +394,24 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Relation</th>
+                                                    <th>User Image</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                        $i=1;
+                                                    ?>
+                                                    @foreach($images as $user_img)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
-                                                    <td>asd</td>
+
+                                                    <td><?= $i;?></td>
+                                                    <td><img src="storage/app/uploads/profile_images/{{$user_img->image}}" width="100"></td>
+      
                                                 </tr>
+                                                <?php
+                                                        $i++;
+                                                    ?>
+                                                    @endforeach
                                             </tbody>
                                         </table>
 

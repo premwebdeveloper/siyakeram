@@ -25,7 +25,7 @@ class AdminUsers extends Controller
         $user = DB::table('user_details')->where('user_id', $user_id)->first();
 
         # Get User Images
-        $user_images = DB::table('user_images')->where('user_id', $user_id)->first();
+        $user_images = DB::table('user_images')->where('user_id', $user_id)->get();
 
         # Get User Education Information
         $user_education_details= DB::table('user_education_center')->where('user_id', $user_id)->first();
@@ -36,6 +36,7 @@ class AdminUsers extends Controller
 /*        echo '<pre>';
         print_r($user_images);
         exit;*/
+
         $caste_id = $user->caste;
         $mother_id = $user->mother_tongue;
         $height_id = $user->height;
@@ -116,7 +117,6 @@ class AdminUsers extends Controller
             {
                 $cities_details = DB::table('cities')->where('id', $add_city_id)->first();
             }
-        
 
         $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
         
@@ -137,7 +137,7 @@ class AdminUsers extends Controller
         $states = DB::table('states')->get();
 
 
-        return view('admin_users.view', array('user' => $user, 'images' => $user_images, 'education_details' => $user_education_details, 'family_details' => $user_family_details, 'mother_tongue' => $mother_tongue, 'height' => $height, 'caste' => $caste, 'caste_details' => $caste_details, 'mother_details' => $mother_details, 'height_details' => $height_details, 'countries' => $countries, 'states' => $states, 'country_details' => $country_details, 'state_details' => $state_details, 'area_field' => $area_field, 'educational' => $educational, 'annual_income' => $annual_income, 'employed_as' => $employed_as, 'educational_details' => $educational_details, 'employed_details' => $employed_details, 'area_details' => $area_details, 'annual_details' => $annual_details, 'countries_details' => $countries_details, 'states_details' => $states_details, 'cities_details' => $cities_details));
+        return view('admin_users.view', array('user' => $user, 'images' => $user_images, 'educational_details' => $user_education_details, 'family_details' => $user_family_details, 'mother_tongue' => $mother_tongue, 'height' => $height, 'caste' => $caste, 'caste_details' => $caste_details, 'mother_details' => $mother_details, 'height_details' => $height_details, 'countries' => $countries, 'states' => $states, 'country_details' => $country_details, 'state_details' => $state_details, 'area_field' => $area_field, 'educational' => $educational, 'annual_income' => $annual_income, 'employed_as' => $employed_as, 'educational' => $educational_details, 'employed_details' => $employed_details, 'area_details' => $area_details, 'annual_details' => $annual_details, 'countries_details' => $countries_details, 'states_details' => $states_details, 'cities_details' => $cities_details));
     }
 
     // Disable user

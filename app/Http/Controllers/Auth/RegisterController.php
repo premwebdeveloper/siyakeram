@@ -144,6 +144,16 @@ class RegisterController extends Controller
                     'updated_at' => $date,
                     'status' => 1
                 )
+        );        
+        #user insert in user_images table
+        $user_insert = DB::table('user_images')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'image' => 'user.png',
+                    'created_at' => $date,
+                    'updated_at' => $date,
+                    'status' => 1
+                )
         );
 
         $thisUser = User::findOrFail($user->id);
