@@ -53,8 +53,25 @@ Route::get('search_for', function()
     // Get all employed_as
     $employed_as = DB::table('employed_as')->where('status', 1)->get();
 
-    return View::make('websitepages/searched_users', array('caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as));
+    $query = DB::table('user_details')
+                ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->leftjoin('states', 'states.id', '=', 'user_details.state')
+                ->leftjoin('cities', 'cities.id', '=', 'user_details.city')
+                ->leftjoin('mother_tongue', 'mother_tongue.id', '=', 'user_details.mother_tongue')
+                ->leftjoin('annual_income', 'annual_income.id', '=', 'user_education_center.annual_income')
+                ->leftjoin('employed_as', 'employed_as.id', '=', 'user_education_center.employed_as')
+                ->leftjoin('educational_qualification', 'educational_qualification.id', '=', 'user_education_center.edu_qualification')
+                ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue', 'educational_qualification.education', 'annual_income.annual_income', 'employed_as.employed_as');
+
+    $results = $query->get();
+
+    return View::make('websitepages/searched_users', array('caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as, 'search_results' => $results));
 });
+
+Route::post('/search_user_for', 'AjaxController@search_user_for')->name('search_user_for');
 
 Route::get('membership', 'WebsitePages@membership')->name('membership');
 

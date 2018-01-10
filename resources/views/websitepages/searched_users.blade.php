@@ -24,40 +24,40 @@
                                     <div class="panel-body">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_0" value="0">
-                                                <label for="marital_status_0" title="all">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_0" value="0">
+                                                <label for="marital_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                     <span class="numberresult"></span>
                                                 </label>
                                             </li> -->
 
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_1" value="1">
-                                                <label for="marital_status_1" title="Never Married">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_1" value="1">
+                                                <label for="marital_1" title="Never Married">
                                                     <span class="lvwordellips">Never Married</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_2" value="2">
-                                                <label for="marital_status_2" title="Annulled">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_2" value="2">
+                                                <label for="marital_2" title="Annulled">
                                                     <span class="lvwordellips">Annulled</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_3" value="3">
-                                                <label for="marital_status_3" title="Awaiting Divorce">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_3" value="3">
+                                                <label for="marital_3" title="Awaiting Divorce">
                                                     <span class="lvwordellips">Awaiting Divorce</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_4" value="4">
-                                                <label for="marital_status_4" title="Divorces">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_4" value="4">
+                                                <label for="marital_4" title="Divorces">
                                                     <span class="lvwordellips">Divorces</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="marital_status" name="marital_status[]" id="marital_status_5" value="5">
-                                                <label for="marital_status_5" title="Widowed">
+                                                <input type="checkbox" class="marital_status selected_checkbox" name="marital[]" id="marital_5" value="5">
+                                                <label for="marital_5" title="Widowed">
                                                     <span class="lvwordellips">Widowed</span>
                                                 </label>
                                             </li>
@@ -77,16 +77,16 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="annual_income" name="annual_income[]" id="annual_income_0" value="0">
-                                                <label for="annual_income.0" title="all">
+                                                <input type="checkbox" class="annual_income selected_checkbox" name="income[]" id="income_0" value="0">
+                                                <label for="income_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                     <span class="numberresult"></span>
                                                 </label>
                                             </li> -->
                                             @foreach($annual_income as $income)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="annual_income" name="annual_income[]" id="annual_income_{{ $income->id }}" value="{{ $income->id }}">
-                                                <label for="annual_income_{{ $income->id }}" title="{{ $income->annual_income }}">
+                                                <input type="checkbox" class="annual_income selected_checkbox" name="income[]" id="income_{{ $income->id }}" value="{{ $income->id }}">
+                                                <label for="income_{{ $income->id }}" title="{{ $income->annual_income }}">
                                                     <span class="lvwordellips">{{ $income->annual_income }}</span>
                                                 </label>
                                             </li>
@@ -107,14 +107,14 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="caste" name="caste[]" id="caste_0" value="0">
+                                                <input type="checkbox" class="caste selected_checkbox" name="caste[]" id="caste_0" value="0">
                                                 <label for="caste_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             @foreach($caste as $cast)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="caste" name="caste[]" id="caste_{{ $cast->id }}" value="{{ $cast->id }}">
+                                                <input type="checkbox" class="caste selected_checkbox" name="caste[]" id="caste_{{ $cast->id }}" value="{{ $cast->id }}">
                                                 <label for="caste_{{ $cast->id }}" title="{{ $cast->caste }}">
                                                     <span class="lvwordellips">{{ $cast->caste }}</span>
                                                 </label>
@@ -136,14 +136,14 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="height" name="height[]" id="height_0" value="0">
+                                                <input type="checkbox" class="height selected_checkbox" name="height[]" id="height_0" value="0">
                                                 <label for="height_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li>
                                             @foreach($height as $hyt)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="height" name="height[]" id="height_{{ $hyt->id }}" value="{{ $hyt->id }}">
+                                                <input type="checkbox" class="height selected_checkbox" name="height[]" id="height_{{ $hyt->id }}" value="{{ $hyt->id }}">
                                                 <label for="height_{{ $hyt->id }}" title="{{ $hyt->height }}">
                                                     <span class="lvwordellips">{{ $hyt->height }}</span>
                                                 </label>
@@ -165,15 +165,15 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="mother_tongue" name="mother_tongue[]" id="mother_tongue_0" value="0">
-                                                <label for="mother_tongue_0" title="all">
+                                                <input type="checkbox" class="mother_tongue selected_checkbox" name="tongue[]" id="tongue_0" value="0">
+                                                <label for="tongue_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             @foreach($mother_tongue as $tongue)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="mother_tongue" name="mother_tongue[]" id="mother_tongue_{{ $tongue->id }}" value="{{ $tongue->id }}">
-                                                <label for="mother_tongue_{{ $tongue->id }}" title="{{ $tongue->mother_tongue }}">
+                                                <input type="checkbox" class="mother_tongue selected_checkbox" name="tongue[]" id="tongue_{{ $tongue->id }}" value="{{ $tongue->id }}">
+                                                <label for="tongue_{{ $tongue->id }}" title="{{ $tongue->mother_tongue }}">
                                                     <span class="lvwordellips">{{ $tongue->mother_tongue }}</span>
                                                 </label>
                                             </li>
@@ -194,14 +194,14 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="education" name="education[]" id="education_0" value="0">
+                                                <input type="checkbox" class="education selected_checkbox" name="education[]" id="education_0" value="0">
                                                 <label for="education_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             @foreach($educational_qualification as $qualification)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="education" name="education[]" id="education_{{ $qualification->id }}" value="{{ $qualification->id }}">
+                                                <input type="checkbox" class="education selected_checkbox" name="education[]" id="education_{{ $qualification->id }}" value="{{ $qualification->id }}">
                                                 <label for="education_{{ $qualification->id }}" title="{{ $qualification->education }}">
                                                     <span class="lvwordellips">{{ $qualification->education }}</span>
                                                 </label>
@@ -223,15 +223,15 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="employed_as" name="employed_as[]" id="employed_as_0" value="0">
-                                                <label for="employed_as_0" title="all">
+                                                <input type="checkbox" class="employed_as selected_checkbox" name="employed[]" id="employed_0" value="0">
+                                                <label for="employed_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             @foreach($employed_as as $employed)
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="employed_as" name="employed_as[]" id="employed_as_{{ $employed->id }}" value="{{ $employed->id }}">
-                                                <label for="employed_as_{{ $employed->id }}" title="{{ $employed->employed_as }}">
+                                                <input type="checkbox" class="employed_as selected_checkbox" name="employed[]" id="employed_{{ $employed->id }}" value="{{ $employed->id }}">
+                                                <label for="employed_{{ $employed->id }}" title="{{ $employed->employed_as }}">
                                                     <span class="lvwordellips">{{ $employed->employed_as }}</span>
                                                 </label>
                                             </li>
@@ -252,19 +252,19 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="diet" name="diet[]" id="diet_0" value="0">
+                                                <input type="checkbox" class="diet selected_checkbox" name="diet[]" id="diet_0" value="0">
                                                 <label for="diet_0" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="diet" name="diet[]" id="diet_1" value="1">
+                                                <input type="checkbox" class="diet selected_checkbox" name="diet[]" id="diet_1" value="1">
                                                 <label for="diet_1" title="Non-Veg">
                                                     <span class="lvwordellips">Non-Veg</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="diet" name="diet[]" id="diet_2" value="2">
+                                                <input type="checkbox" class="diet selected_checkbox" name="diet[]" id="diet_2" value="2">
                                                 <label for="diet_2" title="Veg">
                                                     <span class="lvwordellips">Veg</span>
                                                 </label>
@@ -285,73 +285,73 @@
                                     <div class="panel-body Max-height-filter">
                                         <ul>
                                             <!-- <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_all" value="all">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_all" value="all">
                                                 <label for="religion_all" title="all">
                                                     <span class="lvwordellips">All</span>
                                                 </label>
                                             </li> -->
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Hindu" value="Hindu">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Hindu" value="Hindu">
                                                 <label for="religion_Hindu" title="Hindu">
                                                     <span class="lvwordellips">Hindu</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Jain" value="Jain">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Jain" value="Jain">
                                                 <label for="religion_Jain" title="Jain">
                                                     <span class="lvwordellips">Jain</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Muslim" value="Muslim">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Muslim" value="Muslim">
                                                 <label for="religion_Muslim" title="Muslim">
                                                     <span class="lvwordellips">Muslim</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Sikh" value="Sikh">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Sikh" value="Sikh">
                                                 <label for="religion_Sikh" title="Sikh">
                                                     <span class="lvwordellips">Sikh</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Christian" value="Christian">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Christian" value="Christian">
                                                 <label for="religion_Christian" title="Christian">
                                                     <span class="lvwordellips">Christian</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Spiritual" value="Spiritual">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Spiritual" value="Spiritual">
                                                 <label for="religion_Spiritual" title="Spiritual">
                                                     <span class="lvwordellips">Spiritual</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Parsi" value="Parsi">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Parsi" value="Parsi">
                                                 <label for="religion_Parsi" title="Parsi">
                                                     <span class="lvwordellips">Parsi</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Jewish" value="Jewish">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Jewish" value="Jewish">
                                                 <label for="religion_Jewish" title="Jewish">
                                                     <span class="lvwordellips">Jewish</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Buddhist" value="Buddhist">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Buddhist" value="Buddhist">
                                                 <label for="religion_Buddhist" title="Buddhist">
                                                     <span class="lvwordellips">Buddhist</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_no_eligion" value="No Religion">
-                                                <label for="religion_no_eligion" title="No Religion">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_no religion" value="No Religion">
+                                                <label for="religion_no religion" title="No Religion">
                                                     <span class="lvwordellips">No Religion</span>
                                                 </label>
                                             </li>
                                             <li class="lvcheckbox">
-                                                <input type="checkbox" class="religion" name="religion[]" id="religion_Other" value="Other">
+                                                <input type="checkbox" class="religion selected_checkbox" name="religion[]" id="religion_Other" value="Other">
                                                 <label for="religion_Other" title="Other">
                                                     <span class="lvwordellips">Other</span>
                                                 </label>
@@ -372,9 +372,32 @@
             </div>
 
             <div class="col-md-9 col-sm-12 col-xs-12 no-padding-sm pro-m10">
-                <ul class="ul-profile">
-                    @if(!empty($search_results))
+                <ul class="ul-profile" id="searched_data">
+
+                    @if(!empty($search_results[0]))
                         @foreach($search_results as $result)
+
+                            <?php
+                            // Get user Images
+                            $images = DB::table('user_images')->where('user_id', $result->user_id)->get();
+
+                            if(count($images) > 1)
+                            {
+                                foreach ($images as $img)
+                                {
+                                    $image = $img->image;
+                                    if($image != 'user.png')
+                                    {
+                                        $image = $image;
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                $image = 'user.png';
+                            }
+                            ?>
                             <li>
                                 <div class="strip_profile" style="visibility: visible; animation-name: fadeIn;">
                                     <div class="row">
@@ -382,7 +405,7 @@
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padlr0">
                                             <div class="img_list">
                                                 <a href="javascript:;" target="_blank">
-                                                    <img src="https://res.cloudinary.com/www-lovevivah-com/image/upload/c_fill,f_auto,g_face,h_292,w_252/v1/photos/CFR_P241537_1474606231.JPG" class="img-responsive" alt="">
+                                                    <img src="storage/app/uploads/profile_images/{{ $image }}" class="img-responsive" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -412,9 +435,9 @@
                                                         <li>Religion - {{ $result->religion }}</li>
                                                         <li>Caste - {{ $result->caste }}</li>
                                                         <li>Mother Tongue - {{ $result->mother_tongue }}</li>
-                                                        <li>Profession - {{ $result->state }}</li>
-                                                        <li>Education - {{ $result->state }}</li>
-                                                        <li>Annual Income - {{ $result->state }}</li>
+                                                        <li>Profession - {{ $result->employed_as }}</li>
+                                                        <li>Education - {{ $result->education }}</li>
+                                                        <li>Annual Income - {{ $result->annual_income }}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -440,6 +463,8 @@
                                 </div>
                             </li>
                         @endforeach
+                    @else
+                        <li class="alert alert-danger">No Result found!</li>
                     @endif
                 </ul>
             </div>

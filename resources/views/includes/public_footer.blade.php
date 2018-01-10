@@ -44,5 +44,7 @@
 
     <footer><span>Copyrights 2017, Siya Ke Ram Matrimony All Rights Reserved</span></footer>
 
+    @include('includes.public_scripts')
+
 </body>
 </html>
