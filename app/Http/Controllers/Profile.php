@@ -207,13 +207,36 @@ class Profile extends Controller
     {
         $user_id = $request->id;
 
-        $userInfo = DB::table('user_details')->where('user_id', $user_id)->first();
+        // Get user images
+        $images = DB::table('user_images')->where('user_id', $user_id)->get();
 
-        return view('websitepages.user_profile', array('userInfo' => $userInfo));
-    }
+        // Get user all details
+        $query = DB::table('user_details')
+                ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->leftjoin('states', 'states.id', '=', 'user_details.state')
+                ->leftjoin('cities', 'cities.id', '=', 'user_details.city')
+                ->leftjoin('mother_tongue', 'mother_tongue.id', '=', 'user_details.mother_tongue')
+                ->leftjoin('annual_income', 'annual_income.id', '=', 'user_education_center.annual_income')
+                ->leftjoin('employed_as', 'employed_as.id', '=', 'user_education_center.employed_as')
+                ->leftjoin('area_field', 'area_field.id', '=', 'user_education_center.area_field')
+                ->leftjoin('educational_qualification', 'educational_qualification.id', '=', 'user_education_center.edu_qualification')
+                ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue', 'educational_qualification.education', 'annual_income.annual_income', 'area_field.area_field', 'employed_as.employed_as')
+                ->where('user_details.user_id', $user_id);
 
-    public function user_profile()
-    {
-        return view('websitepages.user_profile');
+        $results = $query->first();
+
+        // Get user family details
+        $family = DB::table('family_details')
+                ->leftjoin('countries', 'countries.id', '=', 'family_details.native_country')
+                ->leftjoin('states', 'states.id', '=', 'family_details.native_state')
+                ->select('family_details.*', 'countries.name as family_country', 'states.name as family_state')
+                ->where('family_details.user_id', $user_id);
+
+        $familyInfo = $family->first();
+
+        return view('websitepages.user_profile', array('userInfo' => $results, 'images' => $images, 'familyInfo' => $familyInfo));
     }
 }
