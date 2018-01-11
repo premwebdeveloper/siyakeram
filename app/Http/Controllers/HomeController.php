@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Storage;
+use Session;
 
 class HomeController extends Controller
 {
@@ -21,6 +28,7 @@ class HomeController extends Controller
     // Home page
     public function index()
     {
-        return view('welcome');
+        $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
+        return view('welcome', array('mother_tongue' => $mother_tongue));
     }
 }

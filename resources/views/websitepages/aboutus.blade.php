@@ -20,15 +20,13 @@
 	    <p>We are the first and only platform that ensures the validation of all new registered profiles through Aadhaar Card details in real-time. We authenticate profiles through Aadhaar UIDAI to check the genuineness information provided by the user. Siya Ke Ram is a genuine matrimonial platform that opens a new world for those who are serious about commitments and register with us for marriage purpose only. This is not a dating site, and to discourage the registration of fake users, we ask for a few mandatory documents and details to authenticate the profile of the new users. All new users are required to complete the authentication process before their profile is made  live on Siya Ke Ram </p>
 	</section>
 	<section class="content-template-holder">
-	    <h3 class="light-pink roboto-medium">Five points of Authentication</h3>
+	    <h3 class="light-pink roboto-medium">Four points of Authentication</h3>
 	    <p>
-	    1.	Aadhar card number verification to check the details of the profile<br>
-	          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   <span>OR</span><br>
-	            &nbsp;&nbsp;&nbsp;&nbsp;	PAN card and Passport number verification <br>
-		2.	Phone number verification<br>
-		3.	Email id verification<br>
-		4.	Verifying information from Facebook profile <br>
-		5.	Verifying education and other details from Linked In profile <br>
+
+		1.	Phone number verification<br>
+		2.	Email id verification<br>
+		3.	Verifying information from Facebook profile <br>
+		4.	Verifying education and other details from Linked In profile <br>
 
 	To ensure the genuineness and authentication of profiles we have created this process.
 
@@ -57,7 +55,7 @@
 	We understand the importance of privacy and integrity. All communication between members goes through a secured email network. The names, personal details and all other information are kept confidential until the member himself decides to share the information with a potential match.
 
 	    </p>
-		<p> <b>Registered Address :</b> 467 Sector 15 A Faridabad Haryana 121007</p>
+		<p> <b>Registered Address :</b> B-7, Adarsh Plaza, Khasa Khoti Circle, Station Rd, Barodia Scheme, Banipark, Gopalbari, Jaipur, Rajasthan 302006</p>
 	</section>
 
 	</div>

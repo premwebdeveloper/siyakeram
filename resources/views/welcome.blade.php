@@ -36,93 +36,155 @@
 
                <div class="srch_frm">
                   <h3 style="color: #000;font-weight: bold;">Free Register</h3>
-                  <form name="reg_home_frm" id="reg_home_frm" action="" method="post">
+                  <form name="reg_home_frm" id="reg_home_frm" action="{{ route('register') }}" method="post">
+                    {{ csrf_field() }}
 
                      <div class="control-group form-group">
                         <div class="controls col-md-6">
-                           <input pattern="[A-Za-z]+" name="first_name" type="text" id="first_name" class="form-control" required="" data-validation-required-message="Please enter a first name." placeholder="First Name">
+                           <input pattern="[A-Za-z]+" type="text" id="first_name" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
                            <p class="help-block"></p>
                         </div>
                         <div class="controls col-md-6">
-                           <input pattern="[A-Za-z]+" name="last_name" type="text" id="last_name" class="form-control" required="" data-validation-required-message="Please enter a last name." placeholder="Last Name">
+                           <input type="tel" id="last_name" class="form-control" placeholder="Phone" name="phone" value="{{ old('phone') }}" required autofocus>
                            <p class="help-block"></p>
                         </div>
                      </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
+                            </div>
+                        </div>
                      <div class="control-group form-group">
                         <div class="controls col-md-12">
+                          <label for="gender" class="col-md-3 control-label">Gender</label>
                             <label class="radio-inline radio">
-                              <input type="radio" name="looking_for" id="bride" value="f" checked>
+                              <input type="radio" name="gender" id="bride" value="1" required>
                               <label for="bride">Male</label>
                             </label>
                             <label class="radio-inline radio">
-                              <input type="radio" name="looking_for" id="groom" value="m">
+                              <input type="radio" name="gender" id="groom" value="2" required>
                               <label for="groom">Female</label>
                             </label>
                         <p class="help-block"></p>
                      </div>
                      </div>
                      <div style="clear: both;">
-                        <div class="control-group form-group">
-                            <div class="controls col-md-12">
-                            <label for="dob_m">Date of Birth:</label>
+                       <label for="gender" class="col-md-12 control-label">Date of Birth</label>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <select class="form-control" id="date" name="date" required="required">
+                                    <option value="">Date</option><option value="01">01</option>
+                                    <option value="02">02</option><option value="03">03</option><option value="04">04</option>
+                                    <option value="05">05</option><option value="06">06</option><option value="07">07</option>
+                                    <option value="08">08</option><option value="09">09</option><option value="10">10</option>
+                                    <option value="11">11</option><option value="12">12</option><option value="13">13</option>
+                                    <option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                    <option value="17">17</option><option value="18">18</option><option value="19">19</option>
+                                    <option value="20">20</option><option value="21">21</option><option value="22">22</option>
+                                    <option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                                    <option value="26">26</option><option value="27">27</option><option value="28">28</option>
+                                    <option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                </select>
                             </div>
-                           <div class="controls">
-                                <div class="controls col-md-4">
-                                    <select class="form-control" name="dob_m" id="dob_m" required="" data-validation-required-message="Please select a month.">
-                                        <option selected="selected" value="" style="color:#888;">Month</option>
-                                        <option value="01">Jan</option>
-                                    </select>
-                                    <p class="help-block"></p>
-                                </div>
-                                <div class="controls col-md-4">
-                                 <select class="form-control" name="dob_d" id="dob_d" required="" data-validation-required-message="Please select a day.">
-                                    <option selected="selected" value="" style="color:#888;">Day</option>
-                                       <option value="01">01</option>
-                                 </select>
-                                 <p class="help-block"></p>
-                                </div>
-                                 <div class="controls col-md-4">
-                                 <select class="form-control" name="dob_y" id="dob_y" required="" data-validation-required-message="Please select a year.">
-                                    <option selected="selected" value="" style="color:#888;">Year</option>
-                                        <option value="1999">1999</option>
 
-                                 </select>
-                                 <p class="help-block"></p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="control-group form-group">
+                            <div class="col-md-4">
+                                <select class="form-control" id="month" name="month" required="required">
+                                    <option value="">Month</option><option value="01">January</option>
+                                    <option value="02">February</option><option value="03">March</option>
+                                    <option value="04">April</option><option value="05">May</option>
+                                    <option value="06">June</option><option value="07">July</option>
+                                    <option value="08">August</option><option value="09">September</option>
+                                    <option value="10">October</option><option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
 
-                            <div class="controls col-md-12">
-                              <select name="religion" id="ddlReligion" class="form-control" required="" data-validation-required-message="Please select a religion.">
-                                 <option value="" style="color:#888;">Religion</option>
-                                 <option value="7-0">Hinduism</option>
-                              </select>
-                              <p class="help-block"></p>
-                           </div>
+                            <div class="col-md-4">
+                                <select class="form-control" id="year" name="year" required="required">
+                                <option value="">Year</option>
+                                <option value="1999">1999</option><option value="1998">1998</option>
+                                <option value="1997">1997</option><option value="1996">1996</option>
+                                <option value="1995">1995</option><option value="1994">1994</option>
+                                <option value="1993">1993</option><option value="1992">1992</option>
+                                <option value="1991">1991</option><option value="1990">1990</option>
+                                <option value="1989">1989</option><option value="1988">1988</option>
+                                <option value="1987">1987</option><option value="1986">1986</option>
+                                <option value="1985">1985</option><option value="1984">1984</option>
+                                <option value="1983">1983</option><option value="1982">1982</option>
+                                <option value="1981">1981</option><option value="1980">1980</option>
+                                <option value="1979">1979</option><option value="1978">1978</option>
+                                <option value="1977">1977</option><option value="1976">1976</option>
+                                <option value="1975">1975</option><option value="1974">1974</option>
+                                <option value="1973">1973</option><option value="1972">1972</option>
+                                <option value="1971">1971</option><option value="1970">1970</option>
+                                <option value="1969">1969</option><option value="1968">1968</option>
+                                <option value="1967">1967</option><option value="1966">1966</option>
+                                <option value="1965">1965</option><option value="1964">1964</option>
+                                <option value="1963">1963</option><option value="1962">1962</option>
+                                <option value="1961">1961</option><option value="1960">1960</option>
+                                <option value="1959">1959</option><option value="1958">1958</option>
+                                <option value="1957">1957</option><option value="1956">1956</option>
+                                <option value="1955">1955</option><option value="1954">1954</option>
+                                <option value="1953">1953</option><option value="1952">1952</option>
+                                <option value="1951">1951</option><option value="1950">1950</option>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="control-group form-group">
-                            <div class="controls col-md-12">
-                              <select name="country_id" id="ddlCountry" class="form-control" required="" data-validation-required-message="Please select a location.">
-                                 <option value="" style="color:#888;">Country</option>
-                                 <option value="113">India</option>
-                                </optgroup>
-                              </select>
-                           </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <select class="form-control" id="religion" name="religion" required="required">
+                                    <option value="">Select Religion</option>
+                                    <option value="Hindu" title="Hindu">Hindu</option>
+                                    <option value="Jain" title="Jain">Jain</option>
+                                    <option value="Muslim" title="Muslim">Muslim</option>
+                                    <option value="Sikh" title="Sikh">Sikh</option>
+                                    <option value="Christian" title="Christian">Christian</option>
+                                    <option value="Spiritual" title="Spiritual">Spiritual</option>
+                                    <option value="Parsi" title="Parsi">Parsi</option>
+                                    <option value="Jewish" title="Jewish">Jewish</option>
+                                    <option value="Buddhist" title="Buddhist">Buddhist</option>
+                                    <option value="No Religion" title="No Religion">No Religion</option>
+                                    <option value="Other" title="Other">Other</option>
+                               </select>
+                            </div>
                         </div>
-                        <br>
-                        <div class="control-group form-group">
-                           <div class="controls col-md-12">
-                              <input class="form-control" autocomplete="off" name="user_email" type="email" id="txtEmailAddress" required="" data-validation-required-message="Please enter a Email Address." placeholder="Email Address">
-                              <p class="help-block"></p>
-                           </div>
+
+                        <div class="form-group">
+                           <div class="col-md-6">
+                                <select class="form-control" id="mother_tongue" name="mother_tongue" required="required">
+                                    <option value="">Select Mother Tongue</option>
+                                    @foreach($mother_tongue as $tongue)
+                                        <option value="{{ $tongue->id }}" title="{{ $tongue->mother_tongue }}">{{ $tongue->mother_tongue }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="control-group form-group">
-                           <div class="controls col-md-12">
-                              <input maxlength="16" class="form-control" name="user_pass" type="password" id="txtPassword" required="" data-validation-required-message="Please enter a password." placeholder="Password">
-                              <p class="help-block"></p>
-                           </div>
-                        </div>
+
 
                      </div>
 

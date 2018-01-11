@@ -1,7 +1,7 @@
 @extends('layouts.public_app')
 
 @section('content')
-    <div class="container container-full" >
+    <div class="container container-full" style="padding-top:30px;">
         <div class="row light searchpage mt-95">
 
             <div class="col-md-3 col-sm-12 col-xs-12 mt-20 no-padding-sm">

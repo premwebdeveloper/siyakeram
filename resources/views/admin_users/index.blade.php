@@ -67,12 +67,38 @@
                                             <a class="btn btn-success" title="View" href="{{ route('view', ['user_id' => $user->user_id]) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
-	                                        <a class="btn btn-info" title="Delete" href="{{ route('delete', ['user_id' => $user->user_id]) }}">
+	                                        <a class="btn btn-info" title="Delete" href="#{{$user->user_id}}" data-toggle="modal">
 	                                            <i class="fa fa-trash" aria-hidden="true"></i>
 	                                        </a>
 	                                    </td>
 	                                </tr>
+									<div id="{{$user->user_id}}" class="modal fade" role="dialog">
+										<div class="modal-dialog">
 
+											<!-- Modal content-->
+											<div class="modal-content">
+											  <div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title"><i class="fa fa-trash"></i> Delete Profile Image</h4>
+											  </div>
+											  <div class="modal-body">
+												<p>Are you sure you want to Delete ?</p>
+											  </div>
+											  <div class="modal-footer">
+												<form method="post" action="{{route('delete')}}">
+
+													{{ csrf_field() }}
+
+													<input type="hidden" id="delt" name="user_id" value="{{$user->user_id}}">
+
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													<button class="btn btn-danger" type="submit" name="delete" value="{{$user->user_id}}">Delete</button>
+												</form>
+											  </div>
+											</div>
+
+										</div>
+									</div>
 	                            @endforeach
 
 	                        </tbody>

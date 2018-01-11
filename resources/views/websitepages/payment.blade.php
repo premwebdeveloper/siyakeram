@@ -19,22 +19,7 @@
 	    <h3 class="light-pink roboto-medium">What makes Siya Ke Ram Different?</h3>
 	    <p>We are the first and only platform that ensures the validation of all new registered profiles through Aadhaar Card details in real-time. We authenticate profiles through Aadhaar UIDAI to check the genuineness information provided by the user. Siya Ke Ram.com is a genuine matrimonial platform that opens a new world for those who are serious about commitments and register with us for marriage purpose only. This is not a dating site, and to discourage the registration of fake users, we ask for a few mandatory documents and details to authenticate the profile of the new users. All new users are required to complete the authentication process before their profile is made  live on Siya Ke Ram </p>
 	</section>
-	<section class="content-template-holder">
-	    <h3 class="light-pink roboto-medium">Five points of Authentication</h3>
-	    <p>
-	    1.	Aadhar card number verification to check the details of the profile<br>
-	          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   <span>OR</span><br>
-	            &nbsp;&nbsp;&nbsp;&nbsp;	PAN card and Passport number verification <br>
-		2.	Phone number verification<br>
-		3.	Email id verification<br>
-		4.	Verifying information from Facebook profile <br>
-		5.	Verifying education and other details from Linked In profile <br>
 
-	To ensure the genuineness and authentication of profiles we have created this process.
-
-
-	    </p>
-	</section>
 	<section class="content-template-holder">
 	    <h3 class="light-pink roboto-medium">How this process is useful?</h3>
 	    <p>This process helps us to check the different details of the new users at different levels. As filling up the details of Aadhaar or Passport &amp; PAN card is mandatory for new profiles. Without giving this information you can’t move forward and register with us. Even to ensure this we also ask our users to login through their Facebook and LinkedIn profiles, so that we can authenticate their profile. Even to check further, we have different tools to verify the other details from Facebook and Linked In profiles.  We have created this cumbersome process for registration to ensure the safety of our users and make this platform safe for all.</p>
@@ -57,7 +42,7 @@
 	We understand the importance of privacy and integrity. All communication between members goes through a secured email network. The names, personal details and all other information are kept confidential until the member himself decides to share the information with a potential match.
 
 	    </p>
-		<p> <b>Registered Address :</b> 467 Sector 15 A Faridabad Haryana 121007</p>
+<p> <b>Registered Address :</b> B-7, Adarsh Plaza, Khasa Khoti Circle, Station Rd, Barodia Scheme, Banipark, Gopalbari, Jaipur, Rajasthan 302006</p>
 	</section>
 
 	</div>

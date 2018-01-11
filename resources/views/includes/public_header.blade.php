@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Siya Ke Ram</title>
 
 	<script src="{{ asset('resources/frontend_assets/js/jquery-3.1.1.min.js') }}"></script>
 	<script src="{{ asset('resources/frontend_assets/js/bootstrap.min.js') }}"></script>
@@ -41,7 +41,7 @@
         <div class="nav-top-bar row top-nav">
             <div class="wrapper">
               <div class="float-left"><span>Build 90% or above Trust Score & Get FLAT 50% off*</span></div>
-              <div class="float-right"><span class="pipe">Call +91-124-265 0000 (India)</span>
+              <div class="float-right"><span class="pipe">Call +91-97720 70234 (India)</span>
                 <span class="pipe"><a href="mailto:support@demo.com"> support@siyakeram.com</a></span>
              <span> <a href="javascript:;">Live Support </a></span></div>
             </div>
@@ -98,7 +98,7 @@
                 @endguest
 
                 <li class="mobile-link-text"><a href="mailto:support@demo.com">support@siyakeram.com</a></li>
-                <li class="mobile-link-text"><a href="javascript:void(0)" >support +91-124-265 0000 (India)</a></li>
+                <li class="mobile-link-text"><a href="javascript:void(0)" >support +91-97720 70234 (India)</a></li>
               </ul>
             </div>
           </div>

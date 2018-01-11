@@ -64,11 +64,12 @@
 
 
                     </div>
+
                     <div class="ibox-content profile-content">
                         <h4><strong>{{$user->name}}</strong></h4>
                         <h5><strong>{{$user->email}}</strong></h5>
                         <h5><strong>{{$user->phone}}</strong></h5>
-                        <p><i class="fa fa-map-marker"></i> Address :  {{$user->address}}, {{$cities_details->name}}, {{$states_details->name}}, {{$countries_details->name}} - {{$user->zipcode}}</p>
+                        <p><i class="fa fa-map-marker"></i> Address :  {{$user->address}}, @if(!empty($cities_details->name)) {{$cities_details->name}} @endif, @if(!empty($states_details->name)) {{$states_details->name}} @endif, @if(!empty($countries_details->name)) {{$countries_details->name}} @endif - {{$user->zipcode}}</p>
 
                     </div>
                 </div>

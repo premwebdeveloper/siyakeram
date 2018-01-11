@@ -2405,7 +2405,8 @@ section.slider-holder .slider img {
 section.slider-holder .best-time-holder {
     background-color: #fff;
     padding: 15px;
-    width: 40%;
+    padding-top: 0px;
+    width: 30%;
     left: 20;
     bottom: 5%;
     top: 15px;
