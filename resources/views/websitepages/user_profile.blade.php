@@ -18,7 +18,7 @@
   	<div class="col-md-12">
         <div class="prf-section" style="visibility: visible; animation-name: fadeIn;">
           	<div class="row">
-				      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padlr0 prf-pic-landscape">
+				      <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 padlr0 prf-pic-landscape">
 	                <div class="prf-user-img" id="showimageee">
 	                	<a class="group2 cboxElement" id="showimagepop" href="javascript:;">
 
@@ -28,20 +28,20 @@
                       if(count($images) > 1)
                       {
                         ?>
-                        <img src="storage/app/uploads/profile_images/<?= $images[1]->image; ?>" class="img-responsive" alt="Profilepic">
+                        <img src="../storage/app/uploads/profile_images/<?= $images[0]->image; ?>" class="img-responsive" alt="Profilepic">
                         <?php
                       }
                       else
                       {
                         ?>
-                        <img src="storage/app/uploads/profile_images/user.png" class="img-responsive" alt="Profilepic">
+                        <img src="../storage/app/uploads/profile_images/user.png" class="img-responsive" alt="Profilepic">
                         <?php
                       }
                     }
                     else
                     {
                       ?>
-                        <img src="storage/app/uploads/profile_images/user.png" class="img-responsive" alt="Profilepic">
+                        <img src="../storage/app/uploads/profile_images/user.png" class="img-responsive" alt="Profilepic">
                       <?php
                     }
                     ?>
@@ -51,7 +51,7 @@
 	                </div>
            		</div>
 
-	 		 	      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padlr0 prf-detail-landscape">
+	 		 	      <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 padlr0 prf-detail-landscape">
 
                 <?php
                   // Age
