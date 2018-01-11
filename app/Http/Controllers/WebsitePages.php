@@ -47,7 +47,8 @@ class WebsitePages extends Controller
                 ->leftjoin('annual_income', 'annual_income.id', '=', 'user_education_center.annual_income')
                 ->leftjoin('employed_as', 'employed_as.id', '=', 'user_education_center.employed_as')
                 ->leftjoin('educational_qualification', 'educational_qualification.id', '=', 'user_education_center.edu_qualification')
-                ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue', 'educational_qualification.education', 'annual_income.annual_income', 'employed_as.employed_as');
+                ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue', 'educational_qualification.education', 'annual_income.annual_income', 'employed_as.employed_as')
+                ->where('user_details.status', 1);
 
         // If Age from is not empty
         if (!empty($looking_for))
