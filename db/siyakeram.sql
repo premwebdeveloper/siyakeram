@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2018 at 04:40 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Jan 11, 2018 at 04:25 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -79,9 +79,11 @@ CREATE TABLE `caste` (
 --
 
 INSERT INTO `caste` (`id`, `caste`, `status`) VALUES
-(1, 'Addharmi', 1),
-(2, 'Aggarwal', 1),
-(3, 'Arora', 1);
+(1, '6000 Niyogi', 1),
+(2, '96K Kokanastha', 1),
+(3, 'Addharmi', 1),
+(4, 'Aggarwal', 1),
+(5, 'Agri', 1);
 
 -- --------------------------------------------------------
 
@@ -48706,6 +48708,17 @@ INSERT INTO `countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dates`
+--
+
+CREATE TABLE `dates` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `educational_qualification`
 --
 
@@ -48773,7 +48786,10 @@ CREATE TABLE `family_details` (
 --
 
 INSERT INTO `family_details` (`id`, `user_id`, `about_family`, `father_occupation`, `mother_occupation`, `married_sisters`, `unmarried_sisters`, `married_brothers`, `unmarried_brothers`, `native_country`, `native_state`, `family_value`, `affluence_level`, `created_at`, `updated_at`, `status`) VALUES
-(1, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(1, 30, 'About My Family', 'Business', 'Employed-Govt', '1', '0', '1', '0', 101, 33, 'Liberal', 'Affluence', NULL, '2018-01-03 14:06:33', 1),
+(2, 31, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-04 14:35:27', 1),
+(3, 32, 'About My Family', 'Employed-Govt', 'Homemaker', '1', '0', '1', '1', 101, 33, 'Liberal', 'Affluence', '2018-01-05 15:03:59', '2018-01-05 15:20:18', 1),
+(4, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 14:07:40', '2018-01-11 14:07:40', 1);
 
 -- --------------------------------------------------------
 
@@ -48784,6 +48800,7 @@ INSERT INTO `family_details` (`id`, `user_id`, `about_family`, `father_occupatio
 CREATE TABLE `height` (
   `id` int(11) NOT NULL,
   `height` varchar(255) NOT NULL,
+  `height_cms` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -48791,9 +48808,10 @@ CREATE TABLE `height` (
 -- Dumping data for table `height`
 --
 
-INSERT INTO `height` (`id`, `height`, `status`) VALUES
-(1, '123', 1),
-(2, '456', 1);
+INSERT INTO `height` (`id`, `height`, `height_cms`, `status`) VALUES
+(1, '122cm - 4ft', '122', 1),
+(2, '125cm - 4ft 1in', '125', 1),
+(3, '128cm - 4ft 2in', '128', 1);
 
 -- --------------------------------------------------------
 
@@ -48814,6 +48832,17 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2017_12_16_114402_roles', 1),
 (5, '2017_12_16_114439_user_roles', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `months`
+--
+
+CREATE TABLE `months` (
+  `id` int(11) NOT NULL,
+  `month` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -48888,6 +48917,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('premsaini9602@gmail.com', '$2y$10$ysdHZwDtCnOqbEK4p26LJO7klnAEbuGIDV6luTPAxxACGHQBQJvqe', '2017-12-16 05:58:07');
 
 -- --------------------------------------------------------
 
@@ -53073,10 +53109,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `verify_token`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'Admin', '9602947878', 'admin@admin.com', '$2y$10$FCxLBiXPf.35HwWgMhivpuGrDyx96OmPhqr3MjbXK2YNC5Yp/Tf1O', NULL, 'yjtlAj0brHLbEwovLUqdYRbJpQiIu4QOjisjbQpO77vzW4RruRO2autCsrpk', '2017-12-20 18:30:00', '2017-12-20 18:30:00', 1),
-(2, 'Prem Sainin', '9602947878', 'premsaini9602@gmail.com', '$2y$10$FCxLBiXPf.35HwWgMhivpuGrDyx96OmPhqr3MjbXK2YNC5Yp/Tf1O', 'wL4GyWmzKhecBuHw2uv51PEpIukxuusisxOz9cIE', 'GKA4a2HdqmNFud16I4RMBl3uwZa3vx1knGy0302XGOcrwIWEkBdDycyFk3FF', '2017-12-21 08:55:23', '2018-01-03 07:19:42', 1),
-(3, 'Amit sharma', '8003947560', 'amitsharma6681@gmail.com', '$2y$10$mRE3GFyvCBm/Yeukm/FBAuXTL8OxuHB57N2QXp6SOhVf0f7T/SEM.', 'eJbh5gu3V9J4URhRRQzXAiXpM6Nb6ZVitMbXiE09', 'KHST0791CWfL5VEFT2BrcsjRzW9UAPXMAWIa6mmal8oioDZ6NzarWWD5c9tO', '2017-12-21 09:22:33', '2017-12-21 09:26:14', 1),
-(5, 'Avinash Tamret', '9509950995', 'avinashtamret17@gmail.com', '$2y$10$wavW1DNYS2iLETSxktzPRu1R2FLFb3ckgVnvBeQWBhZzL5v0hPMiG', 'gC94DPttOnsSxW41yLINI1GWiPzv1bJ9Ek6TwlwQ', NULL, '2017-12-29 08:27:54', '2017-12-29 09:19:24', 1);
+(1, 'Admin', '8003947560', 'admin@admin.com', '$2y$10$BY.AqZvzrQoYuXre1nh8ouLebxnGPGOYjywyshrWsRKkkClnwd8We', 'Vt215WrJdsLYOWSbi17dtEDQIVQ3uozGDa2jcDLw', 'YbaavqQooqIrVebkl5FP16Z0JSMXrCII4OJ3HtZ9Dfr2kC1u7eoxQjPSvkNS', '2017-12-29 09:01:52', '2017-12-29 09:01:52', 1),
+(28, 'prem', '9602947878', 'prem_saini@hotmail.com', '$2y$10$j2dlzsMMdWgI4ugLPyxs0.z7ub8FMHEw5EmS75NsiaUrMVN0xF9JC', 'cjuIug8UEPhj6XwYj2t3yibYcjVjy98CR0PbfsT0', NULL, '2017-12-18 09:05:27', '2017-12-18 09:05:27', 0),
+(30, 'Amit Kumar', '8003947560', 'amitsharma6681@gmail.com', '$2y$10$fNMJAOY2MDVj80AXycbgXuDNnyK6xnXbnsvrf2XDlro/Or0d0sI4G', 'SlZOzW6i9Qkq2CZdpN6brpwsDpNgUE3gcsgy4gHu', 'hyEtNA0P2vPJUsAalXHQ5t0M1qubEgpYV9ljpI5sy0SwbTFQLZM1NUOssnRt', '2017-12-20 09:00:50', '2018-01-09 09:04:00', 0),
+(31, 'prem saini', '9602947878', 'premsaini9602@gmail.com', '$2y$10$9avcRT5tffNznHjuj6svXuT4x3iJZzkoo4L5xRbcccpqBSHkRdpIS', 'LuxQW1ah4RTvydrQngbDWfyQ7SPp55o45jFAlKwa', 'dqGFE5lp6AWOelQnUyvsUu5SG62w7qtKRxiX8hy9uylDtJkPI8wSl8oF50F9', '2017-12-27 08:03:25', '2018-01-04 09:05:24', 1),
+(32, 'Ravindra Nath Bhati', '950139844', 'ravibhati074@gmail.com', '$2y$10$WEaGUuOkIJvLLGqvhFk/puICf3hyRcj32S/8zfmBlKKEHQ1zSL76G', 'Ga2RBYv5AQ7LtRG7SvraOpk7OUuhbEZeBnivaan0', NULL, '2018-01-05 09:33:59', '2018-01-11 08:58:03', 1),
+(33, 'Avinash', '9509301785', 'avinashtamret17@gmail.com', '$2y$10$sNiy87oAegTD5H21nk9WTemPekgoj63335Ji.HEnltm0EZM2bY4HS', 'DqEIps7joxKwHhy95pdK0i6ZqEVkiTOEeYvXy8rJ', 'la48BNRk6IM8hd47SKKWnIlJDxn0IAhMmKG1gdskAGpZRM7bTIAFM5XpnEBS', '2018-01-11 08:37:40', '2018-01-11 08:37:40', 1);
 
 -- --------------------------------------------------------
 
@@ -53087,6 +53125,7 @@ INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `verify_token`,
 CREATE TABLE `user_details` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
+  `unique_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -53113,6 +53152,7 @@ CREATE TABLE `user_details` (
   `manglik` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gotra` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birth_place` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `diet` int(11) DEFAULT NULL,
   `bio` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -53123,10 +53163,11 @@ CREATE TABLE `user_details` (
 -- Dumping data for table `user_details`
 --
 
-INSERT INTO `user_details` (`id`, `user_id`, `name`, `email`, `phone`, `profile_for`, `gender`, `date`, `month`, `year`, `birth_hour`, `birth_mint`, `birth_sec`, `address`, `country`, `state`, `city`, `zipcode`, `religion`, `mother_tongue`, `height`, `marital_status`, `caste`, `sub_caste`, `complexion`, `manglik`, `gotra`, `birth_place`, `bio`, `created_at`, `updated_at`, `status`) VALUES
-(1, 2, 'Prem Saini', 'premsaini9602@gmail.com', '9602947878', '2', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 28, NULL, NULL, '1', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-21 08:55:23', '2017-12-28 08:07:35', 0),
-(2, 3, 'Amit sharma', 'amitsharma6681@gmail.com', '8003947560', '1', '1', 28, 5, 1989, NULL, NULL, NULL, NULL, NULL, 28, NULL, NULL, '1', 31, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-21 09:22:33', '2017-12-21 09:22:33', 1),
-(3, 5, 'Avinash Tamret', 'avinashtamret17@gmail.com', '9509950995', NULL, '2', 1, 1, 1999, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hindu', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-29 08:27:54', '2017-12-29 08:27:54', 1);
+INSERT INTO `user_details` (`id`, `user_id`, `unique_id`, `name`, `email`, `phone`, `profile_for`, `gender`, `date`, `month`, `year`, `birth_hour`, `birth_mint`, `birth_sec`, `address`, `country`, `state`, `city`, `zipcode`, `religion`, `mother_tongue`, `height`, `marital_status`, `caste`, `sub_caste`, `complexion`, `manglik`, `gotra`, `birth_place`, `diet`, `bio`, `created_at`, `updated_at`, `status`) VALUES
+(22, 30, 'SR-1001', 'Amit Kumar', 'amitsharma6681@gmail.com', '8003947560', '1', '1', 18, 1, 1991, 19, 19, 19, NULL, NULL, NULL, NULL, NULL, '1', 13, 122, 1, 2, 'sub casteeee', 'Fair', 'No', 'gotraaaaaaaaa', 'singhana', 2, 'bio', '2017-12-20 09:00:50', '2018-01-06 09:27:13', 0),
+(23, 31, 'SR-1002', 'prem saini', 'premsaini9602@gmail.com', '9602947878', '1', '1', 24, 2, 1982, 15, 17, 19, 'F 102 UNNATI TOWER VDN JAIPUR', 101, 33, 3378, '302039', 'Jain', 15, 2, 3, 3, 'sub caste', 'Fair', 'Dont Know', 'gotra', 'Khetri Nagar', NULL, 'Bio', '2017-12-27 08:03:25', '2018-01-04 09:05:30', 1),
+(24, 32, 'SR-1003', 'Ravindra Nath Bhati', 'ravibhati074@gmail.com', '950139844', NULL, '1', 27, 4, 1991, 16, 15, 15, 'address', 101, 33, 3295, '302025', 'Hindu', 19, 1, 2, 1, 'Bhati', 'Fair', 'No', 'Bhati', 'Ajmer', NULL, 'Ravi Ajmer', '2018-01-05 09:33:59', '2018-01-05 09:51:03', 1),
+(25, 33, 'SR-1004', 'Avinash', 'avinashtamret17@gmail.com', '9509301785', NULL, '1', 17, 6, 1991, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hindu', 19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 08:37:40', '2018-01-11 08:37:40', 1);
 
 -- --------------------------------------------------------
 
@@ -53152,7 +53193,10 @@ CREATE TABLE `user_education_center` (
 --
 
 INSERT INTO `user_education_center` (`id`, `user_id`, `edu_qualification`, `employed_as`, `area_field`, `employed_with`, `annual_income`, `created_at`, `updated_at`, `status`) VALUES
-(1, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(1, 30, 1, 1, 1, 'Business/Self Employed', 1, NULL, '2018-01-03 14:32:46', 1),
+(2, 31, 1, 1, 1, 'Civil Services', 1, NULL, '2018-01-04 14:35:28', 1),
+(3, 32, 1, 1, 1, 'Civil Services', 2, '2018-01-05 15:03:59', '2018-01-05 15:20:35', 1),
+(4, 33, NULL, NULL, NULL, NULL, NULL, '2018-01-11 14:07:40', '2018-01-11 14:07:40', 1);
 
 -- --------------------------------------------------------
 
@@ -53168,6 +53212,19 @@ CREATE TABLE `user_images` (
   `updated_at` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_images`
+--
+
+INSERT INTO `user_images` (`id`, `user_id`, `image`, `created_at`, `updated_at`, `status`) VALUES
+(33, 32, 'b1aa46.jpg', '2018-01-05 15:21:16', '2018-01-05 15:21:16', 1),
+(34, 31, 'a1a83f.webp', '2018-01-10 13:11:32', '2018-01-10 13:11:32', 1),
+(35, 31, 'a6caed.webp', '2018-01-10 15:02:58', '2018-01-10 15:02:58', 1),
+(36, 31, 'user.png', '2018-01-10 15:06:07', '2018-01-10 15:06:07', 1),
+(37, 31, 'fc99e9.png', '2018-01-10 15:24:18', '2018-01-10 15:24:18', 1),
+(38, 31, '0ea84f.png', '2018-01-10 15:24:18', '2018-01-10 15:24:18', 1),
+(39, 33, 'user.png', '2018-01-11 14:07:40', '2018-01-11 14:07:40', 1);
 
 -- --------------------------------------------------------
 
@@ -53188,11 +53245,43 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2017-12-21 08:55:23', '2017-12-21 08:55:23'),
-(2, 2, 2, '2017-12-21 08:55:23', '2017-12-21 08:55:23'),
-(3, 2, 3, '2017-12-21 09:22:33', '2017-12-21 09:22:33'),
-(4, 2, 4, '2017-12-29 08:26:57', '2017-12-29 08:26:57'),
-(5, 2, 5, '2017-12-29 08:27:54', '2017-12-29 08:27:54');
+(1, 1, 1, '2017-12-16 07:55:02', '2017-12-16 07:55:02'),
+(2, 2, 10, '2017-12-18 07:18:30', '2017-12-18 07:18:30'),
+(3, 2, 11, '2017-12-18 07:29:35', '2017-12-18 07:29:35'),
+(4, 2, 12, '2017-12-18 07:34:03', '2017-12-18 07:34:03'),
+(5, 2, 13, '2017-12-18 07:41:20', '2017-12-18 07:41:20'),
+(6, 2, 14, '2017-12-18 07:47:39', '2017-12-18 07:47:39'),
+(7, 2, 15, '2017-12-18 07:49:55', '2017-12-18 07:49:55'),
+(8, 2, 16, '2017-12-18 07:51:20', '2017-12-18 07:51:20'),
+(9, 2, 17, '2017-12-18 08:08:13', '2017-12-18 08:08:13'),
+(10, 2, 18, '2017-12-18 08:13:14', '2017-12-18 08:13:14'),
+(11, 2, 19, '2017-12-18 08:13:59', '2017-12-18 08:13:59'),
+(12, 2, 20, '2017-12-18 08:29:44', '2017-12-18 08:29:44'),
+(13, 2, 21, '2017-12-18 08:33:56', '2017-12-18 08:33:56'),
+(14, 2, 22, '2017-12-18 08:58:24', '2017-12-18 08:58:24'),
+(15, 2, 23, '2017-12-18 08:58:38', '2017-12-18 08:58:38'),
+(16, 2, 24, '2017-12-18 08:58:55', '2017-12-18 08:58:55'),
+(17, 2, 25, '2017-12-18 09:00:13', '2017-12-18 09:00:13'),
+(18, 2, 26, '2017-12-18 09:00:33', '2017-12-18 09:00:33'),
+(19, 2, 27, '2017-12-18 09:04:23', '2017-12-18 09:04:23'),
+(20, 2, 28, '2017-12-18 09:05:27', '2017-12-18 09:05:27'),
+(21, 2, 29, '2017-12-19 07:58:29', '2017-12-19 07:58:29'),
+(22, 2, 30, '2017-12-20 09:00:50', '2017-12-20 09:00:50'),
+(23, 2, 31, '2017-12-27 08:03:25', '2017-12-27 08:03:25'),
+(24, 2, 32, '2017-12-29 09:01:52', '2017-12-29 09:01:52'),
+(25, 2, 32, '2018-01-05 09:33:59', '2018-01-05 09:33:59'),
+(26, 2, 33, '2018-01-11 08:37:40', '2018-01-11 08:37:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `years`
+--
+
+CREATE TABLE `years` (
+  `id` int(11) NOT NULL,
+  `year` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -53229,6 +53318,12 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `dates`
+--
+ALTER TABLE `dates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `educational_qualification`
 --
 ALTER TABLE `educational_qualification`
@@ -53256,6 +53351,12 @@ ALTER TABLE `height`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `months`
+--
+ALTER TABLE `months`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -53307,6 +53408,12 @@ ALTER TABLE `user_roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `years`
+--
+ALTER TABLE `years`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -53315,91 +53422,127 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `annual_income`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `area_field`
 --
 ALTER TABLE `area_field`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `caste`
 --
 ALTER TABLE `caste`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48315;
+
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+
+--
+-- AUTO_INCREMENT for table `dates`
+--
+ALTER TABLE `dates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `educational_qualification`
 --
 ALTER TABLE `educational_qualification`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `employed_as`
 --
 ALTER TABLE `employed_as`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `family_details`
 --
 ALTER TABLE `family_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `height`
 --
 ALTER TABLE `height`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `months`
+--
+ALTER TABLE `months`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `mother_tongue`
 --
 ALTER TABLE `mother_tongue`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4121;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `user_education_center`
 --
 ALTER TABLE `user_education_center`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `user_images`
 --
 ALTER TABLE `user_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
 --
 -- AUTO_INCREMENT for table `user_roles`
 --
 ALTER TABLE `user_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `years`
+--
+ALTER TABLE `years`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
