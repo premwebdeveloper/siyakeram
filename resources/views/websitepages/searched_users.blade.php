@@ -452,8 +452,24 @@
                                                         </p>
 
                                                         <p>
-                                                            <a href="javascript:;" data-toggle="modal" data-target="#showmodel" class="p-action-btn btn-grey-light border-r2 ripplelink">
-                                                                <i class="fa fa-phone"></i> <span>Contact</span></a>
+                                                            <?php
+                                                            if($user = Auth::user())
+                                                            {
+                                                                ?>
+                                                                <a href="javascript:;" data-toggle="modal" data-target="#showmodel" class="p-action-btn btn-grey-light border-r2 ripplelink">
+                                                                    <i class="fa fa-phone"></i> <span>Contact</span>
+                                                                </a>
+                                                                <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                ?>
+                                                                <a href="{{ route('login') }}" class="p-action-btn btn-grey-light border-r2 ripplelink">
+                                                                    <i class="fa fa-phone"></i> <span>Contact</span>
+                                                                </a>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -472,26 +488,25 @@
 
         </div>
     </div>
+
     <div class="modal animated fade in" id="showmodel" tabindex="-1" role="dialog">
-      <div class="modal-dialog lvmodal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-body LVmodal">
-           <h3>Contact Details</h3>
-          <a href="#" class="close-LVmodal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
-          <div class="LVModal-content"> 
-            <p><i class="fa fa-refresh"></i><br>
-            </p><div style="line-height:15px;padding-left:10px;">You are on a Free Membership Plan. Please upgrade your membership by availing our paid services to contact selected profiles.<div>
-                        <a href="{{route('membership')}}"><button class="btn btn-theme ripplelink btn-shadow padd-10 mt-15">Upgrade Now</button></a></div></div><br>
+        <div class="modal-dialog lvmodal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body LVmodal">
+                    <h3>Contact Details</h3>
+                    <a href="#" class="close-LVmodal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+                    <div class="LVModal-content">
+                        <p><i class="fa fa-refresh"></i><br></p>
+                        <div style="line-height:15px;padding-left:10px;">
+                            You are on a Free Membership Plan. Please upgrade your membership by availing our paid services to contact selected profiles.
+                        </div>
+                        <a href="{{route('membership')}}">
+                            <button class="btn btn-theme ripplelink btn-shadow padd-10 mt-15">Upgrade Now</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-           <div class="LVModal-button">
-           <div class="spinner mt-10" style="display: none;"><br>
-              <div class="bounce1" style="background:#cd3162"></div>
-              <div class="bounce2" style="background:#fbbb38"></div>
-              <div class="bounce3" style="background:#cd3162"></div>
-            </div>
-           </div>
-          </div>      
         </div>
-      </div>
     </div>
+
 @endsection

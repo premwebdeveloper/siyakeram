@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class AjaxController extends Controller
 {
@@ -362,7 +363,17 @@ class AjaxController extends Controller
                     $image = 'user.png';
                 }
 
-                $html .= '<li><div class="strip_profile" style="visibility: visible; animation-name: fadeIn;"><div class="row"><div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padlr0"><div class="img_list"><a href="javascript:;" target="_blank"><img src="storage/app/uploads/profile_images/'.$image.'" class="img-responsive" alt=""></a></div></div><div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 padlr0"><div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padlr0 min-height-mobile"><div class="Profile_list-name"><h3><a href="javascript:;" target="_blank"><span class="lvNameellips"> '.$data->name.'</span></a><span class="lv-id">'.$data->unique_id.'</span></h3><ul class="add_info"><li>Age - '.$age.'</li><li>Height - '.$data->height.'</li><li>Location - '.$data->state.'</li><li>Religion - '.$data->religion.'</li><li>Caste - '.$data->caste.'</li><li>Mother Tongue - '.$data->mother_tongue.'</li><li>Profession - '.$data->employed_as.'</li><li>Education - '.$data->education.'</li><li>Annual Income - '.$data->annual_income.'</li></ul></div></div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padlr0 btn-bottom-mobile"><div class="profile-actions"><div class="gallery"><p><a href="user_profile/'.$data->user_id.'" class="p-action-btn btn-grey-light border-r2 ripplelink" target="_blank"><i class="fa fa-eye"><strong>View</strong></i> <span>View</span></a></p><p><a href="javascript:;" data-toggle="modal" data-target="#showmodel" class="p-action-btn btn-grey-light border-r2 ripplelink"><i class="fa fa-phone"><strong>Contact</strong></i> <span>Contact</span></a></p></div></div></div></div></div></div></li>';
+                if($user = Auth::user())
+                {
+                    $contact_button = '<a href="javascript:;" data-toggle="modal" data-target="#showmodel" class="p-action-btn btn-grey-light border-r2 ripplelink"><i class="fa fa-phone"></i> <span>Contact</span></a>';
+                }
+                else
+                {
+                    $contact_button = '<a href="login" class="p-action-btn btn-grey-light border-r2 ripplelink">
+                        <i class="fa fa-phone"></i><span>Contact</span></a>';
+                }
+
+                $html .= '<li><div class="strip_profile" style="visibility: visible; animation-name: fadeIn;"><div class="row"><div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padlr0"><div class="img_list"><a href="javascript:;" target="_blank"><img src="storage/app/uploads/profile_images/'.$image.'" class="img-responsive" alt=""></a></div></div><div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 padlr0"><div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padlr0 min-height-mobile"><div class="Profile_list-name"><h3><a href="javascript:;" target="_blank"><span class="lvNameellips"> '.$data->name.'</span></a><span class="lv-id">'.$data->unique_id.'</span></h3><ul class="add_info"><li>Age - '.$age.'</li><li>Height - '.$data->height.'</li><li>Location - '.$data->state.'</li><li>Religion - '.$data->religion.'</li><li>Caste - '.$data->caste.'</li><li>Mother Tongue - '.$data->mother_tongue.'</li><li>Profession - '.$data->employed_as.'</li><li>Education - '.$data->education.'</li><li>Annual Income - '.$data->annual_income.'</li></ul></div></div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padlr0 btn-bottom-mobile"><div class="profile-actions"><div class="gallery"><p><a href="user_profile/'.$data->user_id.'" class="p-action-btn btn-grey-light border-r2 ripplelink" target="_blank"><i class="fa fa-eye"><strong>View</strong></i> <span>View</span></a></p><p>'.$contact_button.'</p></div></div></div></div></div></div></li>';
             }
         }
         else
