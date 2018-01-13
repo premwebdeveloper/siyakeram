@@ -28,7 +28,7 @@
                       if(count($images) > 1)
                       {
                         ?>
-                        <img src="../storage/app/uploads/profile_images/<?= $images[0]->image; ?>" class="img-responsive" alt="Profilepic">
+                        <img src="../storage/app/uploads/profile_images/<?= $images[1]->image; ?>" class="img-responsive" alt="Profilepic">
                         <?php
                       }
                       else
