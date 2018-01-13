@@ -132,7 +132,8 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     Route::get('caste', 'Admin@caste')->name('caste');
     Route::get('addCaste', 'Admin@addCaste')->name('addCaste');
     Route::post('add_caste', 'Admin@add_caste')->name('add_caste');
-    Route::get('deleteCaste', 'Admin@deleteCaste')->name('deleteCaste');
+    Route::post('editCaste', 'Admin@editCaste')->name('editCaste');
+    //Route::get('deleteCaste', 'Admin@deleteCaste')->name('deleteCaste');
 
     // Mother tongue Add / View / Delete
     Route::get('mother_tongue', 'Admin@mother_tongue')->name('mother_tongue');

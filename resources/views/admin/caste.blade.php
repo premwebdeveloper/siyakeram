@@ -52,26 +52,73 @@
 	                        <tbody>
 
 	                            @foreach($castes as $caste)
-
 	                                <tr class="gradeX">
-	                                    <td>{{ $caste->caste }}</td>
+	                                    <td id="existCaste_{{ $caste->id }}">{{ $caste->caste }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteCaste', ['id' => $caste->id]) }}">
-	                                            Delete
+                                            <!-- <a class="btn btn-success" href="{{ route('deleteCaste', ['id' => $caste->id]) }}">
+                                                Delete
+                                            </a> -->
+	                                        <a class="btn btn-success editCaste" href="javascript:;" id="{{ $caste->id }}">
+	                                            Edit
 	                                        </a>
 	                                    </td>
 	                                </tr>
-
 	                            @endforeach
 
 	                        </tbody>
 	                    </table>
 	                </div>
-
 	            </div>
 	        </div>
     	</div>
     </div>
 </div>
 
+<div id="casteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Caste</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editCaste') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="caste_id" id="caste_id">
+
+                    <div class="form-group">
+                        <input type="text" name="caste" id="caste" required="required" class="form-control" placeholder="Caste">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editCaste" class="btn btn-warning" id="editCaste" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editCaste', function(){
+            var id = $(this).attr('id');
+            var caste = $('#existCaste_'+id).text();
+
+            $('#caste_id').val(id);
+            $('#caste').val(caste);
+            $('#casteModal').modal('show');
+        });
+    });
+</script>
 @endsection

@@ -46,7 +46,7 @@ class Admin extends Controller
     }
 
     // Delete CAste
-    public function deleteCaste(Request $request)
+    /*public function deleteCaste(Request $request)
     {
         $caste_id = $request->id;
 
@@ -57,6 +57,26 @@ class Admin extends Controller
         );
 
         $status = 'Caste deleted successfully.';
+
+        return redirect('caste')->with('status', $status);
+    }*/
+
+    // Edit Caste
+    public function editCaste(Request $request)
+    {
+        $caste_id = $request->caste_id;
+        $caste = $request->caste;
+
+        if(!empty($caste_id) && !empty($caste))
+        {
+            $update = DB::table('caste')->where('id', $caste_id)->update(
+                array(
+                    'caste' => $caste
+                )
+            );
+        }
+
+        $status = 'Caste updated successfully.';
 
         return redirect('caste')->with('status', $status);
     }
