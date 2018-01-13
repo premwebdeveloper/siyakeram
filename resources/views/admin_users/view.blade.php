@@ -36,7 +36,7 @@
 
                 <div>
                     <div class="ibox-content no-padding border-left-right">
-                        <?php   
+                        <?php
                             $count = count($images);
                             if($count==1)
                             {
@@ -44,33 +44,51 @@
                                     <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/user.png">
                                 <?php
                             }
-                            else{
-
-                                    foreach($images as $user_img)
+                            else
+                            {
+                                foreach($images as $user_img)
+                                {
+                                    if($user_img->image != 'user.png')
                                     {
-                                        
-                                        if($user_img->image != 'user.png')
-                                        {
-
-                                            ?>
-                                                <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/{{$user_img->image}}">
-                                            <?php
-                                           
-                                        }
+                                        ?>
+                                        <img alt="image" class="img-responsive" src="storage/app/uploads/profile_images/{{$user_img->image}}">
+                                        <?php
                                         break;
                                     }
                                 }
+                            }
                         ?>
-
-
                     </div>
 
                     <div class="ibox-content profile-content">
                         <h4><strong>{{$user->name}}</strong></h4>
-                        <h5><strong>{{$user->email}}</strong></h5>
-                        <h5><strong>{{$user->phone}}</strong></h5>
-                        <p><i class="fa fa-map-marker"></i> Address :  {{$user->address}}, @if(!empty($cities_details->name)) {{$cities_details->name}} @endif, @if(!empty($states_details->name)) {{$states_details->name}} @endif, @if(!empty($countries_details->name)) {{$countries_details->name}} @endif - {{$user->zipcode}}</p>
-
+                        <h5>
+                            <strong><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; : &nbsp; {{$user->email}}</strong>
+                        </h5>
+                        <h5>
+                            <strong><i class="fa fa-mobile" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; : &nbsp; {{$user->phone}}</strong>
+                        </h5>
+                        <p>
+                            <i class="fa fa-map-marker"></i> &nbsp;&nbsp; : &nbsp;
+                            <?php
+                            if(!empty($user->address))
+                            {
+                                echo $user->address;
+                            }
+                            if(!empty($cities_details->name))
+                            {
+                                echo ', '.$cities_details->name;
+                            }
+                            if(!empty($states_details->name))
+                            {
+                                echo ', '.$states_details->name;
+                            }
+                            if(!empty($countries_details->name))
+                            {
+                                echo ', '.$countries_details->name;
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -111,7 +129,7 @@
                                                     <td class="prtd">{{ $user->name }}</td>
                                                     <td>Phone No.</td>
                                                     <td class="prtd">{{ $user->phone }}</td>
-                                                </tr>                                               
+                                                </tr>
                                                 <tr>
                                                     <td>DOB</td>
                                                     <?php
@@ -147,7 +165,7 @@
                                                         if($user->month == '08')
                                                         {
                                                             $month = 'August';
-                                                        }                                           
+                                                        }
                                                         if($user->month == '09')
                                                         {
                                                             $month = 'September';
@@ -170,14 +188,14 @@
 
                                                     <td>Religion</td>
                                                     <td class="prtd">@if($user->religion) {{$user->religion}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Mother Tongue</td>
                                                     <td class="prtd">@if(!empty($mother_details->mother_tongue)) {{$mother_details->mother_tongue}} @endif</td>
 
                                                     <td>Height</td>
                                                     <td class="prtd">@if(!empty($height_details->height)) {{$height_details->height}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
 
                                                 <tr>
                                                 <?php
@@ -212,7 +230,7 @@
 
                                                     <td>Caste</td>
                                                     <td class="prtd">@if(!empty($caste_details->caste)) {{$caste_details->caste}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
 
                                                 <tr>
                                                     <td>Sub-caste(optional)</td>
@@ -220,7 +238,7 @@
 
                                                     <td>Complexion</td>
                                                     <td class="prtd">@if(!empty($user->complexion)) {{$user->complexion}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
 
                                                 <tr>
                                                     <td>Manglik</td>
@@ -279,28 +297,28 @@
 
                                                     <td>Mother's Occupation</td>
                                                     <td class="prtd">@if(!empty($family_details->mother_occupation)) {{$family_details->mother_occupation}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Father's Occupation</td>
                                                     <td class="prtd">@if(!empty($family_details->father_occupation)) {{$family_details->father_occupation}} @endif</td>
 
                                                     <td>Mother's Occupation</td>
                                                     <td class="prtd">@if(!empty($family_details->mother_occupation)) {{$family_details->mother_occupation}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Married Sisters</td>
                                                     <td class="prtd">@if(!empty($family_details->married_sisters)) {{$family_details->married_sisters}} @endif</td>
 
                                                     <td>Unmarried Sisters</td>
                                                     <td class="prtd">@if(!empty($family_details->unmarried_sisters)) {{$family_details->unmarried_sisters}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Married Brothers</td>
                                                     <td class="prtd">@if(!empty($family_details->married_brothers)) {{$family_details->married_brothers}} @endif</td>
 
                                                     <td>Unmarried Brothers</td>
                                                     <td class="prtd">@if(!empty($family_details->unmarried_brothers)) {{$family_details->unmarried_brothers}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
 
                                                 <tr>
                                                     <td>Native Country</td>
@@ -308,7 +326,7 @@
 
                                                     <td>Native State</td>
                                                     <td class="prtd">@if(!empty($state_details->id)) {{$state_details->name}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Family Value</td>
                                                     <td class="prtd">@if(!empty($family_details->family_value)) {{$family_details->family_value}} @endif</td>
@@ -335,7 +353,7 @@
 
                                                     <td>Employed As</td>
                                                     <td class="prtd">@if(!empty($employed_details->id)) {{$employed_details->employed_as}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
 
                                                 <tr>
                                                     <td>Area/Field</td>
@@ -343,7 +361,7 @@
 
                                                     <td>Employed With</td>
                                                     <td class="prtd">@if(!empty($educational_details->employed_with)) {{$educational_details->employed_with}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>Annual Income</td>
                                                     <td class="prtd">@if(!empty($annual_details->id)) {{$annual_details->annual_income}} @endif</td>
@@ -368,14 +386,14 @@
 
                                                     <td>Country</td>
                                                     <td class="prtd">@if(!empty($countries_details->id)) {{$countries_details->name}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>State</td>
                                                     <td class="prtd">@if(!empty($states_details->id)) {{$states_details->name}} @endif</td>
 
                                                     <td>City</td>
                                                     <td class="prtd">@if(!empty($cities_details->id)) {{$cities_details->name}} @endif</td>
-                                                </tr>                                                
+                                                </tr>
                                                 <tr>
                                                     <td>ZipCode</td>
                                                     <td class="prtd">@if(!empty($user->zipcode)) {{$user->zipcode}} @endif</td>
@@ -407,7 +425,7 @@
 
                                                     <td><?= $i;?></td>
                                                     <td><img src="storage/app/uploads/profile_images/{{$user_img->image}}" width="100"></td>
-      
+
                                                 </tr>
                                                 <?php
                                                         $i++;
