@@ -382,17 +382,36 @@
                   <div class="matches-holder">
                     <span class="profile_viewed"></span>
                     <span class="notification-number">60</span>
-                      <a href="javascript:;">
-                          <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
-                      </a>
+                      
+                        <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
+                     
                       <div class="profile-name">{{$bride->unique_id}} </div>
                       <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$bride->user_height}}</span> <span>{{$bride->employed_with}}</span> <span>{{$bride->user_country}}</span></div>
                       <div class="gallery">
-                      <a href="javascript:void(0);" onclick="showpopupshort(614980);">
-                        <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
-                      </a>
+                      <?php
+                        if($user = Auth::user())
+                          {
+                      ?>
+                          <a href="#showmodel" data-toggle="modal">
+                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                          </a>                    
+                      <?php
+                        }
+                        else
+                        {
+                      ?>
+                          <a href="{{ route('login') }}">
+                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                          </a>
+                      <?php
+                        }
+                      ?>
                       <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
-                      <button class="btn yellow-hollow position-relative" id="showview-614980"><span class="view-full-profile"></span><span class="text">VIEW</span></button></a>
+                        <button class="btn yellow-hollow position-relative" id="showview-614980">
+                          <span class="view-full-profile"></span>
+                          <span class="text">VIEW</span>
+                        </button>
+                      </a>
                       </div>
                   </div>  
                 </div> 
@@ -442,9 +461,9 @@
                   <div class="matches-holder">
                     <span class="profile_viewed"></span>
                     <span class="notification-number">60</span>
-                      <a href="javascript:;">
-                          <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
-                      </a>
+                      
+                        <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
+                      
                       <div class="profile-name">{{$groom->unique_id}}</div>
                       <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$groom->user_height}}</span> <span>{{$groom->employed_with}}</span> <span>{{$groom->user_country}}</span></div>
                       <div class="gallery">
