@@ -54,11 +54,11 @@
 	                            @foreach($qualification as $qual)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $qual->education }}</td>
+	                                    <td id="existQualification_{{ $qual->id }}">{{ $qual->education }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteQualification', ['id' => $qual->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editQualification" href="javascript:;" id="{{ $qual->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -74,4 +74,51 @@
     </div>
 </div>
 
+<div id="qualificationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Qualification</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editQualification') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="qualification_id" id="qualification_id">
+
+                    <div class="form-group">
+                        <input type="text" name="qualification" id="qualification" required="required" class="form-control" placeholder="Qualification">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editQualification" class="btn btn-warning" id="editQualification" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editQualification', function(){
+            var id = $(this).attr('id');
+            var qualification = $('#existQualification_'+id).text();
+
+            $('#qualification_id').val(id);
+            $('#qualification').val(qualification);
+            $('#qualificationModal').modal('show');
+        });
+    });
+</script>
 @endsection

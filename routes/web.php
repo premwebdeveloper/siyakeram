@@ -139,36 +139,42 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     Route::get('mother_tongue', 'Admin@mother_tongue')->name('mother_tongue');
     Route::get('addMotherTongue', 'Admin@addMotherTongue')->name('addMotherTongue');
     Route::post('add_mother_tongue', 'Admin@add_mother_tongue')->name('add_mother_tongue');
-    Route::get('deleteMotherTongue', 'Admin@deleteMotherTongue')->name('deleteMotherTongue');
+    Route::post('editMotherTongue', 'Admin@editMotherTongue')->name('editMotherTongue');
+    //Route::get('deleteMotherTongue', 'Admin@deleteMotherTongue')->name('deleteMotherTongue');
 
     // Height Add / View / Delete
     Route::get('height', 'Admin@height')->name('height');
     Route::get('addHeight', 'Admin@addHeight')->name('addHeight');
     Route::post('add_height', 'Admin@add_height')->name('add_height');
-    Route::get('deleteHeight', 'Admin@deleteHeight')->name('deleteHeight');
+    Route::post('editHeight', 'Admin@editHeight')->name('editHeight');
+    //Route::get('deleteHeight', 'Admin@deleteHeight')->name('deleteHeight');
 
     // Area-Field Add / View / Delete
     Route::get('area_field', 'Admin@area_field')->name('area_field');
     Route::get('addAreaField', 'Admin@addAreaField')->name('addAreaField');
     Route::post('add_area_field', 'Admin@add_area_field')->name('add_area_field');
-    Route::get('deleteAreaField', 'Admin@deleteAreaField')->name('deleteAreaField');
+    Route::post('editAreaField', 'Admin@editAreaField')->name('editAreaField');
+    //Route::get('deleteAreaField', 'Admin@deleteAreaField')->name('deleteAreaField');
 
     // Qualifications Add / View / Delete
     Route::get('qualification', 'Admin@qualification')->name('qualification');
     Route::get('addQualification', 'Admin@addQualification')->name('addQualification');
     Route::post('add_qualification', 'Admin@add_qualification')->name('add_qualification');
-    Route::get('deleteQualification', 'Admin@deleteQualification')->name('deleteQualification');
+    Route::post('editQualification', 'Admin@editQualification')->name('editQualification');
+    //Route::get('deleteQualification', 'Admin@deleteQualification')->name('deleteQualification');
 
     // Annual Income Add / View / Delete
     Route::get('annual_income', 'Admin@annual_income')->name('annual_income');
     Route::get('addAnnualIncome', 'Admin@addAnnualIncome')->name('addAnnualIncome');
     Route::post('add_annual_income', 'Admin@add_annual_income')->name('add_annual_income');
-    Route::get('deleteAnnualIncome', 'Admin@deleteAnnualIncome')->name('deleteAnnualIncome');
+    Route::post('editAnnualIncome', 'Admin@editAnnualIncome')->name('editAnnualIncome');
+    //Route::get('deleteAnnualIncome', 'Admin@deleteAnnualIncome')->name('deleteAnnualIncome');
 
     // Employed As Add / View / Delete
     Route::get('employed_as', 'Admin@employed_as')->name('employed_as');
     Route::get('addEmployedAs', 'Admin@addEmployedAs')->name('addEmployedAs');
     Route::post('add_employed_as', 'Admin@add_employed_as')->name('add_employed_as');
-    Route::get('deleteEmployedAs', 'Admin@deleteEmployedAs')->name('deleteEmployedAs');
+    Route::post('editEmployedAs', 'Admin@editEmployedAs')->name('editEmployedAs');
+    //Route::get('deleteEmployedAs', 'Admin@deleteEmployedAs')->name('deleteEmployedAs');
 
 });

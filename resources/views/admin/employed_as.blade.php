@@ -54,11 +54,11 @@
 	                            @foreach($employed_as as $employed)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $employed->employed_as }}</td>
+	                                    <td id="existEmployedAs_{{ $employed->id }}">{{ $employed->employed_as }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteEmployedAs', ['id' => $employed->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editEmployedAs" href="javascript:;" id="{{ $employed->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -74,4 +74,51 @@
     </div>
 </div>
 
+<div id="employedAsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Employed As</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editEmployedAs') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="employed_as_id" id="employed_as_id">
+
+                    <div class="form-group">
+                        <input type="text" name="employed_as" id="employed_as" required="required" class="form-control" placeholder="Employed As">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editEmployedAs" class="btn btn-warning" id="editEmployedAs" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editEmployedAs', function(){
+            var id = $(this).attr('id');
+            var employed_as = $('#existEmployedAs_'+id).text();
+
+            $('#employed_as_id').val(id);
+            $('#employed_as').val(employed_as);
+            $('#employedAsModal').modal('show');
+        });
+    });
+</script>
 @endsection

@@ -119,8 +119,28 @@ class Admin extends Controller
         return redirect('mother_tongue')->with('status', $status);
     }
 
+    // Edit Mother Tongue
+    public function editMotherTongue(Request $request)
+    {
+        $tongue_id = $request->tongue_id;
+        $tongue = $request->tongue;
+
+        if(!empty($tongue_id) && !empty($tongue))
+        {
+            $update = DB::table('mother_tongue')->where('id', $tongue_id)->update(
+                array(
+                    'mother_tongue' => $tongue
+                )
+            );
+        }
+
+        $status = 'mother Tongue updated successfully.';
+
+        return redirect('mother_tongue')->with('status', $status);
+    }
+
     // Delete CAste
-    public function deleteMotherTongue(Request $request)
+    /*public function deleteMotherTongue(Request $request)
     {
         $tongue_id = $request->id;
 
@@ -133,7 +153,7 @@ class Admin extends Controller
         $status = 'Mother tongue deleted successfully.';
 
         return redirect('mother_tongue')->with('status', $status);
-    }
+    }*/
 
     // View Height Page
     public function height()
@@ -176,8 +196,31 @@ class Admin extends Controller
         return redirect('height')->with('status', $status);
     }
 
+    // Edit Height
+    public function editHeight(Request $request)
+    {
+        $height_id = $request->height_id;
+        $height = $request->height;
+
+        $height_cms = substr($height,0, 3);
+
+        if(!empty($height_id) && !empty($height))
+        {
+            $update = DB::table('height')->where('id', $height_id)->update(
+                array(
+                    'height' => $height,
+                    'height_cms' => $height_cms
+                )
+            );
+        }
+
+        $status = 'Height updated successfully.';
+
+        return redirect('height')->with('status', $status);
+    }
+
     // Delete Height
-    public function deleteHeight(Request $request)
+    /*public function deleteHeight(Request $request)
     {
         $height_id = $request->id;
 
@@ -190,7 +233,7 @@ class Admin extends Controller
         $status = 'Height deleted successfully.';
 
         return redirect('height')->with('status', $status);
-    }
+    }*/
 
     // View Area / Field Page
     public function area_field()
@@ -230,8 +273,28 @@ class Admin extends Controller
         return redirect('area_field')->with('status', $status);
     }
 
+    // Edit Area Field
+    public function editAreaField(Request $request)
+    {
+        $area_field_id = $request->area_field_id;
+        $area_field = $request->area_field;
+
+        if(!empty($area_field_id) && !empty($area_field))
+        {
+            $update = DB::table('area_field')->where('id', $area_field_id)->update(
+                array(
+                    'area_field' => $area_field
+                )
+            );
+        }
+
+        $status = 'Area/Field updated successfully.';
+
+        return redirect('area_field')->with('status', $status);
+    }
+
     // Delete Area/Field
-    public function deleteAreaField(Request $request)
+    /*public function deleteAreaField(Request $request)
     {
         $area_id = $request->id;
 
@@ -244,7 +307,7 @@ class Admin extends Controller
         $status = 'Area/Field deleted successfully.';
 
         return redirect('area_field')->with('status', $status);
-    }
+    }*/
 
     // View Qualification Page
     public function qualification()
@@ -284,8 +347,28 @@ class Admin extends Controller
         return redirect('qualification')->with('status', $status);
     }
 
+    // Edit Qualification
+    public function editQualification(Request $request)
+    {
+        $qualification_id = $request->qualification_id;
+        $qualification = $request->qualification;
+
+        if(!empty($qualification_id) && !empty($qualification))
+        {
+            $update = DB::table('educational_qualification')->where('id', $qualification_id)->update(
+                array(
+                    'education' => $qualification
+                )
+            );
+        }
+
+        $status = 'Qualification updated successfully.';
+
+        return redirect('qualification')->with('status', $status);
+    }
+
     // Delete Qualification
-    public function deleteQualification(Request $request)
+    /*public function deleteQualification(Request $request)
     {
         $qual_id = $request->id;
 
@@ -298,7 +381,7 @@ class Admin extends Controller
         $status = 'Qualification deleted successfully.';
 
         return redirect('qualification')->with('status', $status);
-    }
+    }*/
 
     // View Annual Income Page
     public function annual_income()
@@ -338,8 +421,28 @@ class Admin extends Controller
         return redirect('annual_income')->with('status', $status);
     }
 
+    // Edit Annual Income
+    public function editAnnualIncome(Request $request)
+    {
+        $annual_income_id = $request->annual_income_id;
+        $annual_income = $request->annual_income;
+
+        if(!empty($annual_income_id) && !empty($annual_income))
+        {
+            $update = DB::table('annual_income')->where('id', $annual_income_id)->update(
+                array(
+                    'annual_income' => $annual_income
+                )
+            );
+        }
+
+        $status = 'Annual Income updated successfully.';
+
+        return redirect('annual_income')->with('status', $status);
+    }
+
     // Delete Annual Income
-    public function deleteAnnualIncome(Request $request)
+    /*public function deleteAnnualIncome(Request $request)
     {
         $annual_income_id = $request->id;
 
@@ -352,7 +455,7 @@ class Admin extends Controller
         $status = 'Annual Income deleted successfully.';
 
         return redirect('annual_income')->with('status', $status);
-    }
+    }*/
 
     // View Employed As Page
     public function employed_as()
@@ -392,8 +495,28 @@ class Admin extends Controller
         return redirect('employed_as')->with('status', $status);
     }
 
+    // Edit Employed As
+    public function editEmployedAs(Request $request)
+    {
+        $employed_as_id = $request->employed_as_id;
+        $employed_as = $request->employed_as;
+
+        if(!empty($employed_as_id) && !empty($employed_as))
+        {
+            $update = DB::table('employed_as')->where('id', $employed_as_id)->update(
+                array(
+                    'employed_as' => $employed_as
+                )
+            );
+        }
+
+        $status = 'Employed As updated successfully.';
+
+        return redirect('employed_as')->with('status', $status);
+    }
+
     // Delete Employed As
-    public function deleteEmployedAs(Request $request)
+    /*public function deleteEmployedAs(Request $request)
     {
         $employed_as_id = $request->id;
 
@@ -406,6 +529,5 @@ class Admin extends Controller
         $status = 'Employed As deleted successfully.';
 
         return redirect('employed_as')->with('status', $status);
-    }
-
+    }*/
 }

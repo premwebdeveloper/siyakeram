@@ -54,11 +54,11 @@
 	                            @foreach($heights as $height)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $height->height }}</td>
+	                                    <td id="existHeight_{{ $height->id }}">{{ $height->height }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteHeight', ['id' => $height->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editHeight" href="javascript:;" id="{{ $height->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -73,5 +73,53 @@
     	</div>
     </div>
 </div>
+
+<div id="heightModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Height</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editHeight') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="height_id" id="height_id">
+
+                    <div class="form-group">
+                        <input type="text" name="height" id="height" required="required" class="form-control" placeholder="Height">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editHeight" class="btn btn-warning" id="editHeight" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editHeight', function(){
+            var id = $(this).attr('id');
+            var height = $('#existHeight_'+id).text();
+
+            $('#height_id').val(id);
+            $('#height').val(height);
+            $('#heightModal').modal('show');
+        });
+    });
+</script>
 
 @endsection

@@ -54,11 +54,11 @@
 	                            @foreach($annual_income as $income)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $income->annual_income }}</td>
+	                                    <td id="existAnnualIncome_{{ $income->id }}">{{ $income->annual_income }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteAnnualIncome', ['id' => $income->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editAnnualIncome" href="javascript:;" id="{{ $income->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -74,4 +74,51 @@
     </div>
 </div>
 
+<div id="casteAnnualIncome" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Annual Income</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editAnnualIncome') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="annual_income_id" id="annual_income_id">
+
+                    <div class="form-group">
+                        <input type="text" name="annual_income" id="annual_income" required="required" class="form-control" placeholder="Annual Income">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editAnnualIncome" class="btn btn-warning" id="editAnnualIncome" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editAnnualIncome', function(){
+            var id = $(this).attr('id');
+            var caste = $('#existAnnualIncome_'+id).text();
+
+            $('#annual_income_id').val(id);
+            $('#annual_income').val(caste);
+            $('#casteAnnualIncome').modal('show');
+        });
+    });
+</script>
 @endsection

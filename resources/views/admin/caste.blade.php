@@ -55,9 +55,6 @@
 	                                <tr class="gradeX">
 	                                    <td id="existCaste_{{ $caste->id }}">{{ $caste->caste }}</td>
 	                                    <td>
-                                            <!-- <a class="btn btn-success" href="{{ route('deleteCaste', ['id' => $caste->id]) }}">
-                                                Delete
-                                            </a> -->
 	                                        <a class="btn btn-success editCaste" href="javascript:;" id="{{ $caste->id }}">
 	                                            Edit
 	                                        </a>

@@ -54,11 +54,11 @@
 	                            @foreach($area_field as $area)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $area->area_field }}</td>
+	                                    <td id="existAreaField_{{ $area->id }}">{{ $area->area_field }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteAreaField', ['id' => $area->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editAreaField" href="javascript:;" id="{{ $area->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -74,4 +74,51 @@
     </div>
 </div>
 
+<div id="areaFieldModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Area Field</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editAreaField') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="area_field_id" id="area_field_id">
+
+                    <div class="form-group">
+                        <input type="text" name="area_field" id="area_field" required="required" class="form-control" placeholder="Area / Field">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editAreaField" class="btn btn-warning" id="editAreaField" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editAreaField', function(){
+            var id = $(this).attr('id');
+            var area_field = $('#existAreaField_'+id).text();
+
+            $('#area_field_id').val(id);
+            $('#area_field').val(area_field);
+            $('#areaFieldModal').modal('show');
+        });
+    });
+</script>
 @endsection

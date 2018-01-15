@@ -54,11 +54,11 @@
 	                            @foreach($mother_tongue as $tongue)
 
 	                                <tr class="gradeX">
-	                                    <td>{{ $tongue->mother_tongue }}</td>
+	                                    <td id="existTongue_{{ $tongue->id }}">{{ $tongue->mother_tongue }}</td>
 	                                    <td>
-	                                        <a class="btn btn-success" href="{{ route('deleteMotherTongue', ['id' => $tongue->id]) }}">
-	                                            Delete
-	                                        </a>
+                                            <a class="btn btn-success editMotherTongue" href="javascript:;" id="{{ $tongue->id }}">
+                                                Edit
+                                            </a>
 	                                    </td>
 	                                </tr>
 
@@ -73,5 +73,53 @@
     	</div>
     </div>
 </div>
+
+<div id="tongueModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Mother Tongue</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <form method="post" action="{{ route('editMotherTongue') }}">
+
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="tongue_id" id="tongue_id">
+
+                    <div class="form-group">
+                        <input type="text" name="tongue" id="tongue" required="required" class="form-control" placeholder="Mother Tongue">
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" name="editMotherTongue" class="btn btn-warning" id="editMotherTongue" value="Update">
+                    </div>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('click', '.editMotherTongue', function(){
+            var id = $(this).attr('id');
+            var tongue = $('#existTongue_'+id).text();
+
+            $('#tongue_id').val(id);
+            $('#tongue').val(tongue);
+            $('#tongueModal').modal('show');
+        });
+    });
+</script>
 
 @endsection
