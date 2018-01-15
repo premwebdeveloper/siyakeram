@@ -453,6 +453,7 @@
 
                                                         <p>
                                                             <?php
+
                                                             if($user = Auth::user())
                                                             {
                                                                 ?>

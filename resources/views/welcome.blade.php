@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="main" ng-app="HomePage">
+<div class="main discover">
     <section class="slider-holder">
         <div class="mobile-img">
             <h2 class="banner-text">India’s 1st matrimonial platform linked with Aadhaar</h2>
@@ -31,7 +31,7 @@
         <div class="best-time-holder">
         <div class="wrapper row position-relative">
           <div class="get-started-holder">
-     <div class="col-md-12">
+            <div class="col-md-12">
                <!-- Search Form -->
 
                <div class="srch_frm">
@@ -39,16 +39,17 @@
                   <form name="reg_home_frm" id="reg_home_frm" action="{{ route('register') }}" method="post">
                     {{ csrf_field() }}
 
-                     <div class="control-group form-group">
-                        <div class="controls col-md-6">
-                           <input pattern="[A-Za-z]+" type="text" id="first_name" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
-                           <p class="help-block"></p>
+                        <div class="control-group form-group">
+                          <div class="controls col-md-6">
+                             <input pattern="[A-Za-z]+" type="text" id="first_name" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
+                             <p class="help-block"></p>
+                          </div>
+                          <div class="controls col-md-6">
+                             <input type="tel" id="last_name" class="form-control" placeholder="Phone" name="phone" value="{{ old('phone') }}" required autofocus>
+                             <p class="help-block"></p>
+                          </div>
                         </div>
-                        <div class="controls col-md-6">
-                           <input type="tel" id="last_name" class="form-control" placeholder="Phone" name="phone" value="{{ old('phone') }}" required autofocus>
-                           <p class="help-block"></p>
-                        </div>
-                     </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required>
@@ -337,6 +338,167 @@
         </div>
       </div>
     </section>
-    </div>
 
+@if(!empty($home_users[0]))
+
+  <section class="feature-benefit discover-grid">
+      <h2 class="light-pink heading text-center" style="margin-bottom: 40px;">Latest Registered Users</h2>
+        <div id="Bride" class="tab-section">
+          <div class="row">
+            @foreach($home_users as $bride)
+              <?php
+                $date = date('Y');
+                $age = $bride->year;
+                $current_age = $date-$age;
+
+                $bride_count = DB::table('user_details')->where(array('gender'=> 2, 'status' => 1))->get();
+
+                $bride_count_result = count($bride_count);
+
+                $user_id = $bride->user_id;
+
+                  $images = DB::table('user_images')->where('user_id', $user_id)->get();
+
+                    if(count($images) > 1)
+                      {
+                          foreach ($images as $img)
+                          {
+                              $image = $img->image;
+                              if($image != 'user.png')
+                              {
+                                  $image = $image;
+                                  break;
+                              }
+                          }
+                      }
+                      else
+                      {
+                          $image = 'user.png';
+                      }
+
+              ?>
+              @if(($bride->gender == 2) && ($bride_count_result <= 6)) 
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 text-center">
+                  <div class="matches-holder">
+                    <span class="profile_viewed"></span>
+                    <span class="notification-number">60</span>
+                      <a href="javascript:;">
+                          <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
+                      </a>
+                      <div class="profile-name">{{$bride->unique_id}} </div>
+                      <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$bride->user_height}}</span> <span>{{$bride->employed_with}}</span> <span>{{$bride->user_country}}</span></div>
+                      <div class="gallery">
+                      <a href="javascript:void(0);" onclick="showpopupshort(614980);">
+                        <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                      </a>
+                      <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
+                      <button class="btn yellow-hollow position-relative" id="showview-614980"><span class="view-full-profile"></span><span class="text">VIEW</span></button></a>
+                      </div>
+                  </div>  
+                </div> 
+              @endif            
+            @endforeach
+        </div>
+      </div>        
+
+      <div id="Groom" class="tab-section">
+          <div class="row">
+
+            @foreach($home_users as $groom)
+              <?php
+                $date = date('Y');
+                $age = $groom->year;
+                $current_age = $date-$age;
+
+                $groom_count = DB::table('user_details')->where(array('gender'=> 1, 'status' => 1))->get();
+
+                $groom_count_result = count($groom_count);
+
+                  $user_id = $groom->user_id;
+
+                    $images = DB::table('user_images')->where('user_id', $user_id)->get();
+
+                        if(count($images) > 1)
+                          {
+                              foreach ($images as $img)
+                              {
+                                  $image = $img->image;
+                                  if($image != 'user.png')
+                                  {
+                                      $image = $image;
+                                      break;
+                                  }
+                              }
+                          }
+                          else
+                          {
+                              $image = 'user.png';
+                          }
+
+              ?>
+                @if(($groom->gender == 1) && ($groom_count_result <= 6))
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center">
+                  <div class="matches-holder">
+                    <span class="profile_viewed"></span>
+                    <span class="notification-number">60</span>
+                      <a href="javascript:;">
+                          <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
+                      </a>
+                      <div class="profile-name">{{$groom->unique_id}}</div>
+                      <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$groom->user_height}}</span> <span>{{$groom->employed_with}}</span> <span>{{$groom->user_country}}</span></div>
+                      <div class="gallery">
+                      <?php
+                        if($user = Auth::user())
+                          {
+                      ?>
+                          <a href="#showmodel" data-toggle="modal">
+                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                          </a>                    
+                      <?php
+                        }
+                        else
+                        {
+                      ?>
+                          <a href="{{ route('login') }}">
+                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                          </a>
+                      <?php
+                        }
+                      ?>
+                      <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
+                      <button class="btn yellow-hollow position-relative" id="showview-614980"><span class="view-full-profile"></span><span class="text">VIEW</span></button></a>
+                      </div>
+                  </div>  
+                </div>   
+
+                @endif  
+
+            @endforeach
+        </div>
+      </div>
+  </section>
+
+  @endif
+
+</div>
+    <div class="modal animated fade in" id="showmodel" tabindex="-1" role="dialog">
+        <div class="modal-dialog lvmodal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body LVmodal">
+                    <h3>Contact Details</h3>
+                    <a href="#" class="close-LVmodal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+                    <div class="LVModal-content">
+                        <p><i class="fa fa-refresh"></i><br></p>
+                        <div style="line-height:15px;padding-left:10px;">
+                            You are on a Free Membership Plan. Please upgrade your membership by availing our paid services to contact selected profiles.
+                        </div>
+                        <a href="{{route('membership')}}">
+                            <button class="btn btn-theme ripplelink btn-shadow padd-10 mt-15">Upgrade Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

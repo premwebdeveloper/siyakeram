@@ -29,6 +29,17 @@ class HomeController extends Controller
     public function index()
     {
         $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
-        return view('welcome', array('mother_tongue' => $mother_tongue));
+
+        $query = DB::table('user_details')
+                ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->select('user_details.*', 'user_education_center.employed_with', 'height.height as user_height', 'countries.name as user_country')
+                ->where('user_details.status', 1)
+                ->orderBy('user_details.id', 'DESC');
+
+        $home_users = $query->get();
+
+        return view('welcome', array('mother_tongue' => $mother_tongue, 'home_users' => $home_users));
     }
 }
