@@ -92,3 +92,23 @@ ALTER TABLE `height`
 
 ALTER TABLE `height`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+-- ---------------------------Updated Table employed_as ON 16-01-2018--------------------------
+
+  CREATE TABLE `slider` (
+  `id` int(11) NOT NULL,
+  `image` varchar(250) NOT NULL,
+  `created_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `slider` (`id`, `image`, `created_date`) VALUES
+(11, '8194d5.jpg', '2018-01-16 15:14:32'),
+(12, '87daeb.jpg', '2018-01-16 15:14:32'),
+(13, '87632c.jpg', '2018-01-16 15:14:32'),
+(14, '77b805.jpg', '2018-01-16 15:14:32');
+
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `slider`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

@@ -29,6 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
+        $slider_images = DB::table('slider')->get();
 
         $query = DB::table('user_details')
                 ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
@@ -40,6 +41,6 @@ class HomeController extends Controller
 
         $home_users = $query->get();
 
-        return view('welcome', array('mother_tongue' => $mother_tongue, 'home_users' => $home_users));
+        return view('welcome', array('mother_tongue' => $mother_tongue, 'home_users' => $home_users, 'slider' => $slider_images));
     }
 }

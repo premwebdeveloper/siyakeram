@@ -1,7 +1,11 @@
 @extends('layouts.public_app')
 
 @section('content')
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#1').addClass('active');
+    });
+</script>
 <div class="main discover">
     <section class="slider-holder">
         <div class="mobile-img">
@@ -10,21 +14,18 @@
         <div class="slider">
             <div id="mainCarousel" class="carousel slide row" data-ride="carousel" >
               <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#mainCarousel" data-slide-to="1"></li>
-                <li data-target="#mainCarousel" data-slide-to="2"></li>
-              </ol>
               <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_1.jpg" >
-                </div>
-                <div class="item">
-                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_2.jpg" >
-                </div>
-                <div class="item">
-                  <img class="img-responsive" src="resources/frontend_assets/images/carousel_img_3.jpg" >
-                </div>
+                <?php
+                  $i=1;
+                ?>
+                @foreach($slider as $slid)
+                  <div class="item" id="<?= $i;?>">
+                    <img class="img-responsive" src="storage/app/uploads/profile_images/{{$slid->image}}" >
+                  </div>
+                <?php
+                  $i++;
+                ?>
+                @endforeach
               </div>
             </div>
         </div>

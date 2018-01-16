@@ -177,4 +177,10 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     Route::post('editEmployedAs', 'Admin@editEmployedAs')->name('editEmployedAs');
     //Route::get('deleteEmployedAs', 'Admin@deleteEmployedAs')->name('deleteEmployedAs');
 
+    // Slider As Add / Delete
+    Route::get('slider', 'Admin@slider')->name('slider');
+    Route::get('addSlider', 'Admin@addSlider')->name('addSlider');
+    Route::post('add_slider', 'Admin@add_slider')->name('add_slider');
+    Route::post('delete_slider', 'Admin@delete_slider')->name('delete_slider');
+
 });
