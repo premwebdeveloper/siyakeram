@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\AddUserValidation;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
@@ -14,6 +15,117 @@ class AdminUsers extends Controller
         $users = DB::table('user_details')->where('status', 1)->get();
 
         return view('admin_users.index', array('users' => $users));
+    }
+
+    // add new User view page
+    public function addUser()
+    {
+        $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
+
+        return view('admin_users.addUser', array('mother_tongue' => $mother_tongue));
+    }
+
+    // add new User
+    public function add_user(AddUserValidation $request)
+    {
+        $c_date = date('Y-m-d H:i:s');
+
+        $name = $request->name;
+        $phone = $request->phone;
+        $email = $request->email;
+        $password = $request->password;
+        $password_confirmation = $request->password_confirmation;
+        $date = $request->date;
+        $month = $request->month;
+        $year = $request->year;
+        $religion = $request->religion;
+        $mother_tongue = $request->mother_tongue;
+        $gender = $request->gender;
+
+        $password = bcrypt($password);
+
+        $user = DB::table('users')->insert(
+            array('name' => $name, 'phone' => $phone, 'email' => $email, 'password' => $password, 'created_at' => $c_date, 'updated_at' => $c_date, 'status' => 1)
+        );
+
+        $user_id = DB::getPdo()->lastInsertId();
+
+        // get user details from user_details table
+        $last_row = DB::table('user_details')->orderBy('id', 'desc')->first();
+
+        if(!empty($last_row))
+        {
+            $last_unique_id = $last_row->unique_id;
+            $last_unique_id = explode("-", $last_unique_id);
+            $unique_id = $last_unique_id[1] + 1;
+            $unique_id = "SR-".$unique_id;
+        }
+        else
+        {
+            $unique_id = 'SR-1001';
+        }
+
+        # Create user role
+        $user_role = DB::table('user_roles')->insert(
+             array(
+                'role_id' => '2',
+                'user_id' => $user_id,
+                'created_at' => $c_date,
+                'updated_at' => $c_date
+             )
+        );
+
+        #user insert in user details table
+        $user_insert = DB::table('user_details')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'unique_id' => $unique_id,
+                    'name' => $name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'gender' => $gender,
+                    'date' => $date,
+                    'month' => $month,
+                    'year' => $year,
+                    'religion' => $religion,
+                    'mother_tongue' => $mother_tongue,
+                    'created_at' => $c_date,
+                    'updated_at' => $c_date,
+                    'status' => 1
+                )
+        );
+        #user insert in family_details table
+        $user_insert = DB::table('family_details')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'created_at' => $c_date,
+                    'updated_at' => $c_date,
+                    'status' => 1
+                )
+        );
+        #user insert in user_education_center table
+        $user_insert = DB::table('user_education_center')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'created_at' => $c_date,
+                    'updated_at' => $c_date,
+                    'status' => 1
+                )
+        );
+        #user insert in user_images table
+        $user_insert = DB::table('user_images')->insert(
+            array(
+                    'user_id' => $user_id,
+                    'image' => 'user.png',
+                    'created_at' => $c_date,
+                    'updated_at' => $c_date,
+                    'status' => 1
+                )
+        );
+
+        $status = 'User Created successfully.';
+
+        return redirect('users')->with('status', $status);
     }
 
     // View User Detail

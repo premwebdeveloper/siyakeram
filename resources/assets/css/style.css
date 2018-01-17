@@ -4059,6 +4059,10 @@ table.table-mail tr td {
   background-color: #ed5565;
   color: #ffffff;
 }
+.red
+{
+    color:red;
+}
 .black-bg {
   background-color: #262626;
 }

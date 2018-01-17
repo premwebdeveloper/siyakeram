@@ -125,6 +125,8 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
 
     // Get All Users
     Route::get('users', 'AdminUsers@index')->name('users');
+    Route::get('addUser', 'AdminUsers@addUser')->name('addUser');
+    Route::post('add_user', 'AdminUsers@add_user')->name('add_user');
     Route::post('delete', 'AdminUsers@delete')->name('delete');
     Route::get('view', 'AdminUsers@view')->name('view');
 
