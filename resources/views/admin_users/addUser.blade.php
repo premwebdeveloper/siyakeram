@@ -274,7 +274,7 @@
                     </div>
 
                     <div class="col-md-12 text-right">
-                        <input type="submit" name="addUser" class="btn btn-success" value="Add User">
+                        <input type="submit" name="addUser" class="btn btn-success" value="Add User" style="margin-bottom: 30px;">
                     </div>
 
                 </form>
