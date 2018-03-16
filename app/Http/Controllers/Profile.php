@@ -40,6 +40,8 @@ class Profile extends Controller
         $add_city_id = $user->city;
 
         $educational_id = $education_center->edu_qualification;
+        //$additional_id = $education_center->additional_education;
+        
         $employed_id = $education_center->employed_as;
         $area_id = $education_center->area_field;
         $annual_id = $education_center->annual_income;
@@ -52,6 +54,7 @@ class Profile extends Controller
         $state_details = array();
 
         $educational_details = array();
+        $additional_details = array();
         $employed_details = array();
         $area_details = array();
         $annual_details = array();
@@ -79,14 +82,18 @@ class Profile extends Controller
         if(!empty($state_id))
             {
                 $state_details = DB::table('states')->where('id', $state_id)->first();
-            }
-        if(!empty($educational_id))
+            }       
+/*        if(!empty($additional_id))
             {
-                $educational_details = DB::table('educational_qualification')->where('id', $educational_id)->first();
-            }
+                $additional_details = DB::table('educational_qualification')->whereIn('id', $additional_id)->first();
+            }*/
         if(!empty($employed_id))
             {
                 $employed_details = DB::table('employed_as')->where('id', $employed_id)->first();
+            }        
+        if(!empty($educational_id))
+            {
+                $educational_details = DB::table('educational_qualification')->where('id', $educational_id)->first();
             }
         if(!empty($area_id))
             {
@@ -112,14 +119,16 @@ class Profile extends Controller
 
         $mother_tongue = DB::table('mother_tongue')->where('status', 1)->get();
 
-        $height = DB::table('height')->where('status', 1)->get();
+        $height = DB::table('height')->where('status', 1)
+        ->orderBy('height_cms', 'ASC')
+        ->get();
 
         $caste = DB::table('caste')->where('status', 1)->get();
 
         $area_field = DB::table('area_field')->where('status', 1)->get();
 
         $educational = DB::table('educational_qualification')->where('status', 1)->get();
-
+        
         $annual_income = DB::table('annual_income')->where('status', 1)->get();
 
         $employed_as = DB::table('employed_as')->where('status', 1)->get();
@@ -163,7 +172,6 @@ class Profile extends Controller
                             'image' => $filename,
                             'created_at' => $date,
                             'updated_at' => $date,
-                            'status' => 1
                         )
                     );
                 }
@@ -179,7 +187,7 @@ class Profile extends Controller
             }
         }
 
-        return redirect('profile')->with('status', $status);
+        return redirect('profile');
     }
 
     public function deleteProfileImage(Request $request)

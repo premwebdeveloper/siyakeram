@@ -37,7 +37,10 @@
                 <a href="{{ route('area_field') }}"><i class="fa fa-database"></i> <span class="nav-label">Area / Field</span></a>
             </li>
             <li>
-                <a href="{{ route('qualification') }}"><i class="fa fa-database"></i> <span class="nav-label">Qualifications</span></a>
+                <a href="{{ route('qualification') }}"><i class="fa fa-database"></i> <span class="nav-label">Educational Qualifications</span></a>
+            </li>            
+            <li>
+                <a href="{{ route('additional') }}"><i class="fa fa-database"></i> <span class="nav-label">Success Stories</span></a>
             </li>
             <li>
                 <a href="{{ route('annual_income') }}"><i class="fa fa-database"></i> <span class="nav-label">Annual Income</span></a>

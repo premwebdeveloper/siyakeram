@@ -610,4 +610,85 @@ class Admin extends Controller
 
         return redirect('slider')->with('status', $status);
     }
+
+
+    // View Additional Qualification Page
+    public function additional()
+    {
+        $additional = DB::table('success_stories')->where('status', 1)->get();
+
+        return view('admin.additional', array('additional' => $additional));
+    }
+
+    // View Add Additional Qualification page
+    public function addAdditional()
+    {
+        return view('admin.addAdditional');
+    }
+
+    // Add Additional Qualification in database
+    public function add_success(Request $request)
+    {
+        $name = $request->name;
+        $description = $request->description;
+
+        $filename = '';
+        
+        if($request->hasFile('image')) {
+            //echo "hii";
+                $file = $request->image;
+
+                $filename = $file->getClientOriginalName();
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $filename = substr(md5(microtime()),rand(0,26),6);
+
+                $filename .= '.'.$ext;
+
+                $filesize = $file->getClientSize();
+
+                $destinationPath = config('app.fileDestinationPath').'/'.$filename;
+                $uploaded = Storage::put($destinationPath, file_get_contents($file->getRealPath()));
+            }
+
+            $image_update = DB::table('success_stories')->insert(
+                array(
+                    'name' => $name,
+                    'description' => $description,
+                    'image' => $filename,
+                    'status' => 1
+                )
+            );
+
+            if($image_update)
+                {
+                    $status = 'Add successfully.';
+                }
+            else
+                {
+                   $status = 'No File Selected';
+                }
+
+        return redirect('additional')->with('status', $status);
+    }
+
+    // Delete success story
+    public function delete_success(Request $request)
+    {
+        $id = $request->user_id;
+        
+        $delete_slider = DB::table('success_stories')->where('id', $id)->delete();
+
+        if($delete_slider)
+        {
+            $status = "Delete Success Story Successfully";
+        }
+        else
+        {
+            $status = "Someting went wrong";
+        }
+
+        return redirect('additional')->with('status', $status);
+    }
 }

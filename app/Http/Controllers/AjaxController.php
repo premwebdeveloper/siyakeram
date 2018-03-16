@@ -17,6 +17,8 @@ class AjaxController extends Controller
 
         $inputFullName = $request->inputFullName;
         $inputPhone = $request->inputPhone;
+        $inputMobile = $request->inputMobile;
+        $inputAltMobile = $request->inputAltMobile;
         $inputDate = $request->inputDate;
         $inputMonth = $request->inputMonth;
         $inputYear = $request->inputYear;
@@ -50,6 +52,8 @@ class AjaxController extends Controller
             array(
                     'name' => $inputFullName,
                     'phone' => $inputPhone,
+                    'mobile' => $inputMobile,
+                    'alt_mobile' => $inputAltMobile,
                     'date' => $inputDate,
                     'month' => $inputMonth,
                     'year' => $inputYear,
@@ -136,11 +140,15 @@ class AjaxController extends Controller
         $inputArea = $request->inputArea;
         $inputEmployedWith = $request->inputEmployedWith;
         $inputAnnual = $request->inputAnnual;
+        $inputAdditional = $request->inputAdditional;
+        
+        $inputAdditional = implode(",", $inputAdditional);
 
         $education_info_update = DB::table('user_education_center')->where('user_id', $user_id)->update(
 
             array(
                     'edu_qualification' => $inputEducational,
+                    'additional_education' => $inputAdditional,
                     'employed_as' => $inputEmployedAs,
                     'area_field' => $inputArea,
                     'employed_with' => $inputEmployedWith,
@@ -209,13 +217,41 @@ class AjaxController extends Controller
         return response()->json($cities);
     }
 
+    // get cities according to states
+    public function getCityByState(Request $request)
+    {
+        $item = $request->items;
+        $item = rtrim($item, '|');
+        $item = str_replace('state_', '', $item);
+        $item = str_replace('|', ',', $item);
+        $item = explode(',', $item);
+       
+        // Get all districts of this state
+        $cities = DB::table('cities')->whereIn('state_id', $item);
+        $result = $cities->get();
+
+        $html = ''; 
+
+            foreach($result as $city)
+                {
+            $html .= '<li class="lvcheckbox">
+                        <input type="checkbox" class="city selected_checkbox" name="city[]" id="city_'.$city->id.'" value="'.$city->id.'">
+                        <label for="city_'.$city->id.'" title="'.$city->name.'">
+                            <span class="lvwordellips">'.$city->name.'</span>
+                        </label>
+                    </li>';            
+                }
+        $response = array('html' => $html);
+        return response()->json($response);
+    }
+
     // search users
     public function search_user_for(Request $request)
     {
         $selected_items = $request->items;
-
+        $gender_val = $request->gender_val;
+        
         $temp = explode("|", $selected_items);
-
         $marital = array();
         $income = array();
         $caste = array();
@@ -224,6 +260,8 @@ class AjaxController extends Controller
         $employed = array();
         $diet = array();
         $religion = array();
+        $state = array();
+        $city = array();
 
         $i = 0;
 
@@ -262,6 +300,14 @@ class AjaxController extends Controller
             if($tempo[0] == 'religion')
             {
                 $religion[$i] = $tempo[1];
+            }            
+            if($tempo[0] == 'state')
+            {
+                $state[$i] = $tempo[1];
+            }            
+            if($tempo[0] == 'city')
+            {
+                $city[$i] = $tempo[1];
             }
 
             $i++;
@@ -282,6 +328,11 @@ class AjaxController extends Controller
                 ->select('user_details.*', 'caste.caste as caste', 'height.height as height', 'countries.name as country', 'states.name as state', 'cities.name as city', 'mother_tongue.mother_tongue', 'educational_qualification.education', 'annual_income.annual_income', 'employed_as.employed_as')
                 ->where('user_details.status', 1);
 
+        // If Gender from is not empty
+        if (!empty($gender_val))
+        {
+            $query->where('user_details.gender', $gender_val);
+        }
         // If marital status not empty
         if (!empty($marital))
         {
@@ -328,6 +379,18 @@ class AjaxController extends Controller
         if (!empty($religion))
         {
             $query->whereIn('user_details.religion', $religion);
+        }
+
+        // If state not empty
+        if (!empty($state))
+        {
+            $query->whereIn('user_details.state', $state);
+        }
+
+        // If city not empty
+        if (!empty($city))
+        {
+            $query->whereIn('user_details.city', $city);
         }
 
         $results = $query->get();

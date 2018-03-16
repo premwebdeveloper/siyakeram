@@ -284,73 +284,73 @@
 
 
 
-        <script type="text/javascript">
-            $(document).ready(function(){
+<script type="text/javascript">
+    $(document).ready(function(){
 
-                // Get states of selected country
-                $(document).on("change", "#country", function(){
-                    var country = $(this).val();
-                    if(country == '')
-                    {
+        // Get states of selected country
+        $(document).on("change", "#country", function(){
+            var country = $(this).val();
+            if(country == '')
+            {
+                $("#state").html('');
+                $("#state").html('<option value="">Select State</option>');
+            }
+            else
+            {
+                $.ajax({
+                    method: 'post',
+                    url: 'getStateByCountryForUser',
+                    data: {"_token": "{{ csrf_token() }}", 'country' : country},
+                    async: true,
+                    success: function(response){
+
+                        var states = '<option value="">Select State</option>';
+                        $.each(response, function(i, item) {
+                            states += '<option value="'+item.id+'">'+item.name+'</option>';
+                        })
+
                         $("#state").html('');
-                        $("#state").html('<option value="">Select State</option>');
-                    }
-                    else
-                    {
-                        $.ajax({
-                            method: 'post',
-                            url: 'getStateByCountryForUser',
-                            data: {"_token": "{{ csrf_token() }}", 'country' : country},
-                            async: true,
-                            success: function(response){
-
-                                var states = '<option value="">Select State</option>';
-                                $.each(response, function(i, item) {
-                                    states += '<option value="'+item.id+'">'+item.name+'</option>';
-                                })
-
-                                $("#state").html('');
-                                $("#state").html(states);
-                            },
-                            error: function(data){
-                                console.log(data);
-                            },
-                        });
-                    }
+                        $("#state").html(states);
+                    },
+                    error: function(data){
+                        console.log(data);
+                    },
                 });
+            }
+        });
 
-                // Get Cities of selected state
-                $(document).on("change", "#state", function(){
-                    var state = $(this).val();
-                    if(state == '')
-                    {
+        // Get Cities of selected state
+        $(document).on("change", "#state", function(){
+            var state = $(this).val();
+            if(state == '')
+            {
+                $("#city").html('');
+                $("#city").html('<option value="">Select City</option>');
+            }
+            else
+            {
+                $.ajax({
+                    method: 'post',
+                    url: 'getStateByStateForUser',
+                    data: {"_token": "{{ csrf_token() }}", 'state' : state},
+                    async: true,
+                    success: function(response){
+
+                        var cities = '<option value="">Select City</option>';
+                        $.each(response, function(i, item) {
+                            cities += '<option value="'+item.id+'">'+item.name+'</option>';
+                        })
+
                         $("#city").html('');
-                        $("#city").html('<option value="">Select City</option>');
-                    }
-                    else
-                    {
-                        $.ajax({
-                            method: 'post',
-                            url: 'getStateByStateForUser',
-                            data: {"_token": "{{ csrf_token() }}", 'state' : state},
-                            async: true,
-                            success: function(response){
-
-                                var cities = '<option value="">Select City</option>';
-                                $.each(response, function(i, item) {
-                                    cities += '<option value="'+item.id+'">'+item.name+'</option>';
-                                })
-
-                                $("#city").html('');
-                                $("#city").html(cities);
-                            },
-                            error: function(data){
-                                console.log(data);
-                            },
-                        });
-                    }
+                        $("#city").html(cities);
+                    },
+                    error: function(data){
+                        console.log(data);
+                    },
                 });
-            });
+            }
+        });
+    });
 
-        </script>
+</script>
 @endsection

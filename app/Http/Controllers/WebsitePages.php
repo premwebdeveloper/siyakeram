@@ -169,7 +169,10 @@ class WebsitePages extends Controller
         // Get all employed_as
         $employed_as = DB::table('employed_as')->where('status', 1)->get();
 
-        return view('websitepages.searched_users', array('search_results' => $results, 'caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as));
+        // Get all states
+        $states = DB::table('states')->where('country_id', 101)->get();
+
+        return view('websitepages.searched_users', array('search_results' => $results, 'caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as, 'states' => $states, 'looking_for' => $looking_for));
     }
 
     public function search()

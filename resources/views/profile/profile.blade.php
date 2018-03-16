@@ -4,6 +4,7 @@
 <link href="{{ asset ('resources/frontend_assets/css/validationEngine.jquery.css') }}" rel="stylesheet" />
 <script src="{{ asset ('resources/frontend_assets/js/jquery.validationEngine-en.js') }}" type="text/javascript"></script>
 <script src="{{ asset ('resources/frontend_assets/js/jquery.validationEngine.js') }}" type="text/javascript"></script>
+<script src="{{ asset ('resources/frontend_assets/js/multiple.js') }}" type="text/javascript"></script>
 
 <style>
 	.input-group1 {
@@ -22,10 +23,83 @@
 	input[type=file] {
 	    display: block;
 	}
+    input[type="checkbox"]{
+        display: block;
+    }
 	li .active {
 	     background-color: #eee;
 	}
+    span.multiselect-native-select {
+        position: relative
+    }
+    span.multiselect-native-select select {
+        border: 0!important;
+        clip: rect(0 0 0 0)!important;
+        height: 1px!important;
+        margin: -1px -1px -1px -3px!important;
+        overflow: hidden!important;
+        padding: 0!important;
+        position: absolute!important;
+        width: 1px!important;
+        left: 50%;
+        top: 30px
+    }
+    .multiselect-container {
+        position: absolute;
+        list-style-type: none;
+        margin: 0;
+        padding: 0
+    }
+    .multiselect-container .input-group {
+        margin: 5px
+    }
+    .multiselect-container>li {
+        padding: 0
+    }
+    .multiselect-container>li>a.multiselect-all label {
+        font-weight: 700
+    }
+    .multiselect-container>li.multiselect-group label {
+        margin: 0;
+        padding: 3px 20px 3px 20px;
+        height: 100%;
+        font-weight: 700
+    }
+    .multiselect-container>li.multiselect-group-clickable label {
+        cursor: pointer
+    }
+    .multiselect-container>li>a {
+        padding: 0
+    }
+    .multiselect-container>li>a>label {
+        margin: 0;
+        height: 100%;
+        cursor: pointer;
+        font-weight: 400;
+        padding: 3px 0 3px 30px
+    }
+    .multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+        margin: 0
+    }
+    .multiselect-container>li>a>label>input[type=checkbox] {
+        margin-bottom: 5px
+    }
+    .btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px
+    }
+    .form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+        padding: 3px 20px 3px 40px
+    }
+    .form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+        margin-left: -20px;
+        margin-right: 0
+    }
+    .btn{
+        border: 1px solid #ccc;
+    }
 </style>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#basicName').hide();
@@ -37,7 +111,9 @@
 			{
 			var user_id = $('.user_id').val();
 			var inputFullName = $('#inputFullName').val();
-			var inputPhone = $('#inputPhone').val();
+            var inputPhone = $('#inputPhone').val();
+            var inputMobile = $('#inputMobile').val();
+			var inputAltMobile = $('#inputAltMobile').val();
 			var inputDate = $('#inputDate').val();
 			var inputMonth = $('#inputMonth').val();
 			var inputYear = $('#inputYear').val();
@@ -61,7 +137,7 @@
 				method : 'post',
 				url : 'update_basic_info',
 				async : true,
-                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputDiet': inputDiet, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
+                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputMobile': inputMobile, 'inputAltMobile': inputAltMobile, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputDiet': inputDiet, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
                 success:function(response){
 
                 	console.log('response');
@@ -133,13 +209,26 @@
 				var inputEmployedAs = $('#inputEmployedAs').val();
 				var inputArea = $('#inputArea').val();
 				var inputEmployedWith = $('#inputEmployedWith').val();
-				var inputAnnual = $('#inputAnnual').val();
+                var inputAnnual = $('#inputAnnual').val();
+				//var inputAdditional = $('#inputAdditional').val();
 
+                var inputAdditional = [];
+                $('.multiselect-container input[type="checkbox"]:checked').each(function(i){
+                    if($(this).val() != 'multiselect-all')
+                    {
+                        inputAdditional[i] = $(this).val();   
+                    }
+                  
+                });
+
+                //inputAdditional = ltrim(",", inputAdditional);
+
+                //alert(inputAdditional);
 				$.ajax({
 					method : 'post',
 					url : 'update_education_info',
 					async : true,
-	                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputEducational': inputEducational, 'inputEmployedAs': inputEmployedAs, 'inputArea': inputArea, 'inputEmployedWith': inputEmployedWith, 'inputAnnual': inputAnnual},
+	                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputEducational': inputEducational, 'inputEmployedAs': inputEmployedAs, 'inputArea': inputArea, 'inputEmployedWith': inputEmployedWith, 'inputAnnual': inputAnnual, 'inputAdditional': inputAdditional},
 	                success:function(response){
 
 	                	console.log('response');
@@ -324,12 +413,16 @@
 			{
 		?>
 			$('#photo').addClass('in active');
-
-		<?php		
+        <?php		
 			}
 		?>
+        $('#inputEducational').change(function(){
+            var inputEd = $('#inputEducational').val();
+            //alert(inputEd);
+            $('.multiselect-container li label').show();
+            $('.multiselect-container li input[value='+inputEd+']').parent().hide();
+        });
 	});
-
 </script>
 <div class="main">
     <div class="row content wrapper share light">
@@ -376,10 +469,22 @@
 							      <input type="text" class="validate[required] form-control" name="inputFullName" id="inputFullName" value="{{ $user->name }}">
 							    </div>
 						  	</div>
-						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">Phone No.</label>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Phone No.</label>
+                                <div class="col-sm-6">
+                                  <input type="text" class="validate[required] form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
+                                </div>
+                            </div>                          
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Mobile No.</label>
+                                <div class="col-sm-6">
+                                  <input type="text" class="form-control" name="inputMobile" id="inputMobile" value="{{ $user->mobile }}" >
+                                </div>
+                            </div>						  	
+                            <div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Alternate Mobile No.</label>
 							    <div class="col-sm-6">
-							      <input type="text" class="validate[required] form-control" name="inputPhone" id="inputPhone" value="{{ $user->phone }}" >
+							      <input type="text" class="form-control" name="inputAltMobile" id="inputAltMobile" value="{{ $user->alt_mobile }}" >
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
@@ -522,21 +627,21 @@
 	                            <div class="col-md-6">
 	                                <select class="validate[required] form-control" id="inputReligion" name="inputReligion">
 	                                    @if($user->religion)
-	                                    <option value="{{$user->religion}}">{{$user->religion}}</option>
+	                                       <option value="{{$user->religion}}">{{$user->religion}}</option>
 	                                    @else
-	                                    <option value="">Select Religion</option>
+	                                       <option value="">Select Religion</option>
 	                                    @endif
-	                                    <option value="Hindu" title="Hindu">Hindu</option>
-	                                    <option value="Jain" title="Jain">Jain</option>
-	                                    <option value="Muslim" title="Muslim">Muslim</option>
-	                                    <option value="Sikh" title="Sikh">Sikh</option>
-	                                    <option value="Christian" title="Christian">Christian</option>
-	                                    <option value="Spiritual" title="Spiritual">Spiritual</option>
-	                                    <option value="Parsi" title="Parsi">Parsi</option>
-	                                    <option value="Jewish" title="Jewish">Jewish</option>
-	                                    <option value="Buddhist" title="Buddhist">Buddhist</option>
-	                                    <option value="No Religion" title="No Religion">No Religion</option>
-	                                    <option value="Other" title="Other">Other</option>
+    	                                    <option value="Hindu" title="Hindu">Hindu</option>
+    	                                    <option value="Jain" title="Jain">Jain</option>
+    	                                    <option value="Muslim" title="Muslim">Muslim</option>
+    	                                    <option value="Sikh" title="Sikh">Sikh</option>
+    	                                    <option value="Christian" title="Christian">Christian</option>
+    	                                    <option value="Spiritual" title="Spiritual">Spiritual</option>
+    	                                    <option value="Parsi" title="Parsi">Parsi</option>
+    	                                    <option value="Jewish" title="Jewish">Jewish</option>
+    	                                    <option value="Buddhist" title="Buddhist">Buddhist</option>
+    	                                    <option value="No Religion" title="No Religion">No Religion</option>
+    	                                    <option value="Other" title="Other">Other</option>
 	                               </select>
 	                            </div>
 	                        </div>
@@ -545,7 +650,7 @@
 	                            <div class="col-md-6">
 	                                <select class="validate[required] form-control" id="inputMotherTongue" name="inputMotherTongue">
 	                                    @if(!empty($mother_details->mother_tongue))
-	                                    <option value="{{$mother_details->id}}">{{$mother_details->mother_tongue}}</option>
+	                                       <option value="{{$mother_details->id}}">{{$mother_details->mother_tongue}}</option>
 	                                    @else
 	                                    <option value="">Select Mother Tongue</option>
 	                                    @endif
@@ -564,15 +669,16 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Height</label>
 	                            <div class="col-md-6">
-	                            	
+	                            	<script>
+                                        $(document).ready(function(){
+                                            var height = '<?= $user->height; ?>';
+                                            $('#inputHeight option[value='+height+']').attr("selected", 'selected');
+                                        });      
+                                    </script>
 	                            	<select class="validate[required] form-control" id="inputHeight" name="inputHeight">
-	                            		@if(!empty($height_details->height))
-	                                    <option value="{{$height_details->id}}">{{$height_details->height}}</option>
-	                                    @else
-	                                    <option value="">Select Height</option>
-	                                    @endif
+                                        <option value="">Select Height</option>
 	                                    @foreach($height as $heig)
-											<option value="{{ $heig->height_cms }}" title="{{ $heig->height }}">{{ $heig->height }}</option>
+                                            <option value="{{ $heig->height_cms }}" title="{{ $heig->height }}">{{ $heig->height }}</option>
 										@endforeach
 	                                </select>
 
@@ -703,7 +809,7 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Time of birth</label>
 							    <div class="col-md-2">
-	                                <select class="validate[required] form-control" id="inputHrs" name="inputHrs">
+	                                <select class="form-control" id="inputHrs" name="inputHrs">
 	                                	@if($user->birth_hour)
 	                                    <option value="{{$user->birth_hour}}">{{$user->birth_hour}}</option>
 	                                    @else
@@ -724,7 +830,7 @@
 	                                </select>
 	                            </div>
 							    <div class="col-md-2">
-	                                <select class="validate[required] validate[required] form-control" id="inputMin" name="inputMin">
+	                                <select class="form-control" id="inputMin" name="inputMin">
 	                                	@if($user->birth_mint)
 	                                    <option value="{{$user->birth_mint}}">{{$user->birth_mint}}</option>
 	                                    @else
@@ -763,7 +869,7 @@
 	                                </select>
 	                            </div>
 							    <div class="col-md-2">
-	                                <select class="validate[required] form-control" id="inputSec" name="inputSec">
+	                                <select class="form-control" id="inputSec" name="inputSec">
 	                                	@if($user->birth_sec)
 	                                    <option value="{{$user->birth_sec}}">{{$user->birth_sec}}</option>
 	                                    @else
@@ -805,7 +911,7 @@
 	                        <div class="form-group row">
 	                            <label for="gender" class="col-md-2 control-label">Place of birth</label>
 	                            <div class="col-md-6">
-	                                <input type="text" class="validate[required] form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place" value="{{ $user->birth_place }}">
+	                                <input type="text" class="form-control" name="inputBirthPlace" id="inputBirthPlace" placeholder="Birth Place" value="{{ $user->birth_place }}">
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
@@ -976,24 +1082,44 @@
                     <div class="tab-pane fade" id="education">
         				<form method="post" id="educationForm">
         					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
-						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">Educational Qualification</label>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Highest Qualification</label>
+                                <div class="col-md-6">
+                                    <script>
+                                        $(document).ready(function(){
+                                            var education1 = '<?= $educational_details->id; ?>';
+                                            $('#inputEducational option[value='+education1+']').attr("selected", 'selected');
+                                        });      
+                                    </script>
+                                    <select class="validate[required] form-control" id="inputEducational" name="inputEducational">
+                                        <option value="">Highest Qualification</option>
+                                        @foreach($educational as $edu)
+                                            <option value="{{$edu->id}}" title="{{$edu->education}}">{{$edu->education}}</option>
+                                        @endforeach
+                                     </select>
+                                </div>
+                            </div>						  	
+                            <div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Additional Qualification</label>
 							    <div class="col-md-6">
-	                                <select class="validate[required] form-control" id="inputEducational" name="inputEducational">
-	                                	@if(!empty($educational_details->id))
-	                                		<option value="{{$educational_details->id}}">{{$educational_details->education}}</option>
-		                                    <option value="">Educational Qualification</option>
-		                                    @foreach($educational as $edu)
-		                                    	<option value="01">{{$edu->education}}</option>
-		                                    @endforeach
-	                                	@else
-		                                    <option value="">Educational Qualification</option>
-		                                    @foreach($educational as $edu)
-		                                    	<option value="{{$edu->id}}">{{$edu->education}}</option>
-		                                    @endforeach
-	                                	@endif
+
+	                                <select class="validate[required] multiselect-ui form-control" id="inputAdditional" name="inputAdditional" multiple="multiple">
+
+                                        @foreach($educational as $edu)
+                                    	  <option value="{{$edu->id}}">{{$edu->education}}</option>
+	                                    @endforeach
 
                                     </select>
+
+                                    
+
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $('.multiselect-ui').multiselect({
+                                                includeSelectAllOption: true
+                                            });
+                                        });
+                                    </script>
 	                            </div>
 						  	</div>
 
@@ -1042,23 +1168,7 @@
 						  	<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed With</label>
 							    <div class="col-md-6">
-	                                <select class="validate[required] form-control" id="inputEmployedWith" name="inputEmployedWith">
-	                                	@if($education_center->employed_with)
-	                                    <option value="{{$education_center->employed_with}}">{{$education_center->employed_with}}</option>
-	                                    @endif
-	                                    <option value="">Employed With</option>
-	                                    
-                                    	<option value="Business/Self Employed">Business/Self Employed</option>
-                                    	<option value="Civil Services">Civil Services</option>
-                                    	<option value="Defense Forces">Defense Forces</option>
-                                    	<option value="Government/Public Sector">Government/Public Sector</option>
-                                    	<option value="NGO/NPT">NGO/NPT</option>
-                                    	<option value="Political Group">Political Group</option>
-                                    	<option value="Private Company">Private Company</option>
-                                    	<option value="Not Working">Not Working</option>
-                                    	<option value="Others">Others</option>
-	                                   
-	                                </select>
+                                    <input type="text" class="form-control validate[required]" id="inputEmployedWith" name="inputEmployedWith" value="{{$education_center->employed_with}}">
 	                            </div>
 						  	</div>
 
@@ -1183,9 +1293,9 @@
 
                     <!-- #Address -->
                     <div class="tab-pane fade" id="photo">
-						@if(session('status'))
+<!-- 						@if(session('status'))
 							<div class="alert alert-success"> {{ session('status') }} </div>
-						@endif
+						@endif -->
         				<form action="{{ route('profile_image') }}" method="post" enctype="multipart/form-data">
         					{{ csrf_field() }}
         					<input type="hidden" name="user_id" value="{{ $user->user_id }}">
@@ -1228,7 +1338,7 @@
 						      	<tr>
 							        <td>{{ $i }}</td>
 									<td><img src="storage/app/uploads/profile_images/{{$img->image}}" style="width: 100px;"></td>
-							        <td><a href="#{{ $img->id }}" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></a></td>
+							        <td><a href="#{{ $img->id }}" data-toggle="modal" class="btn btn-danger">Delete</a></td>
 						       </tr>
 					        <?php
 					       		$i++;
@@ -1273,4 +1383,31 @@
     </div>
     </div>
   </div>
+
+  <?php
+                $additional_id = $education_center->additional_education;
+
+                if(!empty($additional_id))
+                {
+                    $additional_id = explode(',', $additional_id);
+
+                    foreach ($additional_id as $mode) {
+
+                        ?>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                
+                                $('.multiselect-container input[type="checkbox"][value="<?= $mode; ?>"]').prop('checked', true);
+
+                                $('#inputAdditional option[value="<?= $mode; ?>"]').attr('selected', 'selected');
+
+                            });  
+                        </script>
+
+                        <?php
+                    }
+                }
+            ?>
+       
+
 @endsection

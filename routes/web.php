@@ -53,6 +53,9 @@ Route::get('search_for', function()
     // Get all employed_as
     $employed_as = DB::table('employed_as')->where('status', 1)->get();
 
+    // Get all states
+    $states = DB::table('states')->where('country_id', 101)->get();
+
     $query = DB::table('user_details')
                 ->join('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
                 ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
@@ -69,7 +72,7 @@ Route::get('search_for', function()
 
     $results = $query->get();
 
-    return View::make('websitepages/searched_users', array('caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as, 'search_results' => $results));
+    return View::make('websitepages/searched_users', array('caste' => $caste, 'height' => $height, 'mother_tongue' => $mother_tongue, 'annual_income' => $annual_income, 'educational_qualification' => $educational_qualification, 'employed_as' => $employed_as, 'search_results' => $results, 'states' => $states));
 });
 
 Route::post('/search_user_for', 'AjaxController@search_user_for')->name('search_user_for');
@@ -115,6 +118,8 @@ Route::post('profile_image', 'Profile@profile_image')->name('profile_image');
 Route::post('deleteProfileImage', 'Profile@deleteProfileImage')->name('deleteProfileImage');
 
 Route::get('user_profile/{id}', 'Profile@user_profile')->name('user_profile');
+
+Route::post('getCityByState', 'AjaxController@getCityByState')->name('getCityByState');
 
 ////////////////////////////////////////////////////////
 // Admin Permissions Only Admin can access these urls //
@@ -164,6 +169,12 @@ Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     Route::post('add_qualification', 'Admin@add_qualification')->name('add_qualification');
     Route::post('editQualification', 'Admin@editQualification')->name('editQualification');
     //Route::get('deleteQualification', 'Admin@deleteQualification')->name('deleteQualification');
+   
+    // Additional Add / View / Delete
+    Route::get('additional', 'Admin@additional')->name('additional');
+    Route::get('addAdditional', 'Admin@addAdditional')->name('addAdditional');
+    Route::post('add_success', 'Admin@add_success')->name('add_success');
+    Route::post('delete_success', 'Admin@delete_success')->name('delete_success');
 
     // Annual Income Add / View / Delete
     Route::get('annual_income', 'Admin@annual_income')->name('annual_income');

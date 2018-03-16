@@ -1,6 +1,7 @@
 @extends('layouts.public_app')
 
 @section('content')
+
     <div class="container container-full" style="padding-top:30px;">
         <div class="row light searchpage mt-95">
 
@@ -10,7 +11,14 @@
 
                     <div class="row" id="filter-collapse">
                         <ul class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+                            <?php
+                                if(!empty($looking_for))
+                                {
+                            ?>
+                            <input type="hidden" value="<?= $looking_for;?>" class="selected_checkbox" id="selected_input">
+                            <?php
+                                }
+                            ?>
                             <!-- Marital Status -->
                             <li class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
@@ -361,10 +369,46 @@
                                 </div>
                             </li>
 
+                            <!-- States As -->
+                            <li class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTen">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" href="#FilterStates" aria-expanded="false">States</a>
+                                    </h4>
+                                </div>
+                                <div id="FilterEmployedAs" class="panel-collapse collapse in">
+                                    <div class="panel-body Max-height-filter">
+                                        <ul>
+                                            @foreach($states as $state)
+                                            <li class="lvcheckbox">
+                                                <input type="checkbox" class="state selected_checkbox" name="state[]" id="state_{{ $state->id }}" value="{{ $state->id }}">
+                                                <label for="state_{{ $state->id }}" title="{{ $state->name }}">
+                                                    <span class="lvwordellips">{{ $state->name }}</span>
+                                                </label>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingEleven">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" href="#FilterCities" aria-expanded="false">Cities</a>
+                                    </h4>
+                                </div>
+                                <div id="FilterEmployedAs" class="panel-collapse collapse in">
+                                    <div class="panel-body Max-height-filter">
+                                        <ul id="searched_city"></ul>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
 
                         <div class="clear" style="height:50px;"></div>
-                        <div class="refine-float-btn"><button type="submit" class="btn btn-theme padd-10 btn-block ripplelink" id="listingHideShow1" data-original-title="" title=""><i class="fa fa-filter"></i> Filter Search</button></div>
+                        <div class="refine-float-btn">
+                            <button type="submit" class="btn btn-theme padd-10 btn-block ripplelink" id="listingHideShow1" data-original-title="" title=""><i class="fa fa-filter"></i> Filter Search</button>
+                        </div>
 
                     </div>
 

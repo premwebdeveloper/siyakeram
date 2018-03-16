@@ -412,7 +412,7 @@ textarea.form-control:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(225, 186, 56, .6);
     outline: 0;*/
 	
-	border-color: #e11665;
+	border-color: #ce2923;
     box-shadow: 0 0px 0px rgba(0, 0, 0, .075) inset, 0 0 0px rgba(225, 186, 56, .6);
     outline: 0
 }
@@ -572,16 +572,16 @@ input[type=file] {
 
 .bootstrap-select .btn:focus {
     outline: 0!important;
-    border-bottom: 1px solid #e11665;
+    border-bottom: 1px solid #ce2923;
 	background:#fff
 }
 
 .bootstrap-select .btn:hover {
-    border-bottom: 1px solid #e11665
+    border-bottom: 1px solid #ce2923
 }
 .bootstrap-select .btn:active:focus{
     box-shadow: none;
-    border-bottom: 1px solid #e11665;
+    border-bottom: 1px solid #ce2923;
 	}
 
 .dropdown-menu {
@@ -626,7 +626,7 @@ input[type=file] {
 .btn-group.open .dropdown-toggle,
 .btn-group.open .dropdown-toggle:hover {
     box-shadow: none;
-    border-bottom: 1px solid #e11665;
+    border-bottom: 1px solid #ce2923;
 	background:#FFF
 }
 
@@ -641,7 +641,7 @@ input[type=file] {
 .btn-group.bootstrap-select.form-control .btn-default:active,
 .btn-group.bootstrap-select.form-control .btn-default:focus {
     background-color: #fff;
-    /*border: 1px solid #e11665*/
+    /*border: 1px solid #ce2923*/
 }
 
 .area-code-dropdown .btn-group.bootstrap-select .btn-default.active,
@@ -656,7 +656,7 @@ input[type=file] {
 .area-code-dropdown .btn-group.bootstrap-select .btn-default:active,
 .area-code-dropdown .btn-group.bootstrap-select .btn-default:focus {
     background-color: #fff;
-    border-bottom: 1px solid #e11665
+    border-bottom: 1px solid #ce2923
 }
 
 .area-code-dropdown .btn-group.bootstrap-select .btn-default:visited {
@@ -1439,7 +1439,7 @@ output {
 }
 
 .dark-pink {
-    color: #c22e5a
+    color: #ce2923
 }
 
 .light-pink {
@@ -2422,7 +2422,7 @@ section.slider-holder .best-time-holder {
 
 section.slider-holder .best-time-holder .best-time {
     font-family: 'Tangerine', cursive;
-    color: #c22e5a;
+    color: #ce2923;
     font-weight: 700;
     font-size: 52px;
     display: inline-block;
@@ -2488,7 +2488,7 @@ section.success-stories .carousel-indicators {
 section.success-stories .spn-success {
     font-family: 'Tangerine', cursive;
     font-size: 45px;
-    color: #c22e5a;
+    color: #ce2923;
     text-align: center;
     padding-top: 50px;
     margin-bottom: 0;
@@ -2496,7 +2496,7 @@ section.success-stories .spn-success {
 }
 
 section.success-stories h2 {
-    color: #c22e5a
+    color: #ce2923
 }
 
 section.success-stories {
@@ -2523,9 +2523,9 @@ section.success-stories .btn.view-all-stories {
     width: 180px;
     height: 40px;
     border-radius: 24px;
-    color: #c22e5a;
+    color: #ce2923;
     background-color: transparent;
-    border: 2px solid #c22e5a;
+    border: 2px solid #ce2923;
     font-size: 16px;
     margin-top: 10px
 }
@@ -2614,7 +2614,7 @@ section.just-joined {
 
 section.just-joined .spn-joined {
     font-family: 'Tangerine', cursive;
-    color: #c22e5a;
+    color: #ce2923;
     font-size: 50px
 }
 
@@ -2653,7 +2653,7 @@ section.just-joined .row .profileimage img {
 }
 
 section.just-joined .row>div h4 {
-    color: #c22e5a
+    color: #ce2923
 }
 
 section.just-joined .row .profile-holder {
@@ -2769,7 +2769,7 @@ section.feature-benefit .feature-heading {
     padding: 20px 0;
     font-family: 'Tangerine', cursive;
     font-size: 50px;
-    color: #c22e5a;
+    color: #ce2923;
     font-weight: 400
 }
 
@@ -2779,7 +2779,7 @@ section.feature-benefit .feature-table {
 }
 
 section .feature-table>div:nth-child(odd) .content-holder {
-    background: #c62c5c
+    background: #ce2923
 }
 
 section .feature-table>div:nth-child(even) .content-holder {
@@ -3361,7 +3361,7 @@ section.footer .wrapper li span {
 .profile-list li.active a,
 .profile-list li:hover a {
     background-color: #f5f5f5;
-    color: #c22e5a
+    color: #ce2923
 }
 
 .share .view-profile {
@@ -4697,9 +4697,9 @@ a.orange-text:hover {
     width: 180px;
     height: 40px;
     border-radius: 24px;
-    color: #c22e5a;
+    color: #ce2923;
     background-color: transparent;
-    border: 2px solid #c22e5a;
+    border: 2px solid #ce2923;
     font-size: 16px;
     margin-top: 10px
 }
@@ -5998,7 +5998,7 @@ a.orange-text:hover {
         position: relative
     }
     section .feature-table>div:nth-child(odd) {
-        background: #c62c5c
+        background: #ce2923
     }
     section .feature-table>div:nth-child(even) {
         background: #f89d16
@@ -6420,7 +6420,7 @@ a.orange-text:hover {
         top: 0
     }
     section .feature-table>div:nth-child(odd) {
-        background: #c62c5c;
+        background: #ce2923;
         margin-right: 10%
     }
     section .feature-table>div:nth-child(even) {
@@ -6617,7 +6617,7 @@ a.orange-text:hover {
 }
 
 .payment_wrapper .package_box .p_heading {
-    background: #e11665;
+    background: #ce2923;
     color: #fff;
     padding: 10px 15px;
     font-size: 17px;
@@ -6625,7 +6625,7 @@ a.orange-text:hover {
 
 .payment_wrapper .package_box .p_content {
     background: #fff;
-    color: #e11665;
+    color: #ce2923;
     padding: 10px 15px;
     font-size: 15px;
     font-size: 18px;
@@ -6656,7 +6656,7 @@ a.orange-text:hover {
 }
 
 .payment_wrapper .package_box_2 .p_heading {
-    background: #e11665;
+    background: #ce2923;
     color: #fff;
     padding: 10px 15px;
     font-size: 17px;
@@ -6692,7 +6692,7 @@ a.orange-text:hover {
 }
 
 .payment_wrapper .package_box_2 .p_remove:hover {
-    color: #e11665;
+    color: #ce2923;
     font-weight: bold;
 }
 
@@ -6708,7 +6708,7 @@ a.orange-text:hover {
 }
 
 .option_wrapper .heading {
-    background: #e11665;
+    background: #ce2923;
     color: #fff;
     padding: 10px 15px;
     font-size: 17px;
@@ -6816,7 +6816,7 @@ a.orange-text:hover {
 }
 
 .right_panel .total_box .right {
-    color: #e11665;
+    color: #ce2923;
     font-size: 20px;
 }
 
@@ -6910,7 +6910,7 @@ a.orange-text:hover {
 
 	/* Landscape phones and down */
 
-	.promotion{width:100%; display:table; background:#e11665;}
+	.promotion{width:100%; display:table; background:#ce2923;}
 	.promotion .pormo_left_panel{float:left; width:50%; position:relative; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 	.promotion .pormo_left_panel .heading{width:500px; padding:10px 20px; font-size:32px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:32px;}
 	.promotion .pormo_left_panel .heading span{font-size:23px; display:block}
@@ -6943,7 +6943,7 @@ a.orange-text:hover {
 	.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	.clear{clear:both;}
 	@media screen and (min-width: 1150px) and (max-width: 1280px) {
-		.promotion{width:100%; display:table; background:#e11665;}
+		.promotion{width:100%; display:table; background:#ce2923;}
 		.promotion .pormo_left_panel{float:left; width:47%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 		.promotion .pormo_left_panel .heading{width:450px; padding:10px 20px; font-size:28px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:32px;}
 		.promotion .pormo_left_panel .heading span{font-size:21px; display:block}
@@ -6966,7 +6966,7 @@ a.orange-text:hover {
 		.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	}
 	@media screen and (min-width: 1024px) and (max-width: 1149px) {
-		.promotion{width:100%; display:table; background:#e11665;}
+		.promotion{width:100%; display:table; background:#ce2923;}
 		.promotion .pormo_left_panel{float:left; width:47%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 		.promotion .pormo_left_panel .heading{width:400px; padding:10px; font-size:26px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:32px;}
 		.promotion .pormo_left_panel .heading span{font-size:21px; display:block}
@@ -6989,7 +6989,7 @@ a.orange-text:hover {
 		.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	}
 	@media screen and (min-width: 991px) and (max-width: 1023px) {
-		.promotion{width:100%; display:table; background:#e11665;}
+		.promotion{width:100%; display:table; background:#ce2923;}
 		.promotion .pormo_left_panel{float:none; width:100%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 		.promotion .pormo_left_panel .heading{width:700px; padding:10px; font-size:26px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:32px;}
 		.promotion .pormo_left_panel .heading span{font-size:21px; display:block}
@@ -7016,7 +7016,7 @@ a.orange-text:hover {
 		.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	}
 	@media screen and (min-width: 768px) and (max-width: 990px) {
-		.promotion{width:100%; display:table; background:#e11665;}
+		.promotion{width:100%; display:table; background:#ce2923;}
 		.promotion .pormo_left_panel{float:none; width:100%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 		.promotion .pormo_left_panel .heading{width:600px; padding:10px; font-size:26px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:32px;}
 		.promotion .pormo_left_panel .step_box {width:auto; padding-left:120px; height:290px;}
@@ -7042,7 +7042,7 @@ a.orange-text:hover {
 		.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	}
 	@media screen and (min-width: 540px) and (max-width: 767px) {
-		.promotion{width:100%; display:table; background:#e11665;}
+		.promotion{width:100%; display:table; background:#ce2923;}
 		.promotion .pormo_left_panel{float:none; width:100%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbbb38+0,f9ae18+47,f58a17+100 */ background: #fbbb38; /* Old browsers */ background: -moz-linear-gradient(top,  #fbbb38 0%, #f9ae18 47%, #f58a17 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom,  #fbbb38 0%,#f9ae18 47%,#f58a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbbb38', endColorstr='#f58a17',GradientType=0 ); /* IE6-9 */}
 		.promotion .pormo_left_panel .heading{width:280px; padding:10px; font-size:21px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:26px;}
 		.promotion .pormo_left_panel .heading span{font-size:19px;}
@@ -7071,9 +7071,9 @@ a.orange-text:hover {
 		.promotion .pormo_right_panel .steps .box .text span{font-size:17px; font-weight:500; display:block;}
 	}
 	@media screen and (min-width: 320px) and (max-width: 539px) {
-		.promotion{width:100%; display:block; background:#e11665;}
+		.promotion{width:100%; display:block; background:#ce2923;}
 		.promotion .pormo_left_panel{float: none;width: 100%;background: #ffffff;}
-		.promotion .pormo_left_panel .heading{width:100%; padding:10px; font-size:21px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:26px;color: #e11665;text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.32);}
+		.promotion .pormo_left_panel .heading{width:100%; padding:10px; font-size:21px; font-weight:700; text-align:Center; text-transform:uppercase; line-height:26px;color: #ce2923;text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.32);}
 		.promotion .pormo_left_panel .heading span{font-size: 24px;  padding-top: 23px;}
 		.promotion .pormo_left_panel .step_box {width:auto; padding-left:25px; height:237px;display:none;}
 		.promotion .pormo_left_panel .step_box .arrow_box {position: relative;background: #fbbb38;border: 4px solid #fff; width:420px; float:none; font-size:16px; font-weight:700; padding:3px; box-shadow:0px 2px 3px rgba(0,0,0,0.2)}
@@ -7109,7 +7109,7 @@ a.orange-text:hover {
 			text-align: justify;
 		}
 		section.success-stories h2{
-			color: #c22e5a;
+			color: #ce2923;
 			font-size: 15px;
 			font-weight: bold;
 			text-align:center;
@@ -7215,7 +7215,7 @@ a.orange-text:hover {
 			margin-bottom: 10px;
 			width: 113px;
 			box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.26);
-			border: 0px solid #e11665;*/
+			border: 0px solid #ce2923;*/
 		}
 		
 		.features_img_1 {

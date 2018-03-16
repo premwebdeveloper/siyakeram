@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:300,400,400i,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" media="screen" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script>
         $(document).ready(function(){
             $('#siyadrop').on('click',function(){

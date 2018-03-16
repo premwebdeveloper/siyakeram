@@ -4,8 +4,14 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#1').addClass('active');
+        $('#s_1').addClass('active');
     });
 </script>
+<style>
+    section.success-stories .carousel-inner>.item>div:last-child{
+        padding-top: 0px;
+    }
+</style>
 <div class="main discover">
     <section class="slider-holder">
         <div class="mobile-img">
@@ -29,6 +35,7 @@
               </div>
             </div>
         </div>
+         @guest
         <div class="best-time-holder">
         <div class="wrapper row position-relative">
           <div class="get-started-holder">
@@ -42,7 +49,7 @@
 
                         <div class="control-group form-group">
                           <div class="controls col-md-6">
-                             <input pattern="[A-Za-z]+" type="text" id="first_name" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
+                             <input type="text" id="first_name" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
                              <p class="help-block"></p>
                           </div>
                           <div class="controls col-md-6">
@@ -201,7 +208,8 @@
 
             </div>
           </div>
-      </div>
+        </div>
+        @endguest
     </section>
 
 
@@ -216,38 +224,30 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
           </ol>
-          <div class="carousel-inner">
-           <div class="item row active">
-              <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                   <img class="img-responsive pad-20" src="resources/frontend_assets/images/February202017522pm.png">
+          <div class="carousel-inner" style="margin-bottom: 30px;margin-top: 20px;">
+            <?php
+                $i=1;
+            ?>
+                @foreach($success_stories as $success)
+            <div class="item row" id="s_<?= $i;?>">
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                   <img class="img-responsive pad-20" src="storage/app/uploads/profile_images/{{$success->image}}" style="border-radius: 50px;">
               </div>
-              <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                <h2 class="ng-binding">Megha and Anshul</h2>
-                <p class="maroon-text ng-binding">Me and Anshul met each-morable and smooth sail. I have opted for three months paid services. My account manager shared some p.. </p>
-                <a href="javascript:;" id="HP_View_Stories"><button class="btn btn-default view-all-stories custom-botton">View more stories</button></a>
-              </div>
-            </div>
-            <div class="item row">
-              <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                   <img class="img-responsive pad-20" src="resources/frontend_assets/images/successstory/J
-              </div>
-              <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                <h2 class="ng-binding">Mandakini and Naveen</h2>
-                <p class="maroon-text ng-binding">After seeing Naveen’s profd. After two weeks, I once again sent him the interest and this time he accepted my request... </p>
-                <a href="javascript:;" id="HP_View_Stories">
-                    <button class="btn btn-default view-all-stories custom-botton">View more stories</button>
-                </a>
+              <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2 class="ng-binding">{{$success->name}}</h2>
+                <p class="maroon-text ng-binding">{{$success->description}}</p>
+                <!-- <a href="javascript:;" id="HP_View_Stories"><button class="btn btn-default view-all-stories custom-botton">View more stories</button></a> -->
               </div>
             </div>
-
+            @endforeach
           </div>
 
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon button_left" aria-hidden="true"></span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon button_right" aria-hidden="true"></span>
-          </a>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon button_left" aria-hidden="true"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon button_right" aria-hidden="true"></span>
+            </a>
         </div>
       </div>
     </section>
@@ -346,15 +346,29 @@
       <h2 class="light-pink heading text-center" style="margin-bottom: 40px;">Latest Registered Users</h2>
         <div id="Bride" class="tab-section">
           <div class="row">
-            @foreach($home_users as $bride)
-              <?php
+            
+            <?php
                 $date = date('Y');
-                $age = $bride->year;
-                $current_age = $date-$age;
 
-                $bride_count = DB::table('user_details')->where(array('gender'=> 2, 'status' => 1))->get();
+                $bride_count = DB::table('user_details')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'countries.name as user_country', 'height.height as height')
+                ->where(array('user_details.gender'=> 2, 'user_details.status' => 1))
+                ->orderBy('id', 'desc')
+                ->offset(0)
+                ->limit(6)
+                ->get();
 
                 $bride_count_result = count($bride_count);
+
+                foreach($bride_count as $bride)
+                {
+
+                $age = $bride->year;
+
+                $current_age = $date-$age;
 
                 $user_id = $bride->user_id;
 
@@ -364,12 +378,12 @@
                       {
                           foreach ($images as $img)
                           {
-                              $image = $img->image;
-                              if($image != 'user.png')
-                              {
-                                  $image = $image;
-                                  break;
-                              }
+                            $image = $img->image;
+                            if($image != 'user.png')
+                                {
+                                    $image = $image;
+                                    break;
+                                }
                           }
                       }
                       else
@@ -378,61 +392,75 @@
                       }
 
               ?>
-              @if(($bride->gender == 2) && ($bride_count_result <= 6)) 
+
+              
                 <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 text-center">
-                  <div class="matches-holder">
-                    <span class="profile_viewed"></span>
-                    <span class="notification-number">60</span>
-                      
+                    <div class="matches-holder">
+                        <span class="profile_viewed"></span>
+                          
                         <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
-                     
-                      <div class="profile-name">{{$bride->unique_id}} </div>
-                      <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$bride->user_height}}</span> <span>{{$bride->employed_with}}</span> <span>{{$bride->user_country}}</span></div>
-                      <div class="gallery">
-                      <?php
-                        if($user = Auth::user())
-                          {
-                      ?>
-                          <a href="#showmodel" data-toggle="modal">
-                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
-                          </a>                    
-                      <?php
-                        }
-                        else
-                        {
-                      ?>
-                          <a href="{{ route('login') }}">
-                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
-                          </a>
-                      <?php
-                        }
-                      ?>
-                      <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
-                        <button class="btn yellow-hollow position-relative" id="showview-614980">
-                          <span class="view-full-profile"></span>
-                          <span class="text">VIEW</span>
-                        </button>
-                      </a>
-                      </div>
-                  </div>  
+                         
+                            <div class="profile-name"><?= $bride->unique_id; ?> </div>
+                            <div class="info-holder"> <span><?= $current_age; ?></span> <span><?= $bride->height; ?></span> 
+                                <span><?= $bride->employed_with; ?></span> <span><?= $bride->user_country; ?></span>
+                            </div>
+                            <div class="gallery">
+                                <?php
+                                    if($user = Auth::user())
+                                      {
+                                ?>
+                                    <a href="#showmodel" data-toggle="modal">
+                                        <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                                    </a>                    
+                                <?php
+                                    }
+                                    else
+                                    {
+                                ?>
+                                    <a href="{{ route('login') }}">
+                                        <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                                    </a>
+                                <?php
+                                    }
+                                ?>
+                                    <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
+                                        <button class="btn yellow-hollow position-relative" id="showview-614980">
+                                            <span class="view-full-profile"></span>
+                                            <span class="text">VIEW</span>
+                                        </button>
+                                    </a>
+                            </div>
+                    </div>  
                 </div> 
-              @endif            
-            @endforeach
+                          
+            <?php
+                }
+            ?>
         </div>
       </div>        
 
       <div id="Groom" class="tab-section">
           <div class="row">
 
-            @foreach($home_users as $groom)
-              <?php
+            <?php
                 $date = date('Y');
+
+                $groom_count = DB::table('user_details')
+                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
+                ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
+                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'countries.name as user_country', 'height.height as height')
+                ->where(array('user_details.gender'=> 1, 'user_details.status' => 1))
+                ->orderBy('id', 'desc')
+                ->offset(0)
+                ->limit(6)
+                ->get();
+
+                foreach($groom_count as $groom)
+                {
                 $age = $groom->year;
+
                 $current_age = $date-$age;
-
-                $groom_count = DB::table('user_details')->where(array('gender'=> 1, 'status' => 1))->get();
-
-                $groom_count_result = count($groom_count);
 
                   $user_id = $groom->user_id;
 
@@ -445,8 +473,8 @@
                                   $image = $img->image;
                                   if($image != 'user.png')
                                   {
-                                      $image = $image;
-                                      break;
+                                    $image = $image;
+                                    break;
                                   }
                               }
                           }
@@ -455,48 +483,48 @@
                               $image = 'user.png';
                           }
 
-              ?>
-                @if(($groom->gender == 1) && ($groom_count_result <= 6))
+            ?>
 
                 <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center">
-                  <div class="matches-holder">
-                    <span class="profile_viewed"></span>
-                    <span class="notification-number">60</span>
-                      
-                        <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
-                      
-                      <div class="profile-name">{{$groom->unique_id}}</div>
-                      <div class="info-holder"> <span>{{$current_age}}</span> <span>{{$groom->user_height}}</span> <span>{{$groom->employed_with}}</span> <span>{{$groom->user_country}}</span></div>
-                      <div class="gallery">
-                      <?php
-                        if($user = Auth::user())
-                          {
-                      ?>
-                          <a href="#showmodel" data-toggle="modal">
-                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
-                          </a>                    
-                      <?php
-                        }
-                        else
-                        {
-                      ?>
-                          <a href="{{ route('login') }}">
-                            <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
-                          </a>
-                      <?php
-                        }
-                      ?>
-                      <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
-                      <button class="btn yellow-hollow position-relative" id="showview-614980"><span class="view-full-profile"></span><span class="text">VIEW</span></button></a>
-                      </div>
-                  </div>  
+                    <div class="matches-holder">
+                        <span class="profile_viewed"></span>
+
+                            <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
+                          
+                          <div class="profile-name"><?= $groom->unique_id; ?></div>
+                          <div class="info-holder"> <span><?= $current_age; ?></span> 
+                            <span><?= $groom->height; ?></span> 
+                            <span><?= $groom->employed_with; ?></span> 
+                            <span><?= $groom->user_country; ?></span></div>
+                          <div class="gallery">
+                          <?php
+                            if($user = Auth::user())
+                              {
+                          ?>
+                              <a href="#showmodel" data-toggle="modal">
+                                <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                              </a>                    
+                          <?php
+                            }
+                            else
+                            {
+                          ?>
+                              <a href="{{ route('login') }}">
+                                <button class="btn yellow-hollow"><span class="shortlist active"></span><span class="text">Contact Us</span></button>
+                              </a>
+                          <?php
+                            }
+                          ?>
+                          <a href="{{ route('user_profile', ['id' => $user_id]) }}">  
+                          <button class="btn yellow-hollow position-relative" id="showview-614980"><span class="view-full-profile"></span><span class="text">VIEW</span></button></a>
+                          </div>
+                    </div>  
                 </div>   
-
-                @endif  
-
-            @endforeach
+            <?php
+                }
+            ?>
+            </div>
         </div>
-      </div>
   </section>
 
   @endif

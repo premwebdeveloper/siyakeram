@@ -112,3 +112,21 @@ ALTER TABLE `slider`
 
 ALTER TABLE `slider`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+
+-- ---------------------------Updated Table employed_as ON 24-02-2018--------------------------
+
+ALTER TABLE `user_details` ADD `mobile` VARCHAR(255) NOT NULL AFTER `phone`, ADD `alt_mobile` VARCHAR(255) NOT NULL AFTER `mobile`;
+ALTER TABLE `user_details` CHANGE `mobile` `mobile` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL;
+ALTER TABLE `user_details` CHANGE `alt_mobile` `alt_mobile` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL;
+
+
+-- ---------------------------Updated Table employed_as ON 05-03-2018--------------------------
+
+ALTER TABLE `user_education_center` ADD `additional_education` VARCHAR(255) NOT NULL AFTER `edu_qualification`;
+
+-- ---------------------------Updated Table employed_as ON 14-03-2018--------------------------
+
+RENAME TABLE `siyakeram`.`additional_qualification` TO `siyakeram`.`success_stories`;
+ALTER TABLE `success_stories` CHANGE `additional_edu` `name` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+ALTER TABLE `success_stories` ADD `image` VARCHAR(500) NOT NULL AFTER `status`, ADD `description` TEXT NOT NULL AFTER `image`;
