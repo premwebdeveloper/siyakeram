@@ -1085,12 +1085,19 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Highest Qualification</label>
                                 <div class="col-md-6">
+                                    <?php
+                                        if(!empty($educational_details->id))
+                                        {
+                                    ?>
                                     <script>
                                         $(document).ready(function(){
                                             var education1 = '<?= $educational_details->id; ?>';
                                             $('#inputEducational option[value='+education1+']').attr("selected", 'selected');
                                         });      
                                     </script>
+                                    <?php
+                                        }
+                                    ?>
                                     <select class="validate[required] form-control" id="inputEducational" name="inputEducational">
                                         <option value="">Highest Qualification</option>
                                         @foreach($educational as $edu)
