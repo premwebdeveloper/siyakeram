@@ -113,10 +113,15 @@ class AdminUsers extends Controller
                 )
         );
         #user insert in user_images table
+        $user_image = 'user.png';
+        if($gender != 1)
+        {
+            $user_image = 'user1.png';
+        }
         $user_insert = DB::table('user_images')->insert(
             array(
                     'user_id' => $user_id,
-                    'image' => 'user.png',
+                    'image' => $user_image,
                     'created_at' => $c_date,
                     'updated_at' => $c_date,
                     'status' => 1

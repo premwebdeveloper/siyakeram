@@ -92,6 +92,7 @@ class AjaxController extends Controller
         $user_id = $request->user_id;
 
         $inputFamily = $request->inputFamily;
+        $inputFatherName = $request->inputFatherName;
         $inputFather = $request->inputFather;
         $inputMother = $request->inputMother;
         $inputMSister = $request->inputMSister;
@@ -107,6 +108,7 @@ class AjaxController extends Controller
 
             array(
                     'about_family' => $inputFamily,
+                    'father_name' => $inputFatherName,
                     'father_occupation' => $inputFather,
                     'mother_occupation' => $inputMother,
                     'married_sisters' => $inputMSister,

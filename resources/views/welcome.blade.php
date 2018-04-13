@@ -351,10 +351,11 @@
                 $date = date('Y');
 
                 $bride_count = DB::table('user_details')
-                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
                 ->leftjoin('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
                 ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
-                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'countries.name as user_country', 'height.height as height')
+                ->leftjoin('educational_qualification', 'educational_qualification.id', '=', 'user_education_center.edu_qualification')
+                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'educational_qualification.education', 'countries.name as user_country', 'caste.caste')
                 ->where(array('user_details.gender'=> 2, 'user_details.status' => 1))
                 ->orderBy('id', 'desc')
                 ->offset(0)
@@ -379,7 +380,7 @@
                           foreach ($images as $img)
                           {
                             $image = $img->image;
-                            if($image != 'user.png')
+                            if($image != 'user1.png')
                                 {
                                     $image = $image;
                                     break;
@@ -388,7 +389,7 @@
                       }
                       else
                       {
-                          $image = 'user.png';
+                          $image = 'user1.png';
                       }
 
               ?>
@@ -400,9 +401,12 @@
                           
                         <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
                          
-                            <div class="profile-name"><?= $bride->unique_id; ?> </div>
-                            <div class="info-holder"> <span><?= $current_age; ?></span> <span><?= $bride->height; ?></span> 
-                                <span><?= $bride->employed_with; ?></span> <span><?= $bride->user_country; ?></span>
+                            <div class="profile-name"><?= $bride->name; ?> </div>
+                            <div class="info-holder"> 
+                                <span><?= $bride->caste; ?></span> 
+                                <span><?= $bride->education; ?></span> 
+                                <span><?= $bride->employed_with; ?></span> 
+                                <span><?= $bride->user_country; ?></span>
                             </div>
                             <div class="gallery">
                                 <?php
@@ -446,10 +450,11 @@
                 $date = date('Y');
 
                 $groom_count = DB::table('user_details')
-                ->leftjoin('height', 'height.height_cms', '=', 'user_details.height')
+                ->leftjoin('caste', 'caste.id', '=', 'user_details.caste')
                 ->leftjoin('user_education_center', 'user_education_center.user_id', '=', 'user_details.user_id')
                 ->leftjoin('countries', 'countries.id', '=', 'user_details.country')
-                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'countries.name as user_country', 'height.height as height')
+                ->leftjoin('educational_qualification', 'educational_qualification.id', '=', 'user_education_center.edu_qualification')
+                ->select('user_details.*', 'user_education_center.employed_with as employed_with', 'educational_qualification.education', 'countries.name as user_country', 'caste.caste')
                 ->where(array('user_details.gender'=> 1, 'user_details.status' => 1))
                 ->orderBy('id', 'desc')
                 ->offset(0)
@@ -491,9 +496,10 @@
 
                             <img class="pinkprofileimage" src="storage/app/uploads/profile_images/{{ $image }}"> 
                           
-                          <div class="profile-name"><?= $groom->unique_id; ?></div>
-                          <div class="info-holder"> <span><?= $current_age; ?></span> 
-                            <span><?= $groom->height; ?></span> 
+                          <div class="profile-name"><?= $groom->name; ?></div>
+                          <div class="info-holder">
+                            <span><?= $groom->caste; ?></span> 
+                            <span><?= $groom->education; ?></span> 
                             <span><?= $groom->employed_with; ?></span> 
                             <span><?= $groom->user_country; ?></span></div>
                           <div class="gallery">

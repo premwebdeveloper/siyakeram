@@ -109,52 +109,52 @@
 			var valid = $("#myForm").validationEngine("validate", {promptPosition : "topLeft"});
 			if(valid==true)
 			{
-			var user_id = $('.user_id').val();
-			var inputFullName = $('#inputFullName').val();
-            var inputPhone = $('#inputPhone').val();
-            var inputMobile = $('#inputMobile').val();
-			var inputAltMobile = $('#inputAltMobile').val();
-			var inputDate = $('#inputDate').val();
-			var inputMonth = $('#inputMonth').val();
-			var inputYear = $('#inputYear').val();
-			var inputReligion = $('#inputReligion').val();
-			var inputMotherTongue = $('#inputMotherTongue').val();
-			var inputAboutus = $('#inputAboutus').val();
-			var inputHeight = $('#inputHeight').val();
-			var marital_for = $('input[name=marital_for]:checked').val();
-			var inputCaste = $('#inputCaste').val();
-			var inputSubcaste = $('#inputSubcaste').val();
-			var inputComplexion = $('#inputComplexion').val();
-			var inputManglik = $('#inputManglik').val();
-			var inputGotra = $('#inputGotra').val();
-			var inputDiet = $('.inputDiet:checked').val();
-			var inputHrs = $('#inputHrs').val();
-			var inputMin = $('#inputMin').val();
-			var inputSec = $('#inputSec').val();
-			var inputBirthPlace = $('#inputBirthPlace').val();
+    			var user_id = $('.user_id').val();
+    			var inputFullName = $('#inputFullName').val();
+                var inputPhone = $('#inputPhone').val();
+                var inputMobile = $('#inputMobile').val();
+    			var inputAltMobile = $('#inputAltMobile').val();
+    			var inputDate = $('#inputDate').val();
+    			var inputMonth = $('#inputMonth').val();
+    			var inputYear = $('#inputYear').val();
+    			var inputReligion = $('#inputReligion').val();
+    			var inputMotherTongue = $('#inputMotherTongue').val();
+    			var inputAboutus = $('#inputAboutus').val();
+    			var inputHeight = $('#inputHeight').val();
+    			var marital_for = $('input[name=marital_for]:checked').val();
+    			var inputCaste = $('#inputCaste').val();
+    			var inputSubcaste = $('#inputSubcaste').val();
+    			var inputComplexion = $('#inputComplexion').val();
+    			var inputManglik = $('#inputManglik').val();
+    			var inputGotra = $('#inputGotra').val();
+    			var inputDiet = $('.inputDiet:checked').val();
+    			var inputHrs = $('#inputHrs').val();
+    			var inputMin = $('#inputMin').val();
+    			var inputSec = $('#inputSec').val();
+    			var inputBirthPlace = $('#inputBirthPlace').val();
 
-			$.ajax({
-				method : 'post',
-				url : 'update_basic_info',
-				async : true,
-                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputMobile': inputMobile, 'inputAltMobile': inputAltMobile, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputDiet': inputDiet, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
-                success:function(response){
+    			$.ajax({
+    				method : 'post',
+    				url : 'update_basic_info',
+    				async : true,
+                    data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFullName': inputFullName, 'inputPhone': inputPhone, 'inputMobile': inputMobile, 'inputAltMobile': inputAltMobile, 'inputDate': inputDate, 'inputMonth': inputMonth, 'inputYear': inputYear, 'inputReligion': inputReligion, 'inputMotherTongue': inputMotherTongue, 'inputAboutus': inputAboutus, 'inputHeight': inputHeight, 'marital_for': marital_for, 'inputCaste': inputCaste, 'inputSubcaste': inputSubcaste, 'inputComplexion': inputComplexion, 'inputManglik': inputManglik, 'inputGotra': inputGotra, 'inputDiet': inputDiet, 'inputHrs': inputHrs, 'inputMin': inputMin, 'inputSec': inputSec, 'inputBirthPlace': inputBirthPlace},
+                    success:function(response){
 
-                	console.log('response');
-                	console.log(response);
+                    	console.log('response');
+                    	console.log(response);
 
-    				$('#family').addClass('in active');
-					$('#basic').removeClass('in active');
-					$('.shownamefirst').hide();
-					$('#basicName').html(inputFullName +' '+ "@SiyakeRam!");
-					$('#basicName').show();
-					$(window).scrollTop(0);
-                },
-			    error: function(data){
-			        console.log(data);
-			    },
-			});
-		}
+        				$('#family').addClass('in active');
+    					$('#basic').removeClass('in active');
+    					$('.shownamefirst').hide();
+    					$('#basicName').html(inputFullName +' '+ "@SiyakeRam!");
+    					$('#basicName').show();
+    					$(window).scrollTop(0);
+                    },
+    			    error: function(data){
+    			        console.log(data);
+    			    },
+    			});
+    		}
 		});		
 
 		//#familyInfo Update
@@ -163,38 +163,39 @@
 			var valid = $("#familyForm").validationEngine("validate", {promptPosition : "topLeft"});
 			if(valid==true)
 			{
-			var user_id = $('.user_id').val();
-			var inputFamily = $('#inputFamily').val();
-			var inputFather = $('#inputFather').val();
-			var inputMother = $('#inputMother').val();
-			var inputMSister = $('#inputMSister').val();
-			var inputUMSister = $('#inputUMSister').val();
-			var inputMBrother = $('#inputMBrother').val();
-			var inputUMBrother = $('#inputUMBrother').val();
-			var inputNativeCountry = $('#inputNativeCountry').val();
-			var inputNativeState = $('#inputNativeState').val();
-			var inputFamilyValue = $('#inputFamilyValue').val();
-			var inputAffluence = $('#inputAffluence').val();
+    			var user_id = $('.user_id').val();
+                var inputFatherName = $('#inputFatherName').val();
+    			var inputFamily = $('#inputFamily').val();
+    			var inputFather = $('#inputFather').val();
+    			var inputMother = $('#inputMother').val();
+    			var inputMSister = $('#inputMSister').val();
+    			var inputUMSister = $('#inputUMSister').val();
+    			var inputMBrother = $('#inputMBrother').val();
+    			var inputUMBrother = $('#inputUMBrother').val();
+    			var inputNativeCountry = $('#inputNativeCountry').val();
+    			var inputNativeState = $('#inputNativeState').val();
+    			var inputFamilyValue = $('#inputFamilyValue').val();
+    			var inputAffluence = $('#inputAffluence').val();
 
-			$.ajax({
-				method : 'post',
-				url : 'update_family_info',
-				async : true,
-                data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFamily': inputFamily, 'inputFather': inputFather, 'inputMother': inputMother, 'inputMSister': inputMSister, 'inputUMSister': inputUMSister, 'inputMBrother': inputMBrother, 'inputUMBrother': inputUMBrother, 'inputNativeCountry': inputNativeCountry, 'inputNativeState': inputNativeState, 'inputFamilyValue': inputFamilyValue, 'inputAffluence': inputAffluence},
-                success:function(response){
+    			$.ajax({
+    				method : 'post',
+    				url : 'update_family_info',
+    				async : true,
+                    data : {"_token": "{{ csrf_token() }}", 'user_id': user_id, 'inputFamily': inputFamily, 'inputFatherName': inputFatherName, 'inputFather': inputFather, 'inputMother': inputMother, 'inputMSister': inputMSister, 'inputUMSister': inputUMSister, 'inputMBrother': inputMBrother, 'inputUMBrother': inputUMBrother, 'inputNativeCountry': inputNativeCountry, 'inputNativeState': inputNativeState, 'inputFamilyValue': inputFamilyValue, 'inputAffluence': inputAffluence},
+                    success:function(response){
 
-                	console.log('response');
-                	console.log(response);
+                    	console.log('response');
+                    	console.log(response);
 
-					$('#education').addClass('in active');
-					$('#family').removeClass('in active');
-					$(window).scrollTop(0);
-                },
-			    error: function(data){
-			        console.log(data);
-			    },
-			});
-		}
+    					$('#education').addClass('in active');
+    					$('#family').removeClass('in active');
+    					$(window).scrollTop(0);
+                    },
+    			    error: function(data){
+    			        console.log(data);
+    			    },
+    			});
+    		}
 		});
 
 
@@ -926,10 +927,17 @@
                     <div class="tab-pane fade" id="family">
         				<form id="familyForm" method="post">
         					<input type="hidden" name="user_id" class="user_id" value="{{ $user->user_id }}">
-						  	<div class="form-group row">
-							    <label for="staticEmail" class="col-sm-2 col-form-label">About My Family</label>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">About My Family</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" rows="3" cols="10" id="inputFamily">{{$family->about_family}}</textarea>
+                                </div>
+                            </div>						  	
+
+                            <div class="form-group row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Father's Name</label>
 							    <div class="col-sm-6">
-							      	<textarea class="form-control" rows="3" cols="10" id="inputFamily">{{$family->about_family}}</textarea>
+							      	<input type="text" class="form-control" id="inputFatherName" value="{{$family->father_name}}" name="inputFatherName">
 							    </div>
 						  	</div>
 
@@ -1131,7 +1139,7 @@
 						  	</div>
 
 						  	<div class="form-group row">
-							    <label for="inputPassword" class="col-sm-2 col-form-label">Employed As</label>
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Occupation</label>
 							    <div class="col-md-6">
 	                                <select class="validate[required] form-control" id="inputEmployedAs" name="inputEmployed">
 	                                	@if(!empty($employed_details->id))

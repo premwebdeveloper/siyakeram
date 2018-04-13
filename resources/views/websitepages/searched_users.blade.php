@@ -424,7 +424,7 @@
                             <?php
                             // Get user Images
                             $images = DB::table('user_images')->where('user_id', $result->user_id)->get();
-
+                            
                             if(count($images) > 1)
                             {
                                 foreach ($images as $img)
@@ -438,8 +438,31 @@
                                 }
                             }
                             else
+
                             {
-                                $image = 'user.png';
+
+                                if(!empty($looking_for))
+                                {
+                                    if($looking_for == 2)
+                                    {
+                                        $image = 'user1.png';
+                                    }
+                                    else{
+                                        $image = 'user.png';
+                                    }
+                                }
+
+                                else{
+
+                                    if($result->gender == 2)
+                                    {
+                                        $image = 'user1.png';
+                                    }
+                                    else{
+                                        $image = 'user.png';
+                                    }
+                                }
+
                             }
                             ?>
                             <li>
