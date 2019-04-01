@@ -136,5 +136,7 @@ INSERT INTO `success_stories` (`id`, `name`, `status`, `image`, `description`) V
 (5, 'Priyanka and Pawan', 1, '1c98d0.webp', '“We had a seamless experience finding a perfect girl for Pawan. We opted for personalized matchmaking service on SiyaKram and within 3 months we were able to finalize the match,” said Pawan’s father. On Priyanka’s end, it was much smoother an experience. The very first profile they shortlisted on SiyaKram was Pawan’s and things got finalized in the very first attempt for Priyanka. “SiyaKram played a cupid’s role here to make both ends meet and I am happy that I found Priyanka, my better half with consistent support from Gunjan.”- Pawan. We are Really thankful to Gunjan and SiyaKram’s team.');
 
 -- ---------------------------Updated Table employed_as ON 13-04-2018--------------------------
-
 ALTER TABLE `family_details` ADD `father_name` VARCHAR(255) NOT NULL AFTER `about_family`;
+
+-- ---------------------------Updated Table employed_as ON 13-04-2018--------------------------
+ALTER TABLE `family_details` CHANGE `father_name` `father_name` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
